@@ -1,5 +1,8 @@
 # Mac
 .DS_Store
+._*.hpp
+._*.cpp
+._*.h
 
 #Java
 *.class
