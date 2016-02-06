@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="32" tileheight="32" nextobjectid="8">
+ <tileset firstgid="1" name="tilemapsheet" tilewidth="32" tileheight="32" tilecount="51" columns="17">
+  <image source="tilemapsheet.png" width="549" height="96"/>
+ </tileset>
+ <tileset firstgid="52" name="meta_tiles" tilewidth="32" tileheight="32" margin="1" tilecount="2" columns="2">
+  <image source="meta_tiles.png" width="67" height="34"/>
+  <tile id="0">
+   <properties>
+    <property name="Collidable" value="True"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="Background" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJyTYmBgkIJiESQ2PjF0zAXE3ETqJcY8aSCWgbJFkbAYGh+XGD6M7hY2IGZHwsS4DxcG6RVHw8h2UGqeBJKYBJFm0CP8YJhW4Uct8yTIMI/W4ccHxPxoYpT4Vx6IFahoHjn5d9S8kWMeAOfKJZE=
+  </data>
+ </layer>
+ <objectgroup name="Objects">
+  <object id="1" name="spawnPoint" x="113" y="338"/>
+ </objectgroup>
+ <layer name="Meta" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJwzYWBgMIFiBiQ2PjFiMTXMozagtvsGu3nUBoPdv6PhN2reqHn0Mw8AXHo+KQ==
+  </data>
+ </layer>
+</map>
