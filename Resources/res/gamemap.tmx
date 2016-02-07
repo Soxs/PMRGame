@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="32" tileheight="32" nextobjectid="8">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="40" height="40" tilewidth="32" tileheight="32" nextobjectid="8">
  <tileset firstgid="1" name="tilemapsheet" tilewidth="32" tileheight="32" tilecount="51" columns="17">
   <image source="tilemapsheet.png" width="549" height="96"/>
  </tileset>
@@ -11,17 +11,17 @@
    </properties>
   </tile>
  </tileset>
- <layer name="Background" width="20" height="20">
+ <layer name="Background" width="40" height="40">
   <data encoding="base64" compression="zlib">
-   eJyTYmBgkIJiESQ2PjF0zAXE3ETqJcY8aSCWgbJFkbAYGh+XGD6M7hY2IGZHwsS4DxcG6RVHw8h2UGqeBJKYBJFm0CP8YJhW4Uct8yTIMI/W4ccHxPxoYpT4Vx6IFahoHjn5d9S8kWMeAOfKJZE=
+   eJzt1b0KgDAMRtEOoqCgiz+lCjr6/k9ohhZCwCpiaQrfcKBmurQBnTHGeSM7x2ZSSzp/Pn/21PKmbyVbor6JmcX33SymSnx/NWmYN/fHpX7fReDN2vosm9lMfSXuX1DK/mntC/uXs6+0/evJIGaa3ncnh+K+L/9f9KEPfegDAAAAAADI6QKZK+Cl
   </data>
  </layer>
  <objectgroup name="Objects">
   <object id="1" name="spawnPoint" x="113" y="338"/>
  </objectgroup>
- <layer name="Meta" width="20" height="20">
+ <layer name="Meta" width="40" height="40">
   <data encoding="base64" compression="zlib">
-   eJwzYWBgMIFiBiQ2PjFiMTXMozagtvsGu3nUBoPdv6PhN2reqHn0Mw8AXHo+KQ==
+   eJzt0LEJACAMRcEMlf1ns7Gw0kY06B0ExOrxMyKyXwzv2d/sdlu13O6rrvp++t5WfT99b6u+nz59+vT92gcAAHBKA5ABPik=
   </data>
  </layer>
 </map>

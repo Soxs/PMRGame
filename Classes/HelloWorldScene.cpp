@@ -96,7 +96,9 @@ void HelloWorld::setViewPointCenter(CCPoint position) {
     
     CCPoint centerOfView = ccp(winSize.width/2, winSize.height/2);
     centerPoint = ccpSub(centerOfView, actualPosition);
-    this->setPosition(centerPoint);
+    auto move_action = MoveTo::create(1.f, centerPoint);
+    this->runAction(move_action);
+    //this->setPosition(centerPoint);
 }
 
 bool HelloWorld::onTouchBegan(Touch* touch, Event* event)
@@ -125,6 +127,8 @@ bool HelloWorld::onTouchBegan(Touch* touch, Event* event)
           
         }
     }
+    
+    
     
     // safety check on the bounds of the map
     if (playerPos.x <= (_tileMap->getMapSize().width * _tileMap->getTileSize().width) &&
