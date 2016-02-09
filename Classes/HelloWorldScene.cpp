@@ -104,8 +104,6 @@ void HelloWorld::setViewPointCenter(CCPoint position) {
 bool HelloWorld::onTouchBegan(Touch* touch, Event* event)
 {
     
-    
-    
     CCPoint touchLocation = touch->getLocationInView();
     touchLocation = CCDirector::sharedDirector()->convertToGL(touchLocation);
     touchLocation = this->convertToNodeSpace(touchLocation);
@@ -129,7 +127,6 @@ bool HelloWorld::onTouchBegan(Touch* touch, Event* event)
     }
     
     
-    
     // safety check on the bounds of the map
     if (playerPos.x <= (_tileMap->getMapSize().width * _tileMap->getTileSize().width) &&
         playerPos.y <= (_tileMap->getMapSize().height * _tileMap->getTileSize().height) &&
@@ -138,18 +135,33 @@ bool HelloWorld::onTouchBegan(Touch* touch, Event* event)
     {
         
         CCPoint tileCoord = this->tileCoordForPosition(touchLocation);
+        CCPoint nextTileCoord = this->tileCoordForPosition(playerPos);
+        
         Vec2 place = Vec2(tileCoord.x, tileCoord.y);
+        Vec2 nextPlace = Vec2(nextTileCoord.x, nextTileCoord.y);
+        
         bool collisionbool = false;
+        
         int tileGid = _meta->getTileGIDAt(place);
+        int nextTileGID = _meta->getTileGIDAt(nextPlace);
 
-        if (tileGid) {
+        if (tileGid && nextTileGID) {
             auto properties = _tileMap->getPropertiesForGID(tileGid).asValueMap();
-            if (!properties.empty())  {
+            auto propertiesNextTile = _tileMap->getPropertiesForGID(nextTileGID).asValueMap();
+            if (!properties.empty() &&
+                !propertiesNextTile.empty())  {
+                
                 CCString *collision = new CCString();
-                 *collision = properties.at("Collidable").asString();
+                CCString *collisionAtNextTile = new CCString();
+                
+                *collision = properties.at("Collidable").asString();
+                *collisionAtNextTile = propertiesNextTile.at("Collidable").asString();
                 if (collision && (collision->compare("True") == 0)) {
                     collisionbool = true;
+                } else if (collisionAtNextTile && (collisionAtNextTile->compare("True") == 0)) {
+                    collisionbool = true;
                 }
+            
             }
         }
         if (!collisionbool && !isMoving) {
@@ -166,9 +178,6 @@ bool HelloWorld::onTouchBegan(Touch* touch, Event* event)
     }
     
     this->setViewPointCenter(_player->getPosition());
-    
-    
-    
     
     
     return true;
