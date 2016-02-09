@@ -49,7 +49,6 @@ bool HelloWorld::init()
     CCTMXObjectGroup *objectGroup = _tileMap->objectGroupNamed("Objects");
     
     if(objectGroup == NULL){
-        CCLog("tile map has no objects object layer");
         return false;
     }
     
