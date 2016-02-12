@@ -122,8 +122,17 @@ bool HelloWorld::onTouchBegan(Touch* touch, Event* event)
         
         bool collisionbool = false;
         
-        if (checkCollision(_meta->getTileGIDAt(nextPlace)) ||
-            checkCollision(_meta->getTileGIDAt(place))) {
+        if (checkCollision(_meta->getTileGIDAt(nextPlace))) {
+            int buildingSpriteGID = _background->getTileGIDAt(nextPlace);
+            ValueMap tileValues = _tileMap->getPropertiesForGID(buildingSpriteGID).asValueMap();
+            CCString* testme = new CCString();
+            *testme = tileValues.at("type").asString();
+            if (testme->compare("top-left") == 0) {
+                Sprite* buildingsprite = _background->getTileAt(nextPlace);
+                
+            }
+            collisionbool = true;
+        } else if (checkCollision(_meta->getTileGIDAt(place))) {
             collisionbool = true;
         }
         
