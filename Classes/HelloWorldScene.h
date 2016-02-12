@@ -2,6 +2,7 @@
 #define __HELLOWORLD_SCENE_H__
 
 #include "cocos2d.h"
+#include "Player.hpp"
 
 class HelloWorld : public cocos2d::Layer
 {
@@ -14,7 +15,6 @@ public:
     virtual bool init();
     
     bool onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event);
-    void keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *event);
     void keyboardListener();
     bool isKeyPressed(cocos2d::EventKeyboard::KeyCode);
     double keyPressedDuration(cocos2d::EventKeyboard::KeyCode);
@@ -31,8 +31,9 @@ public:
     void setViewPointCenter(cocos2d::CCPoint position);
     
 private:
-    cocos2d::CCSprite *_player;
-    bool isMoving;
+    Player* player;
+    
+    bool checkCollision(int tilegid);
     
 };
 

@@ -31,14 +31,13 @@ bool HelloWorld::init()
         return false;
     }
     
-    isMoving = false;
     
     auto rootNode = CSLoader::createNode("MainScene.csb");
 
     addChild(rootNode);
     
     _tileMap = new CCTMXTiledMap();
-    _tileMap->initWithTMXFile("gamemap.tmx");
+    _tileMap->initWithTMXFile("greenmap.tmx");
     _background = _tileMap->layerNamed("Background");
     
     this->addChild(_tileMap);
@@ -56,32 +55,14 @@ bool HelloWorld::init()
     int x = spawnPoints.at("x").asInt();
     int y = spawnPoints.at("y").asInt();
     
-    _player = new CCSprite();
-    _player->initWithFile("Player.png");
-    _player->setPosition(ccp(x,y));
+    player = new Player(ccp(x,y));
     
-    this->addChild(_player);
-    this->setViewPointCenter(_player->getPosition());
+    this->addChild(player->entityImage);
+    this->setViewPointCenter(player->entityImage->getPosition());
     keyboardListener();
     return true;
 }
 
-void HelloWorld::keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *event)
-{
-    Vec2 loc = event->getCurrentTarget()->getPosition();
-    switch (keyCode) {
-        case EventKeyboard::KeyCode::KEY_LEFT_ARROW:
-        case EventKeyboard::KeyCode::KEY_A:
-            //event->getCurrentTarget()->setPosition(loc.x - 10, loc.y);
-            _player->setPositionY(_player->getPositionY() + 4);
-            break;
-        case EventKeyboard::KeyCode::KEY_RIGHT_ARROW:
-        case EventKeyboard::KeyCode::KEY_D:
-            //event->getCurrentTarget()->setPosition(loc.x + 10, loc.y);
-            _player->setPositionY(_player->getPositionY() - 4);
-            break;
-    }
-}
 
 void HelloWorld::setViewPointCenter(CCPoint position) {
     
@@ -95,7 +76,7 @@ void HelloWorld::setViewPointCenter(CCPoint position) {
     
     CCPoint centerOfView = ccp(winSize.width/2, winSize.height/2);
     centerPoint = ccpSub(centerOfView, actualPosition);
-    auto move_action = MoveTo::create(1.f, centerPoint);
+    auto move_action = MoveTo::create(0.5f, centerPoint);
     this->runAction(move_action);
     //this->setPosition(centerPoint);
 }
@@ -107,7 +88,7 @@ bool HelloWorld::onTouchBegan(Touch* touch, Event* event)
     touchLocation = CCDirector::sharedDirector()->convertToGL(touchLocation);
     touchLocation = this->convertToNodeSpace(touchLocation);
     
-    CCPoint playerPos = _player->getPosition();
+    CCPoint playerPos = player->entityImage->getPosition();
     CCPoint diff = ccpSub(touchLocation, playerPos);
     
     if ( abs(diff.x) > abs(diff.y) ) {
@@ -141,9 +122,25 @@ bool HelloWorld::onTouchBegan(Touch* touch, Event* event)
         
         bool collisionbool = false;
         
-        int tileGid = _meta->getTileGIDAt(place);
-        int nextTileGID = _meta->getTileGIDAt(nextPlace);
-
+        if (checkCollision(_meta->getTileGIDAt(nextPlace)) ||
+            checkCollision(_meta->getTileGIDAt(place))) {
+            collisionbool = true;
+        }
+        
+        if (!collisionbool) {
+            auto move_action = MoveTo::create(0.5f, playerPos);
+            player->entityImage->runAction(move_action);
+        }
+        
+        //ValueMap properertiesfornexttile = _tileMap->getPropertiesForGID(nextTileGID).asValueMap();
+        
+        /*if (!properertiesfornexttile.empty()) {
+            CCString *collision = new CCString();
+            *collision = properertiesfornexttile.at("Collidable").asString();
+            if (collision && (collision->compare("True") == 0))
+                collisionbool = true;
+        }
+        
         if (tileGid && nextTileGID) {
             auto properties = _tileMap->getPropertiesForGID(tileGid).asValueMap();
             auto propertiesNextTile = _tileMap->getPropertiesForGID(nextTileGID).asValueMap();
@@ -155,20 +152,13 @@ bool HelloWorld::onTouchBegan(Touch* touch, Event* event)
                 
                 *collision = properties.at("Collidable").asString();
                 *collisionAtNextTile = propertiesNextTile.at("Collidable").asString();
-                if (collision && (collision->compare("True") == 0)) {
-                    collisionbool = true;
-                } else if (collisionAtNextTile && (collisionAtNextTile->compare("True") == 0)) {
+                if ((collisionAtNextTile && (collisionAtNextTile->compare("True") == 0)) ||
+                    (collision && (collision->compare("True") == 0))) {
                     collisionbool = true;
                 }
-            
             }
-        }
-        if (!collisionbool && !isMoving) {
-            isMoving = true;
-            auto move_action = MoveTo::create(1.f, playerPos);
-            _player->runAction(move_action);
-            isMoving = false;
-        }
+        }*/
+        
         
         
        
@@ -176,19 +166,22 @@ bool HelloWorld::onTouchBegan(Touch* touch, Event* event)
       //  this->setPlayerPosition(playerPos);
     }
     
-    this->setViewPointCenter(_player->getPosition());
+    this->setViewPointCenter(player->entityImage->getPosition());
     
     
     return true;
 }
 
+bool HelloWorld::checkCollision(int tileGID) {
+    if (!tileGID)
+        return false;
+    if (tileGID > 0)
+        return true;
+    return false;
+}
+
 void HelloWorld::keyboardListener()
 {
-    auto eventListener = EventListenerKeyboard::create();
-    eventListener->onKeyPressed = CC_CALLBACK_2(HelloWorld::keyPressed, this);
-    
-    this->_eventDispatcher->addEventListenerWithSceneGraphPriority(eventListener, _player);
-    
     auto touchListener = EventListenerTouchOneByOne::create();
     
     //Set callbacks for our touch functions.
