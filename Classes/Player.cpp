@@ -11,7 +11,7 @@
 #include "ui/CocosGUI.h"
 
 Player::Player(cocos2d::Vec2 spawnLocation) : Entity(spawnLocation) {
-    cocos2d::CCSprite* sprite = new cocos2d::CCSprite();
+    cocos2d::Sprite* sprite = new cocos2d::Sprite();
     sprite->initWithFile("Player.png");
     sprite->setPosition(spawnLocation);
     setSprite(sprite);

@@ -12,16 +12,16 @@
 #include <stdio.h>
 #include "cocos2d.h"
 
-
-class Entity {
+//must extend Ref for use in Vector
+class Entity : public cocos2d::Ref {
     
 public:
     Entity(cocos2d::Vec2 spawnLocation);
     
-    cocos2d::CCSprite* entityImage;
+    cocos2d::Sprite* entityImage;
     cocos2d::Vec2 location;
     
-    void setSprite(cocos2d::CCSprite* newSprite);
+    void setSprite(cocos2d::Sprite* newSprite);
     void setPosition(cocos2d::Vec2 newLocation);
 };
 

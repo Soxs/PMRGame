@@ -33,7 +33,7 @@
  </tileset>
  <layer name="Background" width="45" height="45">
   <data encoding="base64" compression="zlib">
-   eJzt180KwjAQBOAVf3u2WPDnbMXSF+j7v5crxstWbAI22ZE5DPSwh6/bIaS1iCw0g6aNSB85N2fqRPPNgXkA3DOimd3IZ+4Bzd/2fHVsjp331Gea5zendBSxz5/Me3md87nN/3TW2Xjpc4r5DmhG7IaXPafcN1D6vNKsQ+zzoUBizuelZqPZhtmdppJy3X7f+afMR80pzJ41l4Jm+71tOhn3oZOy3Xi6m4n3aiKec4dmmu2/HYIZcc80+zLb3iOYEfdMM80000wzzTTT/Ms8AK0eLds=
+   eJztl9sKwjAMhlM8gV46LCjopYpjL7D3fy873LDEHnE9ZOTig7JG+Eh/0toAgFD0ikcAXWBdSppI52cFzj3BPlN05mzkc+4IOrv6fK/YObS+pjyzc3rnmIxSzLPJ+QifOZ/beUmzDlNLnmOcXwSda8/GVrHz9NlUk8PZ9t44Ky7o25BnfU6YamrIxlqxGcHrUwFC5vMKvhkQ2roD82zGedkrDo79WKY3v895yoDQ1jZnnJer4ubYjwWfN6aF3zy0UDYbg7f0nJfU+qnXynHfdXenmivSc17SUqt/t3mnmivS8l3vrc0/9/vI52zzDP3dHOD/dhScU/S5xN39r3OJu3sp2cC5p+BMsc/szM7szM7szM7szM5z8gZo8ylN
   </data>
  </layer>
  <objectgroup name="Objects">
@@ -41,7 +41,7 @@
  </objectgroup>
  <layer name="Meta" width="45" height="45">
   <data encoding="base64" compression="zlib">
-   eJztzrEJAEAIBEEbs/+2TD56MFecgYULLwIAAAB6+fr3ZBs/AwAAADcUnJQB6Q==
+   eJzt0jEKwCAMBVAv5v2v5dJBuohtLX58DzJIMvwESwEAAE5Vr3o786fEzOn6e45ue++P3qskZt7RzO6rZmclZoavJf7XxMwAAPBUA7KKCn0=
   </data>
  </layer>
 </map>

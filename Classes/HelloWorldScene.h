@@ -3,6 +3,7 @@
 
 #include "cocos2d.h"
 #include "Player.hpp"
+#include "StructureManager.hpp"
 
 class HelloWorld : public cocos2d::Layer
 {
@@ -29,6 +30,7 @@ public:
     cocos2d::CCTMXLayer* _background;
     cocos2d::CCTMXLayer *_meta;
     void setViewPointCenter(cocos2d::CCPoint position);
+    StructureManager* structureManager;
     
 private:
     Player* player;

@@ -14,7 +14,7 @@ Entity::Entity(cocos2d::Vec2 spawnLocation) {
     this->location = spawnLocation;
 }
 
-void Entity::setSprite(cocos2d::CCSprite* newImage) {
+void Entity::setSprite(cocos2d::Sprite* newImage) {
     this->entityImage = newImage;
 }
 

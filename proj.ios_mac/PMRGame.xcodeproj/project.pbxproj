@@ -11,6 +11,8 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
+		3167BFAF1C6FB20A00FEA765 /* BrokenStructure.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167BFAD1C6FB20A00FEA765 /* BrokenStructure.cpp */; };
+		3167BFB31C6FB4A400FEA765 /* StructureManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167BFB11C6FB4A400FEA765 /* StructureManager.cpp */; };
 		31695D751C6E365F0045DEDA /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31695D731C6E365F0045DEDA /* Player.cpp */; };
 		31AB53071C6ABC9C007DDF02 /* Entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31AB53051C6ABC9C007DDF02 /* Entity.cpp */; };
 		31AB53081C6ABC9C007DDF02 /* Entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31AB53051C6ABC9C007DDF02 /* Entity.cpp */; };
@@ -73,6 +75,10 @@
 		1D6058910D05DD3D006BFB54 /* PMRGame-mobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PMRGame-mobile.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		3167BFAD1C6FB20A00FEA765 /* BrokenStructure.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BrokenStructure.cpp; sourceTree = "<group>"; };
+		3167BFAE1C6FB20A00FEA765 /* BrokenStructure.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BrokenStructure.hpp; sourceTree = "<group>"; };
+		3167BFB11C6FB4A400FEA765 /* StructureManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StructureManager.cpp; sourceTree = "<group>"; };
+		3167BFB21C6FB4A400FEA765 /* StructureManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = StructureManager.hpp; sourceTree = "<group>"; };
 		31695D731C6E365F0045DEDA /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
 		31695D741C6E365F0045DEDA /* Player.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Player.hpp; sourceTree = "<group>"; };
 		31AB53051C6ABC9C007DDF02 /* Entity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Entity.cpp; sourceTree = "<group>"; };
@@ -238,9 +244,21 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		3167BFB01C6FB34100FEA765 /* structures */ = {
+			isa = PBXGroup;
+			children = (
+				3167BFAD1C6FB20A00FEA765 /* BrokenStructure.cpp */,
+				3167BFAE1C6FB20A00FEA765 /* BrokenStructure.hpp */,
+				3167BFB11C6FB4A400FEA765 /* StructureManager.cpp */,
+				3167BFB21C6FB4A400FEA765 /* StructureManager.hpp */,
+			);
+			name = structures;
+			sourceTree = "<group>";
+		};
 		31AB53041C6ABC66007DDF02 /* entities */ = {
 			isa = PBXGroup;
 			children = (
+				3167BFB01C6FB34100FEA765 /* structures */,
 				31AB53051C6ABC9C007DDF02 /* Entity.cpp */,
 				31AB53061C6ABC9C007DDF02 /* Entity.hpp */,
 				31695D731C6E365F0045DEDA /* Player.cpp */,
@@ -442,12 +460,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3167BFB31C6FB4A400FEA765 /* StructureManager.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				31695D751C6E365F0045DEDA /* Player.cpp in Sources */,
 				46880B8A19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				31AB53071C6ABC9C007DDF02 /* Entity.cpp in Sources */,
+				3167BFAF1C6FB20A00FEA765 /* BrokenStructure.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
