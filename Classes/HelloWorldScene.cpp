@@ -201,39 +201,6 @@ bool HelloWorld::onTouchBegan(Touch* touch, Event* event)
             auto move_action = MoveTo::create(0.1f, playerPos);
             player->entityImage->runAction(move_action);
         }
-        
-        //ValueMap properertiesfornexttile = _tileMap->getPropertiesForGID(nextTileGID).asValueMap();
-        
-        /*if (!properertiesfornexttile.empty()) {
-            CCString *collision = new CCString();
-            *collision = properertiesfornexttile.at("Collidable").asString();
-            if (collision && (collision->compare("True") == 0))
-                collisionbool = true;
-        }
-        
-        if (tileGid && nextTileGID) {
-            auto properties = _tileMap->getPropertiesForGID(tileGid).asValueMap();
-            auto propertiesNextTile = _tileMap->getPropertiesForGID(nextTileGID).asValueMap();
-            if (!properties.empty() &&
-                !propertiesNextTile.empty())  {
-                
-                CCString *collision = new CCString();
-                CCString *collisionAtNextTile = new CCString();
-                
-                *collision = properties.at("Collidable").asString();
-                *collisionAtNextTile = propertiesNextTile.at("Collidable").asString();
-                if ((collisionAtNextTile && (collisionAtNextTile->compare("True") == 0)) ||
-                    (collision && (collision->compare("True") == 0))) {
-                    collisionbool = true;
-                }
-            }
-        }*/
-        
-        
-        
-       
-         //_player->setPosition(playerPos);
-      //  this->setPlayerPosition(playerPos);
     }
     
     this->setViewPointCenter(player->entityImage->getPosition());
@@ -243,10 +210,15 @@ bool HelloWorld::onTouchBegan(Touch* touch, Event* event)
 }
 
 bool HelloWorld::checkCollision(int tileGID) {
-    if (!tileGID)
-        return false;
-    if (tileGID > 0)
-        return true;
+    if (tileGID > 0) {
+        ValueMap tileValues = _tileMap->getPropertiesForGID(tileGID).asValueMap();
+        CCString* testme = new CCString();
+        *testme = tileValues.at("Collidable").asString();
+        if ((testme->length()) > 0 &&
+            (testme->compare("True") == 0)) {
+            return true;
+        }
+    }
     return false;
 }
 
