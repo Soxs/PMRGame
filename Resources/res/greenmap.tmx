@@ -1,13 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="45" height="45" tilewidth="32" tileheight="32" nextobjectid="3">
- <tileset firstgid="1" name="tilemapsheet" tilewidth="32" tileheight="32" tilecount="60" columns="20">
-  <image source="tilemapsheet.png" width="658" height="114"/>
+ <tileset firstgid="1" name="tilemapsheet" tilewidth="32" tileheight="32" tilecount="400" columns="20">
+  <image source="tilemapsheet.png" width="640" height="640"/>
   <tile id="5">
    <properties>
     <property name="type" value="top-left"/>
    </properties>
   </tile>
   <tile id="6">
+   <properties>
+    <property name="type" value="top-right"/>
+   </properties>
+  </tile>
+  <tile id="9">
+   <properties>
+    <property name="type" value="top-left"/>
+   </properties>
+  </tile>
+  <tile id="10">
+   <properties>
+    <property name="type" value="top-right"/>
+   </properties>
+  </tile>
+  <tile id="13">
+   <properties>
+    <property name="type" value="top-left"/>
+   </properties>
+  </tile>
+  <tile id="14">
    <properties>
     <property name="type" value="top-right"/>
    </properties>
@@ -22,8 +42,28 @@
     <property name="type" value="bottom-right"/>
    </properties>
   </tile>
+  <tile id="29">
+   <properties>
+    <property name="type" value="bottom-left"/>
+   </properties>
+  </tile>
+  <tile id="30">
+   <properties>
+    <property name="type" value="bottom-right"/>
+   </properties>
+  </tile>
+  <tile id="33">
+   <properties>
+    <property name="type" value="bottom-left"/>
+   </properties>
+  </tile>
+  <tile id="34">
+   <properties>
+    <property name="type" value="bottom-right"/>
+   </properties>
+  </tile>
  </tileset>
- <tileset firstgid="61" name="meta_tiles" tilewidth="32" tileheight="32" tilecount="2" columns="2">
+ <tileset firstgid="401" name="meta_tiles" tilewidth="32" tileheight="32" tilecount="2" columns="2">
   <image source="meta_tiles.png" width="67" height="34"/>
   <tile id="0">
    <properties>
@@ -33,7 +73,7 @@
  </tileset>
  <layer name="Background" width="45" height="45">
   <data encoding="base64" compression="zlib">
-   eJztl9sKwjAMhlM8gV46LCjopYpjL7D3fy873LDEHnE9ZOTig7JG+Eh/0toAgFD0ikcAXWBdSppI52cFzj3BPlN05mzkc+4IOrv6fK/YObS+pjyzc3rnmIxSzLPJ+QifOZ/beUmzDlNLnmOcXwSda8/GVrHz9NlUk8PZ9t44Ky7o25BnfU6YamrIxlqxGcHrUwFC5vMKvhkQ2roD82zGedkrDo79WKY3v895yoDQ1jZnnJer4ubYjwWfN6aF3zy0UDYbg7f0nJfU+qnXynHfdXenmivSc17SUqt/t3mnmivS8l3vrc0/9/vI52zzDP3dHOD/dhScU/S5xN39r3OJu3sp2cC5p+BMsc/szM7szM7szM7szM5z8gZo8ylN
+   eJztlksKwjAQhlutCgq60oKCgq58oJ5AsN7Ax/2v4hQ6EAeTJtikE5zFB0Mzi4/MnyZFkiQpUFgydej1iYvzloGvq3OXge8/OMeejRcwU3gEdHaZN+29AX1gAFwj2GdkDiwYO2OeT8CZrHF1NnlxdTb9N0I5l2c/AzqWmHrvTPc5xvdGyMw25RzjPbhn4OvqjHfKt/8zB2e8k9Wa7rPag4yBiWdn3XsD72S1pnlWe5A1sGlpn5En0KvIlHqXfL7rQmHjXM4BM5Aq9VHTT/MyBEaGdR/7XDpjBlKlvmj6aV6WwMqw7gqdN+VA1rPqG9ZtZSOvmVdOauzNNf2mnDRFXjMv6oy9Ns6/5sDkbLuuq0MjzvydfZ0xn86+zphkQ5zFWZzFWZzFWZzFWZw5Or8B/Z3T9g==
   </data>
  </layer>
  <objectgroup name="Objects">
@@ -41,7 +81,7 @@
  </objectgroup>
  <layer name="Meta" width="45" height="45">
   <data encoding="base64" compression="zlib">
-   eJzt0jEKwCAMBVAv5v2v5dJBuohtLX58DzJIMvwESwEAAE5Vr3o786fEzOn6e45ue++P3qskZt7RzO6rZmclZoavJf7XxMwAAPBUA7KKCn0=
+   eJzt1bEKgCAUBVD7/6k/bmhxMNLQ6sI54KC84SrCLQXgfft2riSJmQHgTt1vV13XOv+yFxMzp+t589Zsz36VxMx/NHL3VbOjEjPDbIn/NTEzAAA8dQCgIB/x
   </data>
  </layer>
 </map>

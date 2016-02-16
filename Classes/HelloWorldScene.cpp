@@ -135,67 +135,63 @@ bool HelloWorld::onTouchBegan(Touch* touch, Event* event)
                 if (testme->length() > 0) {
                     Sprite *tile = _background->getTileAt(nextPlace);
                     
-                    if (testme->compare("top-left") == 0) {
-                        
-                        //sets rectangle inside sprite sheet.
-                        cocos2d::Rect originalTileSprite = tile->getTextureRect();
-                        float x = originalTileSprite.origin.x + 64; //bottom left point x (we add 64 because the broken equivalent starts 64 pixels to the right)
-                        float y = originalTileSprite.origin.y; //bottom left point y
-                        float width = originalTileSprite.size.width;
-                        float height = originalTileSprite.size.height;
-                        
-                        cocos2d::Rect brokenEquivalent = *new cocos2d::Rect(x, y, width, height);
-                        tile->setTextureRect(brokenEquivalent);
-                        structureManager->addStructure(new BrokenStructure(buildingSpriteGID, tile, nextPlace));
-                        
-                    }
+                    cocos2d::Rect originalTileSprite = tile->getTextureRect();
+                    float x = originalTileSprite.origin.x + 64; //bottom left point x (we add 64 because the broken equivalent starts 64 pixels to the right)
+                    float y = originalTileSprite.origin.y; //bottom left point y
+                    float width = originalTileSprite.size.width;
+                    float height = originalTileSprite.size.height;
                     
-                    if (testme->compare("top-right") == 0) {
-                        //sets rectangle inside sprite sheet.
-                        cocos2d::Rect originalTileSprite = tile->getTextureRect();
-                        float x = originalTileSprite.origin.x + 64; //bottom left point x (we add 64 because the broken equivalent starts 64 pixels to the right)
-                        float y = originalTileSprite.origin.y; //bottom left point y
-                        float width = originalTileSprite.size.width;
-                        float height = originalTileSprite.size.height;
-                        
-                        cocos2d::Rect brokenEquivalent = *new cocos2d::Rect(x, y, width, height);
-                        tile->setTextureRect(brokenEquivalent);
-                        structureManager->addStructure(new BrokenStructure(buildingSpriteGID, tile, nextPlace));
-                    }
+                    cocos2d::Rect brokenEquivalent = *new cocos2d::Rect(x, y, width, height);
+                    tile->setTextureRect(brokenEquivalent);
+                    structureManager->addStructure(new BrokenStructure(buildingSpriteGID, tile, nextPlace));
                     
-                    if (testme->compare("bottom-left") == 0) {
-                        //sets rectangle inside sprite sheet.
-                        cocos2d::Rect originalTileSprite = tile->getTextureRect();
-                        float x = originalTileSprite.origin.x + 64; //bottom left point x (we add 64 because the broken equivalent starts 64 pixels to the right)
-                        float y = originalTileSprite.origin.y; //bottom left point y
-                        float width = originalTileSprite.size.width;
-                        float height = originalTileSprite.size.height;
+                    //if (testme->compare("top-left") == 0) {
                         
-                        cocos2d::Rect brokenEquivalent = *new cocos2d::Rect(x, y, width, height);
-                        tile->setTextureRect(brokenEquivalent);
-                        structureManager->addStructure(new BrokenStructure(buildingSpriteGID, tile, nextPlace));
-                    }
+                        //sets rectangle inside sprite sheet.
+                        
+                        
+                    //}
                     
-                    if (testme->compare("bottom-right") == 0) {
-                        //sets rectangle inside sprite sheet.
-                        cocos2d::Rect originalTileSprite = tile->getTextureRect();
-                        float x = originalTileSprite.origin.x + 64; //bottom left point x (we add 64 because the broken equivalent starts 64 pixels to the right)
-                        float y = originalTileSprite.origin.y; //bottom left point y
-                        float width = originalTileSprite.size.width;
-                        float height = originalTileSprite.size.height;
-                        
-                        cocos2d::Rect brokenEquivalent = *new cocos2d::Rect(x, y, width, height);
-                        tile->setTextureRect(brokenEquivalent);
-                        structureManager->addStructure(new BrokenStructure(buildingSpriteGID, tile, nextPlace));
-                    }
                 }
             }
             collisionbool = true;
             
         //checks collsion on tile that players clicks.
-        } else if (checkCollision(_meta->getTileGIDAt(place))) {
-            collisionbool = true;
         }
+        /*if (checkCollision(_meta->getTileGIDAt(place))) {
+            if (place.distance(player->entityImage->getPosition()) < 32)
+                collisionbool = true;
+            
+            if (place.distance(player->entityImage->getPosition()) < 300) {
+                int buildingSpriteGID = _background->getTileGIDAt(place);
+                if (!structureManager->containsStructure(buildingSpriteGID, place)) {
+                    ValueMap tileValues = _tileMap->getPropertiesForGID(buildingSpriteGID).asValueMap();
+                    CCString* testme = new CCString();
+                    *testme = tileValues.at("type").asString();
+                    if (testme->length() > 0) {
+                        Sprite *tile = _background->getTileAt(place);
+                        
+                        cocos2d::Rect originalTileSprite = tile->getTextureRect();
+                        float x = originalTileSprite.origin.x + 64; //bottom left point x (we add 64 because the broken equivalent starts 64 pixels to the right)
+                        float y = originalTileSprite.origin.y; //bottom left point y
+                        float width = originalTileSprite.size.width;
+                        float height = originalTileSprite.size.height;
+                        
+                        cocos2d::Rect brokenEquivalent = *new cocos2d::Rect(x, y, width, height);
+                        tile->setTextureRect(brokenEquivalent);
+                        structureManager->addStructure(new BrokenStructure(buildingSpriteGID, tile, place));
+                        
+                        //if (testme->compare("top-left") == 0) {
+                        
+                        //sets rectangle inside sprite sheet.
+                        
+                        
+                        //}
+                        
+                    }
+                }
+            }
+        }*/
         
         if (!collisionbool) {
             auto move_action = MoveTo::create(0.1f, playerPos);
