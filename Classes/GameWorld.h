@@ -5,7 +5,7 @@
 #include "Player.hpp"
 #include "StructureManager.hpp"
 
-class HelloWorld : public cocos2d::Layer
+class GameWorld : public cocos2d::Layer
 {
 public:
     // there's no 'id' in cpp, so we recommend returning the class instance pointer
@@ -23,7 +23,7 @@ public:
     
     
     // implement the "static create()" method manually
-    CREATE_FUNC(HelloWorld);
+    CREATE_FUNC(GameWorld);
     
     cocos2d::CCPoint centerPoint;
     cocos2d::CCTMXTiledMap* _tileMap;

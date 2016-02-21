@@ -10,9 +10,14 @@
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
 
+USING_NS_CC;
+
 Player::Player(cocos2d::Vec2 spawnLocation) : Entity(spawnLocation) {
     cocos2d::Sprite* sprite = new cocos2d::Sprite();
     sprite->initWithFile("Player.png");
     sprite->setPosition(spawnLocation);
     setSprite(sprite);
+}
+
+void Player::touchEvent(cocos2d::Touch* touch, cocos2d::Event* event) {
 }

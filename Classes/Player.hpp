@@ -16,6 +16,7 @@
 class Player : public Entity {
 public:
     Player(cocos2d::Vec2 spawnLocation);
+    void touchEvent(cocos2d::Touch* touch, cocos2d::Event* event);
 };
 
 #endif /* Player_hpp */
