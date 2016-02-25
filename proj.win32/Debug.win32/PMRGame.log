@@ -1,102 +1,108 @@
-﻿Build started 09/02/2016 12:34:02.
+﻿Build started 25/02/2016 16:04:20.
      1>Project "C:\Student Temporary Folder\PMRGame\proj.win32\PMRGame.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"\cocos2d-x-3.8\cocos\audio\include" /I"\cocos2d-x-3.8\external" /I"\cocos2d-x-3.8\external\chipmunk\include\chipmunk" /I"\cocos2d-x-3.8\extensions" /I..\Classes /I.. /I"C:\cocos2d-x-3.8\cocos\2d\..\..\cocos\editor-support" /I"C:\cocos2d-x-3.8\cocos\2d\..\..\cocos" /I"C:\cocos2d-x-3.8\cocos\2d\..\..\cocos\platform" /I"C:\cocos2d-x-3.8\cocos\2d\..\..\cocos\platform\desktop" /I"C:\cocos2d-x-3.8\cocos\2d\..\..\external\glfw3\include\win32" /I"C:\cocos2d-x-3.8\cocos\2d\..\..\external\win32-specific\gles\include\OGLES" /I"C:\cocos2d-x-3.8\cocos\2d\..\..\external\freetype2\include\win32\freetype2" /I"C:\cocos2d-x-3.8\cocos\2d\..\..\external\freetype2\include\win32\\" /I"C:\cocos2d-x-3.8\cocos\2d\..\..\external" /ZI /nologo /W3 /WX- /MP /Od /Oy- /D WIN32 /D _WINDOWS /D _USE_MATH_DEFINES /D GL_GLEXT_PROTOTYPES /D CC_ENABLE_CHIPMUNK_INTEGRATION=1 /D COCOS2D_DEBUG=1 /D _CRT_SECURE_NO_WARNINGS /D _SCL_SECURE_NO_WARNINGS /D _VARIADIC_MAX=10 /D _USING_V110_SDK71_ /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug.win32\\" /Fd"Debug.win32\vc120.pdb" /Gd /TP /wd4267 /wd4251 /wd4244 /analyze- /errorReport:prompt ..\Classes\AppDelegate.cpp ..\Classes\HelloWorldScene.cpp main.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"\cocos2d-x-3.8\cocos\audio\include" /I"\cocos2d-x-3.8\external" /I"\cocos2d-x-3.8\external\chipmunk\include\chipmunk" /I"\cocos2d-x-3.8\extensions" /I..\Classes /I.. /I"C:\cocos2d-x-3.8\cocos\2d\..\..\cocos\editor-support" /I"C:\cocos2d-x-3.8\cocos\2d\..\..\cocos" /I"C:\cocos2d-x-3.8\cocos\2d\..\..\cocos\platform" /I"C:\cocos2d-x-3.8\cocos\2d\..\..\cocos\platform\desktop" /I"C:\cocos2d-x-3.8\cocos\2d\..\..\external\glfw3\include\win32" /I"C:\cocos2d-x-3.8\cocos\2d\..\..\external\win32-specific\gles\include\OGLES" /I"C:\cocos2d-x-3.8\cocos\2d\..\..\external\freetype2\include\win32\freetype2" /I"C:\cocos2d-x-3.8\cocos\2d\..\..\external\freetype2\include\win32\\" /I"C:\cocos2d-x-3.8\cocos\2d\..\..\external" /ZI /nologo /W3 /WX- /MP /Od /Oy- /D WIN32 /D _WINDOWS /D _USE_MATH_DEFINES /D GL_GLEXT_PROTOTYPES /D CC_ENABLE_CHIPMUNK_INTEGRATION=1 /D COCOS2D_DEBUG=1 /D _CRT_SECURE_NO_WARNINGS /D _SCL_SECURE_NO_WARNINGS /D _VARIADIC_MAX=10 /D _USING_V110_SDK71_ /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug.win32\\" /Fd"Debug.win32\vc120.pdb" /Gd /TP /wd4267 /wd4251 /wd4244 /analyze- /errorReport:prompt ..\Classes\AppDelegate.cpp ..\Classes\BrokenStructure.cpp ..\Classes\Entity.cpp ..\Classes\GameWorld.cpp ..\Classes\Player.cpp ..\Classes\StructureManager.cpp main.cpp
          AppDelegate.cpp
-         HelloWorldScene.cpp
+         BrokenStructure.cpp
+         Entity.cpp
+         GameWorld.cpp
+         Player.cpp
+         StructureManager.cpp
          main.cpp
-     1>c:\student temporary folder\pmrgame\classes\helloworldscene.h(25): warning C4996: 'cocos2d::CCPoint': was declared deprecated (..\Classes\HelloWorldScene.cpp)
+     1>c:\student temporary folder\pmrgame\classes\gameworld.h(26): warning C4996: 'cocos2d::CCPoint': was declared deprecated (..\Classes\GameWorld.cpp)
                  c:\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(775) : see declaration of 'cocos2d::CCPoint'
-     1>c:\student temporary folder\pmrgame\classes\helloworldscene.h(25): warning C4996: 'cocos2d::CCTMXTiledMap': was declared deprecated (..\Classes\HelloWorldScene.cpp)
+     1>c:\student temporary folder\pmrgame\classes\gameworld.h(26): warning C4996: 'cocos2d::CCPoint': was declared deprecated (..\Classes\AppDelegate.cpp)
+                 c:\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(775) : see declaration of 'cocos2d::CCPoint'
+     1>c:\student temporary folder\pmrgame\classes\gameworld.h(26): warning C4996: 'cocos2d::CCTMXTiledMap': was declared deprecated (..\Classes\GameWorld.cpp)
                  c:\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(767) : see declaration of 'cocos2d::CCTMXTiledMap'
-     1>c:\student temporary folder\pmrgame\classes\helloworldscene.h(25): warning C4996: 'cocos2d::CCTMXLayer': was declared deprecated (..\Classes\HelloWorldScene.cpp)
-                 c:\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(766) : see declaration of 'cocos2d::CCTMXLayer'
-     1>c:\student temporary folder\pmrgame\classes\helloworldscene.h(25): warning C4996: 'cocos2d::CCSprite': was declared deprecated (..\Classes\HelloWorldScene.cpp)
-                 c:\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(680) : see declaration of 'cocos2d::CCSprite'
-     1>c:\student temporary folder\pmrgame\classes\helloworldscene.h(37): warning C4996: 'cocos2d::CCPoint': was declared deprecated (..\Classes\HelloWorldScene.cpp)
-                 c:\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(775) : see declaration of 'cocos2d::CCPoint'
-                 This diagnostic occurred in the compiler generated function 'HelloWorld::~HelloWorld(void)'
-     1>c:\student temporary folder\pmrgame\classes\helloworldscene.h(25): warning C4996: 'cocos2d::CCPoint': was declared deprecated (..\Classes\AppDelegate.cpp)
-                 c:\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(775) : see declaration of 'cocos2d::CCPoint'
-     1>c:\student temporary folder\pmrgame\classes\helloworldscene.h(25): warning C4996: 'cocos2d::CCTMXTiledMap': was declared deprecated (..\Classes\AppDelegate.cpp)
+     1>c:\student temporary folder\pmrgame\classes\gameworld.h(26): warning C4996: 'cocos2d::CCTMXTiledMap': was declared deprecated (..\Classes\AppDelegate.cpp)
                  c:\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(767) : see declaration of 'cocos2d::CCTMXTiledMap'
-     1>c:\student temporary folder\pmrgame\classes\helloworldscene.h(25): warning C4996: 'cocos2d::CCTMXLayer': was declared deprecated (..\Classes\AppDelegate.cpp)
+     1>c:\student temporary folder\pmrgame\classes\gameworld.h(26): warning C4996: 'cocos2d::CCTMXLayer': was declared deprecated (..\Classes\GameWorld.cpp)
                  c:\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(766) : see declaration of 'cocos2d::CCTMXLayer'
-     1>c:\student temporary folder\pmrgame\classes\helloworldscene.h(25): warning C4996: 'cocos2d::CCSprite': was declared deprecated (..\Classes\AppDelegate.cpp)
-                 c:\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(680) : see declaration of 'cocos2d::CCSprite'
-     1>c:\student temporary folder\pmrgame\classes\helloworldscene.h(37): warning C4996: 'cocos2d::CCPoint': was declared deprecated (..\Classes\AppDelegate.cpp)
+     1>c:\student temporary folder\pmrgame\classes\gameworld.h(26): warning C4996: 'cocos2d::CCTMXLayer': was declared deprecated (..\Classes\AppDelegate.cpp)
+                 c:\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(766) : see declaration of 'cocos2d::CCTMXLayer'
+     1>c:\student temporary folder\pmrgame\classes\gameworld.h(40): warning C4996: 'cocos2d::CCPoint': was declared deprecated (..\Classes\AppDelegate.cpp)
                  c:\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(775) : see declaration of 'cocos2d::CCPoint'
-                 This diagnostic occurred in the compiler generated function 'HelloWorld::~HelloWorld(void)'
+                 This diagnostic occurred in the compiler generated function 'GameWorld::~GameWorld(void)'
+     1>c:\student temporary folder\pmrgame\classes\gameworld.h(40): warning C4996: 'cocos2d::CCPoint': was declared deprecated (..\Classes\GameWorld.cpp)
+                 c:\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(775) : see declaration of 'cocos2d::CCPoint'
+                 This diagnostic occurred in the compiler generated function 'GameWorld::~GameWorld(void)'
      1>c:\student temporary folder\pmrgame\classes\appdelegate.cpp(40): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\student temporary folder\pmrgame\classes\helloworldscene.cpp(40): warning C4996: 'cocos2d::CCTMXTiledMap': was declared deprecated
+     1>c:\student temporary folder\pmrgame\classes\gameworld.cpp(41): warning C4996: 'cocos2d::CCTMXTiledMap': was declared deprecated
                  c:\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(767) : see declaration of 'cocos2d::CCTMXTiledMap'
-     1>c:\student temporary folder\pmrgame\classes\helloworldscene.cpp(42): warning C4996: 'cocos2d::TMXTiledMap::layerNamed': was declared deprecated
+     1>c:\student temporary folder\pmrgame\classes\gameworld.cpp(43): warning C4996: 'cocos2d::TMXTiledMap::layerNamed': was declared deprecated
                  c:\cocos2d-x-3.8\cocos\2d\cctmxtiledmap.h(142) : see declaration of 'cocos2d::TMXTiledMap::layerNamed'
-     1>c:\student temporary folder\pmrgame\classes\helloworldscene.cpp(46): warning C4996: 'cocos2d::TMXTiledMap::layerNamed': was declared deprecated
+     1>c:\student temporary folder\pmrgame\classes\gameworld.cpp(47): warning C4996: 'cocos2d::TMXTiledMap::layerNamed': was declared deprecated
                  c:\cocos2d-x-3.8\cocos\2d\cctmxtiledmap.h(142) : see declaration of 'cocos2d::TMXTiledMap::layerNamed'
-     1>c:\student temporary folder\pmrgame\classes\helloworldscene.cpp(49): warning C4996: 'cocos2d::CCTMXObjectGroup': was declared deprecated
+     1>c:\student temporary folder\pmrgame\classes\gameworld.cpp(50): warning C4996: 'cocos2d::CCTMXObjectGroup': was declared deprecated
                  c:\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(762) : see declaration of 'cocos2d::CCTMXObjectGroup'
-     1>c:\student temporary folder\pmrgame\classes\helloworldscene.cpp(49): warning C4996: 'cocos2d::TMXTiledMap::objectGroupNamed': was declared deprecated
+     1>c:\student temporary folder\pmrgame\classes\gameworld.cpp(50): warning C4996: 'cocos2d::TMXTiledMap::objectGroupNamed': was declared deprecated
                  c:\cocos2d-x-3.8\cocos\2d\cctmxtiledmap.h(154) : see declaration of 'cocos2d::TMXTiledMap::objectGroupNamed'
                  c:\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(762) : see declaration of 'cocos2d::CCTMXObjectGroup'
-     1>c:\student temporary folder\pmrgame\classes\helloworldscene.cpp(56): warning C4996: 'cocos2d::TMXObjectGroup::objectNamed': was declared deprecated
+     1>c:\student temporary folder\pmrgame\classes\gameworld.cpp(56): warning C4996: 'cocos2d::TMXObjectGroup::objectNamed': was declared deprecated
                  c:\cocos2d-x-3.8\cocos\2d\cctmxobjectgroup.h(87) : see declaration of 'cocos2d::TMXObjectGroup::objectNamed'
-     1>c:\student temporary folder\pmrgame\classes\helloworldscene.cpp(60): warning C4996: 'cocos2d::CCSprite': was declared deprecated
-                 c:\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(680) : see declaration of 'cocos2d::CCSprite'
-     1>c:\student temporary folder\pmrgame\classes\helloworldscene.cpp(62): warning C4996: 'cocos2d::ccp': was declared deprecated
+     1>c:\student temporary folder\pmrgame\classes\gameworld.cpp(60): warning C4996: 'cocos2d::ccp': was declared deprecated
                  c:\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(49) : see declaration of 'cocos2d::ccp'
-     1>c:\student temporary folder\pmrgame\classes\helloworldscene.cpp(65): warning C4996: 'cocos2d::CCPoint': was declared deprecated
+     1>c:\student temporary folder\pmrgame\classes\gameworld.cpp(63): warning C4996: 'cocos2d::CCPoint': was declared deprecated
                  c:\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(775) : see declaration of 'cocos2d::CCPoint'
-     1>c:\student temporary folder\pmrgame\classes\helloworldscene.cpp(87): warning C4996: 'cocos2d::CCPoint': was declared deprecated
+     1>c:\student temporary folder\pmrgame\classes\gameworld.cpp(69): warning C4996: 'cocos2d::CCPoint': was declared deprecated
                  c:\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(775) : see declaration of 'cocos2d::CCPoint'
-     1>c:\student temporary folder\pmrgame\classes\helloworldscene.cpp(89): warning C4996: 'cocos2d::CCSize': was declared deprecated
+     1>c:\student temporary folder\pmrgame\classes\gameworld.cpp(71): warning C4996: 'cocos2d::CCSize': was declared deprecated
                  c:\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(776) : see declaration of 'cocos2d::CCSize'
-     1>c:\student temporary folder\pmrgame\classes\helloworldscene.cpp(89): warning C4996: 'cocos2d::Director::sharedDirector': was declared deprecated
+     1>c:\student temporary folder\pmrgame\classes\gameworld.cpp(71): warning C4996: 'cocos2d::Director::sharedDirector': was declared deprecated
                  c:\cocos2d-x-3.8\cocos\base\ccdirector.h(136) : see declaration of 'cocos2d::Director::sharedDirector'
-     1>c:\student temporary folder\pmrgame\classes\helloworldscene.cpp(95): warning C4996: 'cocos2d::CCPoint': was declared deprecated
+     1>c:\student temporary folder\pmrgame\classes\gameworld.cpp(77): warning C4996: 'cocos2d::CCPoint': was declared deprecated
                  c:\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(775) : see declaration of 'cocos2d::CCPoint'
-     1>c:\student temporary folder\pmrgame\classes\helloworldscene.cpp(95): warning C4996: 'cocos2d::ccp': was declared deprecated
+     1>c:\student temporary folder\pmrgame\classes\gameworld.cpp(77): warning C4996: 'cocos2d::ccp': was declared deprecated
                  c:\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(49) : see declaration of 'cocos2d::ccp'
-     1>c:\student temporary folder\pmrgame\classes\helloworldscene.cpp(97): warning C4996: 'cocos2d::CCPoint': was declared deprecated
+     1>c:\student temporary folder\pmrgame\classes\gameworld.cpp(79): warning C4996: 'cocos2d::CCPoint': was declared deprecated
                  c:\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(775) : see declaration of 'cocos2d::CCPoint'
-     1>c:\student temporary folder\pmrgame\classes\helloworldscene.cpp(97): warning C4996: 'cocos2d::ccp': was declared deprecated
+     1>c:\student temporary folder\pmrgame\classes\gameworld.cpp(79): warning C4996: 'cocos2d::ccp': was declared deprecated
                  c:\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(49) : see declaration of 'cocos2d::ccp'
-     1>c:\student temporary folder\pmrgame\classes\helloworldscene.cpp(98): warning C4996: 'cocos2d::ccpSub': was declared deprecated
+     1>c:\student temporary folder\pmrgame\classes\gameworld.cpp(80): warning C4996: 'cocos2d::ccpSub': was declared deprecated
                  c:\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(82) : see declaration of 'cocos2d::ccpSub'
-     1>c:\student temporary folder\pmrgame\classes\helloworldscene.cpp(102): warning C4996: 'cocos2d::CCPoint': was declared deprecated
+     1>c:\student temporary folder\pmrgame\classes\gameworld.cpp(84): warning C4996: 'cocos2d::CCPoint': was declared deprecated
                  c:\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(775) : see declaration of 'cocos2d::CCPoint'
-     1>c:\student temporary folder\pmrgame\classes\helloworldscene.cpp(102): warning C4996: 'cocos2d::CCSize': was declared deprecated
+     1>c:\student temporary folder\pmrgame\classes\gameworld.cpp(84): warning C4996: 'cocos2d::CCSize': was declared deprecated
                  c:\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(776) : see declaration of 'cocos2d::CCSize'
-     1>c:\student temporary folder\pmrgame\classes\helloworldscene.cpp(109): warning C4996: 'cocos2d::CCPoint': was declared deprecated
+     1>c:\student temporary folder\pmrgame\classes\gameworld.cpp(88): warning C4996: 'cocos2d::CCPoint': was declared deprecated
                  c:\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(775) : see declaration of 'cocos2d::CCPoint'
-     1>c:\student temporary folder\pmrgame\classes\helloworldscene.cpp(110): warning C4996: 'cocos2d::Director::sharedDirector': was declared deprecated
+     1>c:\student temporary folder\pmrgame\classes\gameworld.cpp(89): warning C4996: 'cocos2d::Director::sharedDirector': was declared deprecated
                  c:\cocos2d-x-3.8\cocos\base\ccdirector.h(136) : see declaration of 'cocos2d::Director::sharedDirector'
-     1>c:\student temporary folder\pmrgame\classes\helloworldscene.cpp(111): warning C4996: 'cocos2d::CCPoint': was declared deprecated
+     1>c:\student temporary folder\pmrgame\classes\gameworld.cpp(90): warning C4996: 'cocos2d::CCPoint': was declared deprecated
                  c:\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(775) : see declaration of 'cocos2d::CCPoint'
-     1>c:\student temporary folder\pmrgame\classes\helloworldscene.cpp(113): warning C4996: 'cocos2d::CCPoint': was declared deprecated
+     1>c:\student temporary folder\pmrgame\classes\gameworld.cpp(92): warning C4996: 'cocos2d::CCPoint': was declared deprecated
                  c:\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(775) : see declaration of 'cocos2d::CCPoint'
-     1>c:\student temporary folder\pmrgame\classes\helloworldscene.cpp(114): warning C4996: 'cocos2d::CCPoint': was declared deprecated
+     1>c:\student temporary folder\pmrgame\classes\gameworld.cpp(93): warning C4996: 'cocos2d::CCPoint': was declared deprecated
                  c:\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(775) : see declaration of 'cocos2d::CCPoint'
-     1>c:\student temporary folder\pmrgame\classes\helloworldscene.cpp(114): warning C4996: 'cocos2d::ccpSub': was declared deprecated
+     1>c:\student temporary folder\pmrgame\classes\gameworld.cpp(93): warning C4996: 'cocos2d::ccpSub': was declared deprecated
                  c:\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(82) : see declaration of 'cocos2d::ccpSub'
-     1>c:\student temporary folder\pmrgame\classes\helloworldscene.cpp(140): warning C4996: 'cocos2d::CCPoint': was declared deprecated
+     1>c:\student temporary folder\pmrgame\classes\gameworld.cpp(118): warning C4996: 'cocos2d::CCPoint': was declared deprecated
                  c:\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(775) : see declaration of 'cocos2d::CCPoint'
                  c:\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(775) : see declaration of 'cocos2d::CCPoint'
-     1>c:\student temporary folder\pmrgame\classes\helloworldscene.cpp(148): warning C4996: 'cocos2d::CCString': was declared deprecated
+     1>c:\student temporary folder\pmrgame\classes\gameworld.cpp(119): warning C4996: 'cocos2d::CCPoint': was declared deprecated
+                 c:\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(775) : see declaration of 'cocos2d::CCPoint'
+                 c:\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(775) : see declaration of 'cocos2d::CCPoint'
+     1>c:\student temporary folder\pmrgame\classes\gameworld.cpp(132): warning C4996: 'cocos2d::CCString': was declared deprecated
                  c:\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(1050) : see declaration of 'cocos2d::CCString'
                  c:\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(1050) : see declaration of 'cocos2d::CCString'
                  c:\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(1050) : see declaration of 'cocos2d::CCString'
-     1>c:\student temporary folder\pmrgame\classes\helloworldscene.cpp(168): warning C4996: 'cocos2d::CCPoint': was declared deprecated
+     1>c:\student temporary folder\pmrgame\classes\gameworld.cpp(198): warning C4996: 'cocos2d::CCPoint': was declared deprecated
                  c:\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(775) : see declaration of 'cocos2d::CCPoint'
-     1>c:\student temporary folder\pmrgame\classes\helloworldscene.cpp(175): warning C4996: 'cocos2d::CCPoint': was declared deprecated
+     1>c:\student temporary folder\pmrgame\classes\gameworld.cpp(201): warning C4996: 'cocos2d::CCPoint': was declared deprecated
                  c:\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(775) : see declaration of 'cocos2d::CCPoint'
-     1>c:\student temporary folder\pmrgame\classes\helloworldscene.cpp(192): warning C4996: 'cocos2d::CCPoint': was declared deprecated
+     1>c:\student temporary folder\pmrgame\classes\gameworld.cpp(206): warning C4996: 'cocos2d::CCString': was declared deprecated
+                 c:\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(1050) : see declaration of 'cocos2d::CCString'
+                 c:\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(1050) : see declaration of 'cocos2d::CCString'
+     1>c:\student temporary folder\pmrgame\classes\gameworld.cpp(226): warning C4996: 'cocos2d::CCPoint': was declared deprecated
                  c:\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(775) : see declaration of 'cocos2d::CCPoint'
                  c:\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(775) : see declaration of 'cocos2d::CCPoint'
-     1>c:\student temporary folder\pmrgame\classes\helloworldscene.cpp(196): warning C4996: 'cocos2d::ccp': was declared deprecated
+     1>c:\student temporary folder\pmrgame\classes\gameworld.cpp(230): warning C4996: 'cocos2d::ccp': was declared deprecated
                  c:\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(49) : see declaration of 'cocos2d::ccp'
-     1>c:\student temporary folder\pmrgame\classes\helloworldscene.cpp(197): warning C4996: 'cocos2d::CCPoint': was declared deprecated
+     1>c:\student temporary folder\pmrgame\classes\gameworld.cpp(231): warning C4996: 'cocos2d::CCPoint': was declared deprecated
                  c:\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(775) : see declaration of 'cocos2d::CCPoint'
+       ResourceCompile:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\bin\rc.exe /D _USING_V110_SDK71_ /D _UNICODE /D UNICODE /l"0x0409" /nologo /fo"Debug.win32\game.res" game.rc 
        PreLinkEvent:
          if not exist "C:\Student Temporary Folder\PMRGame\proj.win32\Debug.win32\" mkdir "C:\Student Temporary Folder\PMRGame\proj.win32\Debug.win32\"
          xcopy /Y /Q "\cocos2d-x-3.8\prebuilt\win32\*.*" "C:\Student Temporary Folder\PMRGame\proj.win32\Debug.win32\"
@@ -106,8 +112,13 @@
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Student Temporary Folder\PMRGame\proj.win32\Debug.win32\PMRGame.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Student Temporary Folder\PMRGame\proj.win32\Debug.win32\\" /LIBPATH:"C:\Student Temporary Folder\PMRGame\proj.win32\Debug.win32\\" opengl32.lib glew32.lib libzlib.lib libwebp.lib libiconv.lib freetype.lib winmm.lib ws2_32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Student Temporary Folder\PMRGame\proj.win32\Debug.win32\PMRGame.pdb" /SUBSYSTEM:WINDOWS,"5.01" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Student Temporary Folder\PMRGame\proj.win32\Debug.win32\PMRGame.lib" /MACHINE:X86 /SAFESEH Debug.win32\game.res
          Debug.win32\AppDelegate.obj
-         Debug.win32\HelloWorldScene.obj
+         Debug.win32\BrokenStructure.obj
+         Debug.win32\Entity.obj
+         Debug.win32\GameWorld.obj
+         Debug.win32\Player.obj
+         Debug.win32\StructureManager.obj
          Debug.win32\main.obj
+         LINK : C:\Student Temporary Folder\PMRGame\proj.win32\Debug.win32\PMRGame.exe not found or not built by the last incremental link; performing full link
      1>AppDelegate.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
             Creating library C:\Student Temporary Folder\PMRGame\proj.win32\Debug.win32\PMRGame.lib and object C:\Student Temporary Folder\PMRGame\proj.win32\Debug.win32\PMRGame.exp
          PMRGame.vcxproj -> C:\Student Temporary Folder\PMRGame\proj.win32\Debug.win32\PMRGame.exe
@@ -116,20 +127,11 @@
          xcopy "C:\Student Temporary Folder\PMRGame\proj.win32\..\Resources" "C:\Student Temporary Folder\PMRGame\proj.win32\Debug.win32\" /D /E /I /F /Y
                
          :VCEnd
-         C:\Student Temporary Folder\PMRGame\Resources\res\bigmap.tmx -> C:\Student Temporary Folder\PMRGame\proj.win32\Debug.win32\res\bigmap.tmx
-         C:\Student Temporary Folder\PMRGame\Resources\res\damap.tmx -> C:\Student Temporary Folder\PMRGame\proj.win32\Debug.win32\res\damap.tmx
-         C:\Student Temporary Folder\PMRGame\Resources\res\gamemap.tmx -> C:\Student Temporary Folder\PMRGame\proj.win32\Debug.win32\res\gamemap.tmx
-         C:\Student Temporary Folder\PMRGame\Resources\res\HelloWorld.png -> C:\Student Temporary Folder\PMRGame\proj.win32\Debug.win32\res\HelloWorld.png
+         C:\Student Temporary Folder\PMRGame\Resources\res\greenmap.tmx -> C:\Student Temporary Folder\PMRGame\proj.win32\Debug.win32\res\greenmap.tmx
          C:\Student Temporary Folder\PMRGame\Resources\res\MainScene.csb -> C:\Student Temporary Folder\PMRGame\proj.win32\Debug.win32\res\MainScene.csb
-         C:\Student Temporary Folder\PMRGame\Resources\res\map.tmx -> C:\Student Temporary Folder\PMRGame\proj.win32\Debug.win32\res\map.tmx
-         C:\Student Temporary Folder\PMRGame\Resources\res\meta_tiles.png -> C:\Student Temporary Folder\PMRGame\proj.win32\Debug.win32\res\meta_tiles.png
-         C:\Student Temporary Folder\PMRGame\Resources\res\newmap.tmx -> C:\Student Temporary Folder\PMRGame\proj.win32\Debug.win32\res\newmap.tmx
-         C:\Student Temporary Folder\PMRGame\Resources\res\Player.png -> C:\Student Temporary Folder\PMRGame\proj.win32\Debug.win32\res\Player.png
-         C:\Student Temporary Folder\PMRGame\Resources\res\tilemapsheet.png -> C:\Student Temporary Folder\PMRGame\proj.win32\Debug.win32\res\tilemapsheet.png
-         C:\Student Temporary Folder\PMRGame\Resources\res\tmw_desert_spacing.png -> C:\Student Temporary Folder\PMRGame\proj.win32\Debug.win32\res\tmw_desert_spacing.png
-         11 File(s) copied
+         2 File(s) copied
      1>Done Building Project "C:\Student Temporary Folder\PMRGame\proj.win32\PMRGame.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:16.32
+Time Elapsed 00:00:19.64
