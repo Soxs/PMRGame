@@ -68,7 +68,7 @@ bool GameWorld::init()
     this->setViewPointCenter(player->entityImage->getPosition());
     keyboardListener();
     this->scheduleUpdate();
-    this->schedule(schedule_selector(GameWorld::cameraUpdater), 1);
+    //this->schedule(schedule_selector(GameWorld::cameraUpdater), 0.5f);
     return true;
 }
 
@@ -88,9 +88,12 @@ void GameWorld::update(float delta)
     if (tileCoordForPosition(touchLocation).distance(tileCoordForPosition(player->entityImage->getPosition())) == 0)
         return;
     
+	//Player position.
     CCPoint playerPos = player->entityImage->getPosition();
+	//Difference between the touch location and the players location.
     CCPoint diff = ccpSub(touchLocation, playerPos);
     
+	//Calculate if we're going left, right, down, or up, and get the new position we'll be moving to.
     if ( abs(diff.x) > abs(diff.y) ) {
         if (diff.x > 0) {
             playerPos.x += _tileMap->getTileSize().width;
@@ -113,9 +116,11 @@ void GameWorld::update(float delta)
         playerPos.y >= 0 &&
         playerPos.x >= 0 )
     {
-        
-        CCPoint tileCoord = this->tileCoordForPosition(touchLocation); //the tile where the player touches.
-        CCPoint nextTileCoord = this->tileCoordForPosition(playerPos); //the tile immediately next to the player.
+		//the tile where the player touches.
+        CCPoint tileCoord = this->tileCoordForPosition(touchLocation); 
+
+		//the tile immediately next to the player.
+        CCPoint nextTileCoord = this->tileCoordForPosition(playerPos); 
         
         Vec2 place = Vec2(tileCoord.x, tileCoord.y);
         Vec2 nextPlace = Vec2(nextTileCoord.x, nextTileCoord.y);
@@ -124,8 +129,11 @@ void GameWorld::update(float delta)
         
         //check collision on tile next to character
         if (checkCollision(_meta->getTileGIDAt(nextPlace))) {
-            
+
+            //id of the tile type at the location.
             int buildingSpriteGID = _background->getTileGIDAt(nextPlace);
+
+			//Check if we've already destroyed this building to avoid adding more to the x value in the sprite rectangle.
             if (!structureManager->containsStructure(buildingSpriteGID, nextPlace)) {
                 ValueMap tileValues = _tileMap->getPropertiesForGID(buildingSpriteGID).asValueMap();
                 CCString* testme = new CCString();
@@ -193,6 +201,8 @@ void GameWorld::update(float delta)
             //player->entityImage->runAction(move_action);
             player->entityImage->setPosition(playerPos);
         }
+		this->setViewPointCenter(player->entityImage->getPosition());
+
     }
     
     
@@ -200,19 +210,25 @@ void GameWorld::update(float delta)
 
 
 void GameWorld::setViewPointCenter(CCPoint position) {
-    
+    //Window size.
     CCSize winSize = CCDirector::sharedDirector()->getWinSize();
     
+	//Get the actual position that correlates with the tilemap.
     int x = MAX(position.x, winSize.width/2);
     int y = MAX(position.y, winSize.height/2);
     x = MIN(x, (_tileMap->getMapSize().width * this->_tileMap->getTileSize().width) - winSize.width / 2);
     y = MIN(y, (_tileMap->getMapSize().height * _tileMap->getTileSize().height) - winSize.height/2);
     CCPoint actualPosition = ccp(x, y);
     
+	//Get the vector that moves the camera to the center.
     CCPoint centerOfView = ccp(winSize.width/2, winSize.height/2);
     centerPoint = ccpSub(centerOfView, actualPosition);
+
+	//More dramatic camera movement.
     auto move_action = MoveTo::create(1.0f, centerPoint);
     this->runAction(move_action);
+
+	//Instantanious camera movement.
     //this->setPosition(centerPoint);
 }
 

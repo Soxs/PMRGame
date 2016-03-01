@@ -5,9 +5,8 @@
       <RootFolder Name=".">
         <Project Name="MainScene.csd" Type="Scene" />
         <Image Name="HelloWorld.png" />
-        <TmxFile Name="maptest.tmx" />
-        <TmxFile Name="desert.tmx" />
-        <TmxFile Name="newmap.tmx" />
+        <TmxFile Name="greenmap.tmx" />
+        <Image Name="tilemapsheet.png" />
       </RootFolder>
     </Group>
   </SolutionFolder>
