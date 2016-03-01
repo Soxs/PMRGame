@@ -9,6 +9,7 @@
 #include "Player.hpp"
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
+#include "GameWorld.h"
 
 USING_NS_CC;
 
@@ -20,4 +21,6 @@ Player::Player(cocos2d::Vec2 spawnLocation) : Entity(spawnLocation) {
 }
 
 void Player::touchEvent(cocos2d::Touch* touch, cocos2d::Event* event) {
+    
+
 }

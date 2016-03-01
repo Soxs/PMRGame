@@ -14,6 +14,7 @@ public:
 
     // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
     virtual bool init();
+    void update(float);
     
     bool onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event);
     void keyboardListener();
@@ -26,11 +27,15 @@ public:
     CREATE_FUNC(GameWorld);
     
     cocos2d::CCPoint centerPoint;
+    cocos2d::CCPoint touchLocation;
     cocos2d::CCTMXTiledMap* _tileMap;
     cocos2d::CCTMXLayer* _background;
     cocos2d::CCTMXLayer *_meta;
     void setViewPointCenter(cocos2d::CCPoint position);
+    void cameraUpdater(float delta);
     StructureManager* structureManager;
+    
+    static cocos2d::CCPoint eventToLocation(cocos2d::Touch* touch);
     
 private:
     Player* player;

@@ -6,7 +6,6 @@ USING_NS_CC;
 
 using namespace cocostudio::timeline;
 
-
 Scene* GameWorld::createScene()
 {
     // 'scene' is an autorelease object
@@ -33,6 +32,7 @@ bool GameWorld::init()
     }
     
     structureManager = new StructureManager();
+    touchLocation = ccp(-1, -1);
     
     auto rootNode = CSLoader::createNode("MainScene.csb");
 
@@ -62,32 +62,26 @@ bool GameWorld::init()
     this->addChild(player->entityImage);
     this->setViewPointCenter(player->entityImage->getPosition());
     keyboardListener();
+    this->scheduleUpdate();
+    this->schedule(schedule_selector(GameWorld::cameraUpdater), 1);
     return true;
 }
 
-
-void GameWorld::setViewPointCenter(CCPoint position) {
-    
-    CCSize winSize = CCDirector::sharedDirector()->getWinSize();
-    
-    int x = MAX(position.x, winSize.width/2);
-    int y = MAX(position.y, winSize.height/2);
-    x = MIN(x, (_tileMap->getMapSize().width * this->_tileMap->getTileSize().width) - winSize.width / 2);
-    y = MIN(y, (_tileMap->getMapSize().height * _tileMap->getTileSize().height) - winSize.height/2);
-    CCPoint actualPosition = ccp(x, y);
-    
-    CCPoint centerOfView = ccp(winSize.width/2, winSize.height/2);
-    centerPoint = ccpSub(centerOfView, actualPosition);
-    auto move_action = MoveTo::create(0.5f, centerPoint);
-    this->runAction(move_action);
-    //this->setPosition(centerPoint);
+void GameWorld::cameraUpdater(float delta)
+{
+    this->setViewPointCenter(player->entityImage->getPosition());
 }
 
-bool GameWorld::onTouchBegan(Touch* touch, Event* event)
+void GameWorld::update(float delta)
 {
-    CCPoint touchLocation = touch->getLocationInView();
-    touchLocation = CCDirector::sharedDirector()->convertToGL(touchLocation);
-    touchLocation = this->convertToNodeSpace(touchLocation);
+    //return if no touch location is registered.
+    if (touchLocation.x == -1 &&
+        touchLocation.y == -1)
+        return;
+    
+    //return if the distance to the location is less than a tile.
+    if (tileCoordForPosition(touchLocation).distance(tileCoordForPosition(player->entityImage->getPosition())) == 0)
+        return;
     
     CCPoint playerPos = player->entityImage->getPosition();
     CCPoint diff = ccpSub(touchLocation, playerPos);
@@ -190,12 +184,38 @@ bool GameWorld::onTouchBegan(Touch* touch, Event* event)
          }*/
         
         if (!collisionbool) {
-            auto move_action = MoveTo::create(0.1f, playerPos);
-            player->entityImage->runAction(move_action);
+            //auto move_action = MoveTo::create(0.5f, playerPos);
+            //player->entityImage->runAction(move_action);
+            player->entityImage->setPosition(playerPos);
         }
     }
     
-    this->setViewPointCenter(player->entityImage->getPosition());
+    
+}
+
+
+void GameWorld::setViewPointCenter(CCPoint position) {
+    
+    CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+    
+    int x = MAX(position.x, winSize.width/2);
+    int y = MAX(position.y, winSize.height/2);
+    x = MIN(x, (_tileMap->getMapSize().width * this->_tileMap->getTileSize().width) - winSize.width / 2);
+    y = MIN(y, (_tileMap->getMapSize().height * _tileMap->getTileSize().height) - winSize.height/2);
+    CCPoint actualPosition = ccp(x, y);
+    
+    CCPoint centerOfView = ccp(winSize.width/2, winSize.height/2);
+    centerPoint = ccpSub(centerOfView, actualPosition);
+    auto move_action = MoveTo::create(1.0f, centerPoint);
+    this->runAction(move_action);
+    //this->setPosition(centerPoint);
+}
+
+bool GameWorld::onTouchBegan(Touch* touch, Event* event)
+{
+    CCPoint touchl = touch->getLocationInView();
+    touchl = CCDirector::sharedDirector()->convertToGL(touchl);
+    touchLocation = this->convertToNodeSpace(touchl);
 
     return true;
 }
