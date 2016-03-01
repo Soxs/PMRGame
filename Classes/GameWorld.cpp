@@ -1,10 +1,14 @@
 #include "GameWorld.h"
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
+#include <fstream>
+#include <string>
+#include <iostream>
 
 USING_NS_CC;
 
 using namespace cocostudio::timeline;
+using namespace std;
 
 Scene* GameWorld::createScene()
 {
@@ -40,6 +44,7 @@ bool GameWorld::init()
     
     _tileMap = new CCTMXTiledMap();
     _tileMap->initWithTMXFile("greenmap.tmx");
+
     _background = _tileMap->layerNamed("Background");
     
     this->addChild(_tileMap);

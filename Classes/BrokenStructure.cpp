@@ -7,10 +7,10 @@
 //
 
 #include "BrokenStructure.hpp"
+#include <stdio.h>
 
 BrokenStructure::BrokenStructure(int tileGID, cocos2d::Sprite* tilesprite, cocos2d::Vec2 location) : Entity(location) {
     this->gid = tileGID;
-    
     setSprite(tilesprite);
 }
 
