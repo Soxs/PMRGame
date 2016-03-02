@@ -41,7 +41,7 @@ bool MainMenu::init()
 }
 
 void MainMenu::startButtonClicked(Ref* pSender, cocos2d::ui::Widget::TouchEventType type) {
-    if (type == cocos2d::ui::Widget::TouchEventType::BEGAN)
+    if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
     {
         //The start button was clicked.
         Director::getInstance()->replaceScene(GameWorld::createScene());
