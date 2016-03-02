@@ -78,6 +78,10 @@ void GameWorld::cameraUpdater(float delta)
 
 void GameWorld::update(float delta)
 {
+	//return if the player is already in a moving animation.
+	if (player->entityImage->getNumberOfRunningActions() > 0)
+		return;
+
     //return if no touch location is registered.
     if (touchLocation.x == -1 &&
         touchLocation.y == -1)
@@ -196,9 +200,9 @@ void GameWorld::update(float delta)
          }*/
         
         if (!collisionbool) {
-            //auto move_action = MoveTo::create(0.5f, playerPos);
-            //player->entityImage->runAction(move_action);
-            player->entityImage->setPosition(playerPos);
+            auto move_action = MoveTo::create(0.1f, playerPos);
+            player->entityImage->runAction(move_action);
+            //player->entityImage->setPosition(playerPos);
         }
 		//this->setViewPointCenter(player->entityImage->getPosition());
 

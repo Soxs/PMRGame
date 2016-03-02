@@ -33,6 +33,12 @@
     <ClCompile Include="..\Classes\StructureManager.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\MainMenu.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\MapGenerator.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -54,6 +60,12 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\StructureManager.hpp">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\MainMenu.hpp">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\MapGenerator.hpp">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
