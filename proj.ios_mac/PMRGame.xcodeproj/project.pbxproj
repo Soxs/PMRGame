@@ -16,6 +16,8 @@
 		31695D751C6E365F0045DEDA /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31695D731C6E365F0045DEDA /* Player.cpp */; };
 		31AB53071C6ABC9C007DDF02 /* Entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31AB53051C6ABC9C007DDF02 /* Entity.cpp */; };
 		31AB53081C6ABC9C007DDF02 /* Entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31AB53051C6ABC9C007DDF02 /* Entity.cpp */; };
+		31F792531C8633B300592DDB /* MainMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31F792511C8633B300592DDB /* MainMenu.cpp */; };
+		31F792541C8633B300592DDB /* MainMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31F792511C8633B300592DDB /* MainMenu.cpp */; };
 		46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46880B8419C43A87006E1F66 /* AppDelegate.cpp */; };
 		46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46880B8419C43A87006E1F66 /* AppDelegate.cpp */; };
 		46880B8A19C43A87006E1F66 /* GameWorld.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46880B8619C43A87006E1F66 /* GameWorld.cpp */; };
@@ -83,6 +85,8 @@
 		31695D741C6E365F0045DEDA /* Player.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Player.hpp; sourceTree = "<group>"; };
 		31AB53051C6ABC9C007DDF02 /* Entity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Entity.cpp; sourceTree = "<group>"; };
 		31AB53061C6ABC9C007DDF02 /* Entity.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Entity.hpp; sourceTree = "<group>"; };
+		31F792511C8633B300592DDB /* MainMenu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainMenu.cpp; sourceTree = "<group>"; };
+		31F792521C8633B300592DDB /* MainMenu.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MainMenu.hpp; sourceTree = "<group>"; };
 		46880B8419C43A87006E1F66 /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
 		46880B8519C43A87006E1F66 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		46880B8619C43A87006E1F66 /* GameWorld.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameWorld.cpp; sourceTree = "<group>"; };
@@ -267,6 +271,15 @@
 			name = entities;
 			sourceTree = "<group>";
 		};
+		31F792501C86338600592DDB /* menus */ = {
+			isa = PBXGroup;
+			children = (
+				31F792511C8633B300592DDB /* MainMenu.cpp */,
+				31F792521C8633B300592DDB /* MainMenu.hpp */,
+			);
+			name = menus;
+			sourceTree = "<group>";
+		};
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -279,6 +292,7 @@
 		46880B8319C43A87006E1F66 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				31F792501C86338600592DDB /* menus */,
 				31AB53041C6ABC66007DDF02 /* entities */,
 				46880B8419C43A87006E1F66 /* AppDelegate.cpp */,
 				46880B8519C43A87006E1F66 /* AppDelegate.h */,
@@ -469,6 +483,7 @@
 				31AB53071C6ABC9C007DDF02 /* Entity.cpp in Sources */,
 				3167BFAF1C6FB20A00FEA765 /* BrokenStructure.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
+				31F792531C8633B300592DDB /* MainMenu.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,6 +495,7 @@
 				46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				46880B8B19C43A87006E1F66 /* GameWorld.cpp in Sources */,
+				31F792541C8633B300592DDB /* MainMenu.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

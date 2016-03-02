@@ -28,14 +28,12 @@ public:
     
     cocos2d::CCPoint centerPoint;
     cocos2d::CCPoint touchLocation;
-    cocos2d::CCTMXTiledMap* _tileMap;
-    cocos2d::CCTMXLayer* _background;
-    cocos2d::CCTMXLayer *_meta;
+    cocos2d::TMXTiledMap* _tileMap;
+    cocos2d::TMXLayer* _background;
+    cocos2d::TMXLayer *_meta;
     void setViewPointCenter(cocos2d::CCPoint position);
     void cameraUpdater(float delta);
     StructureManager* structureManager;
-    
-    static cocos2d::CCPoint eventToLocation(cocos2d::Touch* touch);
     
 private:
     Player* player;

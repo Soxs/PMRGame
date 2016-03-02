@@ -42,8 +42,7 @@ bool GameWorld::init()
 
     addChild(rootNode);
     
-    _tileMap = new CCTMXTiledMap();
-    _tileMap->initWithTMXFile("greenmap.tmx");
+    _tileMap = TMXTiledMap::create("greenmap.tmx");
 
     _background = _tileMap->layerNamed("Background");
     
@@ -52,7 +51,7 @@ bool GameWorld::init()
     _meta = _tileMap->layerNamed("Meta");
     _meta->setVisible(false);
     
-    CCTMXObjectGroup *objectGroup = _tileMap->objectGroupNamed("Objects");
+    TMXObjectGroup *objectGroup = _tileMap->objectGroupNamed("Objects");
     
     if(objectGroup == NULL){
         return false;
@@ -68,7 +67,7 @@ bool GameWorld::init()
     this->setViewPointCenter(player->entityImage->getPosition());
     keyboardListener();
     this->scheduleUpdate();
-    //this->schedule(schedule_selector(GameWorld::cameraUpdater), 0.5f);
+    this->schedule(schedule_selector(GameWorld::cameraUpdater), 1.0f);
     return true;
 }
 
@@ -201,7 +200,7 @@ void GameWorld::update(float delta)
             //player->entityImage->runAction(move_action);
             player->entityImage->setPosition(playerPos);
         }
-		this->setViewPointCenter(player->entityImage->getPosition());
+		//this->setViewPointCenter(player->entityImage->getPosition());
 
     }
     
