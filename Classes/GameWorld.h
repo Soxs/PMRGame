@@ -31,13 +31,13 @@ public:
     cocos2d::TMXTiledMap* _tileMap;
     cocos2d::TMXLayer* _background;
     cocos2d::TMXLayer *_meta;
-    void setViewPointCenter(cocos2d::CCPoint position);
+    void resetWorld();
     void cameraUpdater(float delta);
     StructureManager* structureManager;
     
 private:
     Player* player;
-    
+    void setViewPointCenter(cocos2d::CCPoint position);
     bool checkCollision(int tilegid);
     
 };

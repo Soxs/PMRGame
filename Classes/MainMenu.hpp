@@ -24,7 +24,7 @@ public:
     CREATE_FUNC(MainMenu);
     
 private:
-    cocos2d::ui::Button startGame;
+    cocos2d::ui::Button* startGame;
     
 };
 

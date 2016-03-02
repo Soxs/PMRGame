@@ -18,6 +18,8 @@
 		31AB53081C6ABC9C007DDF02 /* Entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31AB53051C6ABC9C007DDF02 /* Entity.cpp */; };
 		31F792531C8633B300592DDB /* MainMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31F792511C8633B300592DDB /* MainMenu.cpp */; };
 		31F792541C8633B300592DDB /* MainMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31F792511C8633B300592DDB /* MainMenu.cpp */; };
+		31F792581C872D0800592DDB /* MapGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31F792561C872D0800592DDB /* MapGenerator.cpp */; };
+		31F792591C872D0800592DDB /* MapGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31F792561C872D0800592DDB /* MapGenerator.cpp */; };
 		46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46880B8419C43A87006E1F66 /* AppDelegate.cpp */; };
 		46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46880B8419C43A87006E1F66 /* AppDelegate.cpp */; };
 		46880B8A19C43A87006E1F66 /* GameWorld.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46880B8619C43A87006E1F66 /* GameWorld.cpp */; };
@@ -87,6 +89,8 @@
 		31AB53061C6ABC9C007DDF02 /* Entity.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Entity.hpp; sourceTree = "<group>"; };
 		31F792511C8633B300592DDB /* MainMenu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainMenu.cpp; sourceTree = "<group>"; };
 		31F792521C8633B300592DDB /* MainMenu.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MainMenu.hpp; sourceTree = "<group>"; };
+		31F792561C872D0800592DDB /* MapGenerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MapGenerator.cpp; sourceTree = "<group>"; };
+		31F792571C872D0800592DDB /* MapGenerator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MapGenerator.hpp; sourceTree = "<group>"; };
 		46880B8419C43A87006E1F66 /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
 		46880B8519C43A87006E1F66 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		46880B8619C43A87006E1F66 /* GameWorld.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameWorld.cpp; sourceTree = "<group>"; };
@@ -280,6 +284,15 @@
 			name = menus;
 			sourceTree = "<group>";
 		};
+		31F792551C872CF400592DDB /* generator */ = {
+			isa = PBXGroup;
+			children = (
+				31F792561C872D0800592DDB /* MapGenerator.cpp */,
+				31F792571C872D0800592DDB /* MapGenerator.hpp */,
+			);
+			name = generator;
+			sourceTree = "<group>";
+		};
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -292,6 +305,7 @@
 		46880B8319C43A87006E1F66 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				31F792551C872CF400592DDB /* generator */,
 				31F792501C86338600592DDB /* menus */,
 				31AB53041C6ABC66007DDF02 /* entities */,
 				46880B8419C43A87006E1F66 /* AppDelegate.cpp */,
@@ -476,6 +490,7 @@
 			files = (
 				3167BFB31C6FB4A400FEA765 /* StructureManager.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
+				31F792581C872D0800592DDB /* MapGenerator.cpp in Sources */,
 				31695D751C6E365F0045DEDA /* Player.cpp in Sources */,
 				46880B8A19C43A87006E1F66 /* GameWorld.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
@@ -491,6 +506,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31F792591C872D0800592DDB /* MapGenerator.cpp in Sources */,
 				31AB53081C6ABC9C007DDF02 /* Entity.cpp in Sources */,
 				46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,

@@ -253,6 +253,12 @@ bool GameWorld::checkCollision(int tileGID) {
     return false;
 }
 
+void GameWorld::resetWorld()
+{
+    //remove saved locations of destroyed buildings.
+    structureManager->resetManager();
+}
+
 void GameWorld::keyboardListener()
 {
     auto touchListener = EventListenerTouchOneByOne::create();

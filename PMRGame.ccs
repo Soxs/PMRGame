@@ -5,7 +5,11 @@
       <RootFolder Name=".">
         <TmxFile Name="greenmap.tmx" />
         <Image Name="HelloWorld.png" />
+        <Project Name="MainMenu.csd" Type="Scene" />
         <Project Name="MainScene.csd" Type="Scene" />
+        <Image Name="MainScreenMM.png" />
+        <Image Name="StartGame.png" />
+        <Image Name="StartGamePressed.png" />
         <Image Name="tilemapsheet.png" />
       </RootFolder>
     </Group>

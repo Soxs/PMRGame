@@ -27,7 +27,24 @@ bool MainMenu::init()
         return false;
     }
     
+    //Gets the node we created in cocos2d-x.
+    auto rootNode = CSLoader::createNode("MainMenu.csb");
+    //Adds the node to the current scene.
+    addChild(rootNode);
     
+    //Gets the startWidget.
+    startGame = static_cast<ui::Button*>(rootNode->getChildByName("playWidget"));
+    //Sets the callback for the button click.
+    startGame->addTouchEventListener(CC_CALLBACK_2(MainMenu::startButtonClicked, this));
     
     return true;
+}
+
+void MainMenu::startButtonClicked(Ref* pSender, cocos2d::ui::Widget::TouchEventType type) {
+    if (type == cocos2d::ui::Widget::TouchEventType::BEGAN)
+    {
+        //The start button was clicked.
+        Director::getInstance()->replaceScene(GameWorld::createScene());
+        
+    }
 }
