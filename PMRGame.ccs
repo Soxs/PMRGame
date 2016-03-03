@@ -3,14 +3,22 @@
   <SolutionFolder>
     <Group ctype="ResourceGroup">
       <RootFolder Name=".">
+        <Image Name="Credits.png" />
+        <Image Name="CreditScreen.png" />
+        <Image Name="CreditsPressed.png" />
+        <Image Name="ExitGame.png" />
+        <Image Name="ExitGamePressed.png" />
         <TmxFile Name="greenmap.tmx" />
         <Image Name="HelloWorld.png" />
         <Project Name="MainMenu.csd" Type="Scene" />
+        <Image Name="MainMenu.png" />
+        <Image Name="MainMenuPressed.png" />
         <Project Name="MainScene.csd" Type="Scene" />
         <Image Name="MainScreenMM.png" />
         <Image Name="StartGame.png" />
         <Image Name="StartGamePressed.png" />
         <Image Name="tilemapsheet.png" />
+        <Project Name="Credits.csd" Type="Scene" />
       </RootFolder>
     </Group>
   </SolutionFolder>

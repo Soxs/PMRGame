@@ -20,11 +20,14 @@ public:
     static cocos2d::Scene* createScene();
     virtual bool init();
     void startButtonClicked(Ref* sender, cocos2d::ui::Widget::TouchEventType type);
+	
     
     CREATE_FUNC(MainMenu);
     
 private:
     cocos2d::ui::Button* startGame;
+	cocos2d::ui::Button* exitGame;
+	cocos2d::ui::Button* creditbutton;
     
 };
 
