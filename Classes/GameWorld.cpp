@@ -35,6 +35,8 @@ bool GameWorld::init()
         return false;
     }
     
+
+    
     structureManager = new StructureManager();
     touchLocation = ccp(-1, -1);
     
@@ -50,6 +52,12 @@ bool GameWorld::init()
     
     _meta = _tileMap->layerNamed("Meta");
     _meta->setVisible(false);
+    
+    
+    CCPoint cp1 = tileCoordForPosition(ccp(64, 64));
+    CCPoint cp2 = tileCoordToPosition(cp1);
+    CCLOG("x: %f, y: %f", cp2.x, cp2.y);
+    
     
     TMXObjectGroup *objectGroup = _tileMap->objectGroupNamed("Objects");
     
@@ -277,5 +285,13 @@ CCPoint GameWorld::tileCoordForPosition(CCPoint position)
 {
     int x = position.x / _tileMap->getTileSize().width;
     int y = ((_tileMap->getMapSize().height * _tileMap->getTileSize().height) - position.y) / _tileMap->getTileSize().height;
+    return ccp(x, y);
+}
+
+CCPoint GameWorld::tileCoordToPosition(CCPoint tileCoord)
+{
+    int x = tileCoord.x * _tileMap->getTileSize().width;
+    int y = ((tileCoord.y * _tileMap->getTileSize().height)-(_tileMap->getMapSize().height * _tileMap->getTileSize().height)) *-1;
+    
     return ccp(x, y);
 }

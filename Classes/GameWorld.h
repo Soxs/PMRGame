@@ -21,6 +21,7 @@ public:
     bool isKeyPressed(cocos2d::EventKeyboard::KeyCode);
     double keyPressedDuration(cocos2d::EventKeyboard::KeyCode);
     cocos2d::CCPoint tileCoordForPosition(cocos2d::CCPoint position);
+    cocos2d::CCPoint tileCoordToPosition(cocos2d::CCPoint tileCoord);
     
     
     // implement the "static create()" method manually
