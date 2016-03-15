@@ -71,7 +71,7 @@
     <ClInclude Include="..\Classes\MapGenerator.hpp">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="CreditScreen.hpp">
+    <ClInclude Include="..\Classes\CreditScreen.hpp">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
