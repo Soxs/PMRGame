@@ -15,7 +15,7 @@ USING_NS_CC;
 
 Player::Player(cocos2d::Vec2 spawnLocation) : Entity(spawnLocation) {
     cocos2d::Sprite* sprite = new cocos2d::Sprite();
-    sprite->initWithFile("Player.png");
+    sprite->initWithFile("DinoLeft.png");
     sprite->setPosition(spawnLocation);
     setSprite(sprite);
 }

@@ -39,6 +39,9 @@
     <ClCompile Include="..\Classes\MapGenerator.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="CreditScreen.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -66,6 +69,9 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\MapGenerator.hpp">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="CreditScreen.hpp">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

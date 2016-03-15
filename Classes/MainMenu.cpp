@@ -8,7 +8,7 @@
 
 #include "MainMenu.hpp"
 #include "GameWorld.h"
-
+#include "CreditScreen.hpp"
 USING_NS_CC;
 using namespace cocostudio::timeline;
 
@@ -36,7 +36,31 @@ bool MainMenu::init()
     startGame = static_cast<ui::Button*>(rootNode->getChildByName("playWidget"));
     //Sets the callback for the button click.
     startGame->addTouchEventListener(CC_CALLBACK_2(MainMenu::startButtonClicked, this));
-    
+
+	//Gets the exitWidget.
+	exitGame = static_cast<ui::Button*>(rootNode->getChildByName("exitWidget"));
+	//Sets the callback for the button click.
+	exitGame->addTouchEventListener([&](Ref* sender, cocos2d::ui::Widget::TouchEventType pressed)
+	{
+		if (pressed == ui::Widget::TouchEventType::ENDED)
+		{
+			CCDirector::getInstance()->end();
+		}
+	});
+
+	//Gets the creditWidget.
+	creditbutton = static_cast<ui::Button*>(rootNode->getChildByName("creditWidget"));
+	//Sets the callback for the button click.
+	creditbutton->addTouchEventListener([&](Ref* sender, cocos2d::ui::Widget::TouchEventType pressed)
+	{
+		if (pressed == ui::Widget::TouchEventType::ENDED)
+		{
+			auto scene = CreditScreen::createScene();
+			Director::getInstance()->replaceScene(scene);
+		}
+	});
+	
+	
     return true;
 }
 
@@ -47,4 +71,6 @@ void MainMenu::startButtonClicked(Ref* pSender, cocos2d::ui::Widget::TouchEventT
         Director::getInstance()->replaceScene(GameWorld::createScene());
         
     }
+
+
 }
