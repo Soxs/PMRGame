@@ -17,6 +17,10 @@ class Player : public Entity {
 public:
     Player(cocos2d::Vec2 spawnLocation);
     void touchEvent(cocos2d::Touch* touch, cocos2d::Event* event);
+
+	cocos2d::Vec2 actualPosition;
+	void updatePosition(cocos2d::Vec2 newPos, bool tele);
+	void walkTo(cocos2d::Vec2 newPos);
 };
 
 #endif /* Player_hpp */

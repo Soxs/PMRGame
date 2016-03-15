@@ -1,29 +1,26 @@
-h:\year2\tgp\maingroupproject\uptodatepmr\pmrgame\proj.win32\debug.win32\brokenstructure.obj
-h:\year2\tgp\maingroupproject\uptodatepmr\pmrgame\proj.win32\debug.win32\player.obj
-h:\year2\tgp\maingroupproject\uptodatepmr\pmrgame\proj.win32\debug.win32\entity.obj
-h:\year2\tgp\maingroupproject\uptodatepmr\pmrgame\proj.win32\debug.win32\mainmenu.obj
-h:\year2\tgp\maingroupproject\uptodatepmr\pmrgame\proj.win32\debug.win32\gameworld.obj
-h:\year2\tgp\maingroupproject\uptodatepmr\pmrgame\proj.win32\debug.win32\structuremanager.obj
-h:\year2\tgp\maingroupproject\uptodatepmr\pmrgame\proj.win32\debug.win32\appdelegate.obj
-h:\year2\tgp\maingroupproject\uptodatepmr\pmrgame\proj.win32\debug.win32\mapgenerator.obj
-h:\year2\tgp\maingroupproject\uptodatepmr\pmrgame\proj.win32\debug.win32\main.obj
-h:\year2\tgp\maingroupproject\uptodatepmr\pmrgame\proj.win32\debug.win32\vc120.pdb
-h:\year2\tgp\maingroupproject\uptodatepmr\pmrgame\proj.win32\debug.win32\vc120.idb
-h:\year2\tgp\maingroupproject\uptodatepmr\pmrgame\proj.win32\debug.win32\credits.obj
-h:\year2\tgp\maingroupproject\uptodatepmr\pmrgame\proj.win32\debug.win32\pmrgame.ilk
-h:\year2\tgp\maingroupproject\uptodatepmr\pmrgame\proj.win32\debug.win32\pmrgame.exe
-h:\year2\tgp\maingroupproject\uptodatepmr\pmrgame\proj.win32\debug.win32\pmrgame.pdb
-h:\year2\tgp\maingroupproject\uptodatepmr\pmrgame\proj.win32\debug.win32\pmrgame.lib
-h:\year2\tgp\maingroupproject\uptodatepmr\pmrgame\proj.win32\debug.win32\pmrgame.exp
-h:\year2\tgp\maingroupproject\uptodatepmr\pmrgame\proj.win32\pmrgame.cab
-h:\year2\tgp\maingroupproject\uptodatepmr\pmrgame\proj.win32\debug.win32\game.res
-h:\year2\tgp\maingroupproject\uptodatepmr\pmrgame\proj.win32\debug.win32\pmrgame.tlog\cl.command.1.tlog
-h:\year2\tgp\maingroupproject\uptodatepmr\pmrgame\proj.win32\debug.win32\pmrgame.tlog\cl.read.1.tlog
-h:\year2\tgp\maingroupproject\uptodatepmr\pmrgame\proj.win32\debug.win32\pmrgame.tlog\cl.write.1.tlog
-h:\year2\tgp\maingroupproject\uptodatepmr\pmrgame\proj.win32\debug.win32\pmrgame.tlog\link.command.1.tlog
-h:\year2\tgp\maingroupproject\uptodatepmr\pmrgame\proj.win32\debug.win32\pmrgame.tlog\link.read.1.tlog
-h:\year2\tgp\maingroupproject\uptodatepmr\pmrgame\proj.win32\debug.win32\pmrgame.tlog\link.write.1.tlog
-h:\year2\tgp\maingroupproject\uptodatepmr\pmrgame\proj.win32\debug.win32\pmrgame.tlog\pmrgame.write.1u.tlog
-h:\year2\tgp\maingroupproject\uptodatepmr\pmrgame\proj.win32\debug.win32\pmrgame.tlog\rc.command.1.tlog
-h:\year2\tgp\maingroupproject\uptodatepmr\pmrgame\proj.win32\debug.win32\pmrgame.tlog\rc.read.1.tlog
-h:\year2\tgp\maingroupproject\uptodatepmr\pmrgame\proj.win32\debug.win32\pmrgame.tlog\rc.write.1.tlog
+c:\student temporary folder\pmrgame\proj.win32\debug.win32\appdelegate.obj
+c:\student temporary folder\pmrgame\proj.win32\debug.win32\brokenstructure.obj
+c:\student temporary folder\pmrgame\proj.win32\debug.win32\entity.obj
+c:\student temporary folder\pmrgame\proj.win32\debug.win32\gameworld.obj
+c:\student temporary folder\pmrgame\proj.win32\debug.win32\mapgenerator.obj
+c:\student temporary folder\pmrgame\proj.win32\debug.win32\structuremanager.obj
+c:\student temporary folder\pmrgame\proj.win32\debug.win32\creditscreen.obj
+c:\student temporary folder\pmrgame\proj.win32\debug.win32\main.obj
+c:\student temporary folder\pmrgame\proj.win32\debug.win32\vc120.pdb
+c:\student temporary folder\pmrgame\proj.win32\debug.win32\vc120.idb
+c:\student temporary folder\pmrgame\proj.win32\debug.win32\mainmenu.obj
+c:\student temporary folder\pmrgame\proj.win32\debug.win32\player.obj
+c:\student temporary folder\pmrgame\proj.win32\debug.win32\pmrgame.lib
+c:\student temporary folder\pmrgame\proj.win32\debug.win32\pmrgame.exp
+c:\student temporary folder\pmrgame\proj.win32\debug.win32\game.res
+c:\student temporary folder\pmrgame\proj.win32\debug.win32\pmrgame.pdb
+c:\student temporary folder\pmrgame\proj.win32\debug.win32\pmrgame.tlog\cl.command.1.tlog
+c:\student temporary folder\pmrgame\proj.win32\debug.win32\pmrgame.tlog\cl.read.1.tlog
+c:\student temporary folder\pmrgame\proj.win32\debug.win32\pmrgame.tlog\cl.write.1.tlog
+c:\student temporary folder\pmrgame\proj.win32\debug.win32\pmrgame.tlog\link.command.1.tlog
+c:\student temporary folder\pmrgame\proj.win32\debug.win32\pmrgame.tlog\link.read.1.tlog
+c:\student temporary folder\pmrgame\proj.win32\debug.win32\pmrgame.tlog\link.write.1.tlog
+c:\student temporary folder\pmrgame\proj.win32\debug.win32\pmrgame.tlog\pmrgame.write.1u.tlog
+c:\student temporary folder\pmrgame\proj.win32\debug.win32\pmrgame.tlog\rc.command.1.tlog
+c:\student temporary folder\pmrgame\proj.win32\debug.win32\pmrgame.tlog\rc.read.1.tlog
+c:\student temporary folder\pmrgame\proj.win32\debug.win32\pmrgame.tlog\rc.write.1.tlog

@@ -47,8 +47,21 @@ bool GameWorld::init()
     _tileMap = TMXTiledMap::create("greenmap.tmx");
 
     _background = _tileMap->layerNamed("Background");
-    
+
+	TMXObjectGroup *objectGroup = _tileMap->objectGroupNamed("Objects");
+
+	if (objectGroup == NULL){
+		return false;
+	}
+
+	auto spawnPoints = objectGroup->objectNamed("spawnPoint");
+	int x = spawnPoints.at("x").asInt();
+	int y = spawnPoints.at("y").asInt();
+
+	
     this->addChild(_tileMap);
+
+	player = new Player(ccp(x, y));
     
     _meta = _tileMap->layerNamed("Meta");
     _meta->setVisible(false);
@@ -59,17 +72,7 @@ bool GameWorld::init()
     CCLOG("x: %f, y: %f", cp2.x, cp2.y);
     
     
-    TMXObjectGroup *objectGroup = _tileMap->objectGroupNamed("Objects");
     
-    if(objectGroup == NULL){
-        return false;
-    }
-    
-    auto spawnPoints = objectGroup->objectNamed("spawnPoint");
-    int x = spawnPoints.at("x").asInt();
-    int y = spawnPoints.at("y").asInt();
-    
-    player = new Player(ccp(x,y));
     
     this->addChild(player->entityImage);
     this->setViewPointCenter(player->entityImage->getPosition());
@@ -96,11 +99,11 @@ void GameWorld::update(float delta)
         return;
     
     //return if the distance to the location is less than a tile.
-    if (tileCoordForPosition(touchLocation).distance(tileCoordForPosition(player->entityImage->getPosition())) == 0)
+    if (tileCoordForPosition(touchLocation).distance(tileCoordForPosition(player->actualPosition)) == 0)
         return;
     
 	//Player position.
-    CCPoint playerPos = player->entityImage->getPosition();
+    CCPoint playerPos = player->actualPosition;
 	//Difference between the touch location and the players location.
     CCPoint diff = ccpSub(touchLocation, playerPos);
     
@@ -170,46 +173,10 @@ void GameWorld::update(float delta)
             }
             collisionbool = true;
             
-            //checks collsion on tile that players clicks.
         }
-        /*if (checkCollision(_meta->getTileGIDAt(place))) {
-         if (place.distance(player->entityImage->getPosition()) < 32)
-         collisionbool = true;
-         
-         if (place.distance(player->entityImage->getPosition()) < 300) {
-         int buildingSpriteGID = _background->getTileGIDAt(place);
-         if (!structureManager->containsStructure(buildingSpriteGID, place)) {
-         ValueMap tileValues = _tileMap->getPropertiesForGID(buildingSpriteGID).asValueMap();
-         CCString* testme = new CCString();
-         *testme = tileValues.at("type").asString();
-         if (testme->length() > 0) {
-         Sprite *tile = _background->getTileAt(place);
-         
-         cocos2d::Rect originalTileSprite = tile->getTextureRect();
-         float x = originalTileSprite.origin.x + 64; //bottom left point x (we add 64 because the broken equivalent starts 64 pixels to the right)
-         float y = originalTileSprite.origin.y; //bottom left point y
-         float width = originalTileSprite.size.width;
-         float height = originalTileSprite.size.height;
-         
-         cocos2d::Rect brokenEquivalent = *new cocos2d::Rect(x, y, width, height);
-         tile->setTextureRect(brokenEquivalent);
-         structureManager->addStructure(new BrokenStructure(buildingSpriteGID, tile, place));
-         
-         //if (testme->compare("top-left") == 0) {
-         
-         //sets rectangle inside sprite sheet.
-         
-         
-         //}
-         
-         }
-         }
-         }
-         }*/
         
         if (!collisionbool) {
-            auto move_action = MoveTo::create(0.1f, playerPos);
-            player->entityImage->runAction(move_action);
+			player->walkTo(playerPos);
             //player->entityImage->setPosition(playerPos);
         }
 		//this->setViewPointCenter(player->entityImage->getPosition());
