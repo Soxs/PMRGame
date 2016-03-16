@@ -11,6 +11,8 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
+		3160C7A61C998DAD00605F8C /* CreditScreen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3160C7A41C998DAD00605F8C /* CreditScreen.cpp */; };
+		3160C7A71C998DAD00605F8C /* CreditScreen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3160C7A41C998DAD00605F8C /* CreditScreen.cpp */; };
 		3167BFAF1C6FB20A00FEA765 /* BrokenStructure.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167BFAD1C6FB20A00FEA765 /* BrokenStructure.cpp */; };
 		3167BFB31C6FB4A400FEA765 /* StructureManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167BFB11C6FB4A400FEA765 /* StructureManager.cpp */; };
 		31695D751C6E365F0045DEDA /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31695D731C6E365F0045DEDA /* Player.cpp */; };
@@ -81,6 +83,8 @@
 		1D6058910D05DD3D006BFB54 /* PMRGame-mobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PMRGame-mobile.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		3160C7A41C998DAD00605F8C /* CreditScreen.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CreditScreen.cpp; sourceTree = "<group>"; };
+		3160C7A51C998DAD00605F8C /* CreditScreen.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CreditScreen.hpp; sourceTree = "<group>"; };
 		3167BFAD1C6FB20A00FEA765 /* BrokenStructure.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BrokenStructure.cpp; sourceTree = "<group>"; };
 		3167BFAE1C6FB20A00FEA765 /* BrokenStructure.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BrokenStructure.hpp; sourceTree = "<group>"; };
 		3167BFB11C6FB4A400FEA765 /* StructureManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StructureManager.cpp; sourceTree = "<group>"; };
@@ -282,6 +286,8 @@
 		31F792501C86338600592DDB /* menus */ = {
 			isa = PBXGroup;
 			children = (
+				3160C7A41C998DAD00605F8C /* CreditScreen.cpp */,
+				3160C7A51C998DAD00605F8C /* CreditScreen.hpp */,
 				31F792511C8633B300592DDB /* MainMenu.cpp */,
 				31F792521C8633B300592DDB /* MainMenu.hpp */,
 			);
@@ -508,6 +514,7 @@
 				31695D751C6E365F0045DEDA /* Player.cpp in Sources */,
 				46880B8A19C43A87006E1F66 /* GameWorld.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
+				3160C7A61C998DAD00605F8C /* CreditScreen.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				31AB53071C6ABC9C007DDF02 /* Entity.cpp in Sources */,
 				31F7925D1C88A53C00592DDB /* PathFinding.cpp in Sources */,
@@ -525,6 +532,7 @@
 				31F7925E1C88A53C00592DDB /* PathFinding.cpp in Sources */,
 				31AB53081C6ABC9C007DDF02 /* Entity.cpp in Sources */,
 				46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */,
+				3160C7A71C998DAD00605F8C /* CreditScreen.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				46880B8B19C43A87006E1F66 /* GameWorld.cpp in Sources */,
 				31F792541C8633B300592DDB /* MainMenu.cpp in Sources */,
