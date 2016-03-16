@@ -10,6 +10,8 @@ USING_NS_CC;
 using namespace cocostudio::timeline;
 using namespace std;
 
+int GameWorld::score = 0;
+
 Scene* GameWorld::createScene()
 {
     // 'scene' is an autorelease object
@@ -39,6 +41,7 @@ bool GameWorld::init()
     
     structureManager = new StructureManager();
     touchLocation = ccp(-1, -1);
+    score = 0;
     
     auto rootNode = CSLoader::createNode("MainScene.csb");
 
@@ -76,6 +79,17 @@ bool GameWorld::init()
     
     this->addChild(player->entityImage);
     this->setViewPointCenter(player->entityImage->getPosition());
+    
+    
+    scoreLabel = Label::createWithTTF("Score:", "kenney-rocket.ttf", 24);
+    scoreLabel->setPosition(153, 912);
+    this->addChild(scoreLabel);
+    
+    //scoreLabel = Label::createWithTTF(std::to_string(score), "ROCKMAK.TFF", 32);
+    //scoreLabel->setPosition(193, 872);
+    //this->addChild(scoreLabel, 0);
+    
+    
     keyboardListener();
     this->scheduleUpdate();
     this->schedule(schedule_selector(GameWorld::cameraUpdater), 1.0f);
@@ -87,8 +101,17 @@ void GameWorld::cameraUpdater(float delta)
     this->setViewPointCenter(player->entityImage->getPosition());
 }
 
-void GameWorld::update(float delta)
-{
+void GameWorld::update(float delta) {
+
+    
+    CCPoint pos = ccp(100,100);
+    Vec2 postohud = CCDirector::sharedDirector()->convertToGL(pos);
+    postohud = this->convertToNodeSpace(postohud);
+    
+    
+    
+    
+    scoreLabel->setPosition(postohud);
 	//return if the player is already in a moving animation.
 	if (player->entityImage->getNumberOfRunningActions() > 0)
 		return;

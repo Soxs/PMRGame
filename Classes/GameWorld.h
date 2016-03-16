@@ -27,6 +27,8 @@ public:
     // implement the "static create()" method manually
     CREATE_FUNC(GameWorld);
     
+    static int score;
+    
     cocos2d::CCPoint centerPoint;
     cocos2d::CCPoint touchLocation;
     cocos2d::TMXTiledMap* _tileMap;
@@ -40,6 +42,9 @@ private:
     Player* player;
     void setViewPointCenter(cocos2d::CCPoint position);
     bool checkCollision(int tilegid);
+    
+    
+    cocos2d::Label* scoreLabel;
     
 };
 
