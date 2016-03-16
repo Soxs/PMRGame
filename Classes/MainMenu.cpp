@@ -45,7 +45,7 @@ bool MainMenu::init()
 	{
 		if (pressed == ui::Widget::TouchEventType::ENDED)
 		{
-			CCDirector::getInstance()->end();
+			Director::getInstance()->end();
 		}
 	});
 
