@@ -81,13 +81,15 @@ bool GameWorld::init()
     this->setViewPointCenter(player->entityImage->getPosition());
     
     
-    scoreLabel = Label::createWithTTF("Score:", "kenney-rocket.ttf", 24);
-    scoreLabel->setPosition(153, 912);
-    this->addChild(scoreLabel);
+    scoreTextLabel = Label::createWithTTF("Score:", "kenney-rocket.ttf", 24);
+    scoreTextLabel->enableOutline(Color4B(0,0,0,255),3);
+    scoreTextLabel->setPosition(100, 100);
+    this->addChild(scoreTextLabel);
     
-    //scoreLabel = Label::createWithTTF(std::to_string(score), "ROCKMAK.TFF", 32);
-    //scoreLabel->setPosition(193, 872);
-    //this->addChild(scoreLabel, 0);
+    scoreLabel = Label::createWithTTF(std::to_string(score), "kenney-rocket.ttf", 32);
+    scoreLabel->enableOutline(Color4B(0,0,0,255),4);
+    scoreLabel->setPosition(110, 130);
+    this->addChild(scoreLabel, 0);
     
     
     keyboardListener();
@@ -107,11 +109,14 @@ void GameWorld::update(float delta) {
     CCPoint pos = ccp(100,100);
     Vec2 postohud = CCDirector::sharedDirector()->convertToGL(pos);
     postohud = this->convertToNodeSpace(postohud);
+    scoreTextLabel->setPosition(postohud);
     
-    
-    
-    
+    pos = ccp(110,130);
+    postohud = CCDirector::sharedDirector()->convertToGL(pos);
+    postohud = this->convertToNodeSpace(postohud);
+    scoreLabel->setString(std::to_string(score));
     scoreLabel->setPosition(postohud);
+    
 	//return if the player is already in a moving animation.
 	if (player->entityImage->getNumberOfRunningActions() > 0)
 		return;

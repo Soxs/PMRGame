@@ -44,6 +44,7 @@ private:
     bool checkCollision(int tilegid);
     
     
+    cocos2d::Label* scoreTextLabel;
     cocos2d::Label* scoreLabel;
     
 };
