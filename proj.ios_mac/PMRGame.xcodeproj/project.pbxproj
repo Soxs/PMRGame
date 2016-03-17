@@ -16,6 +16,8 @@
 		3167BFAF1C6FB20A00FEA765 /* BrokenStructure.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167BFAD1C6FB20A00FEA765 /* BrokenStructure.cpp */; };
 		3167BFB31C6FB4A400FEA765 /* StructureManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3167BFB11C6FB4A400FEA765 /* StructureManager.cpp */; };
 		31695D751C6E365F0045DEDA /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31695D731C6E365F0045DEDA /* Player.cpp */; };
+		31A25D901C9B2FD80005D9D0 /* ScoreManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31A25D8E1C9B2FD80005D9D0 /* ScoreManager.cpp */; };
+		31A25D911C9B2FD80005D9D0 /* ScoreManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31A25D8E1C9B2FD80005D9D0 /* ScoreManager.cpp */; };
 		31AB53071C6ABC9C007DDF02 /* Entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31AB53051C6ABC9C007DDF02 /* Entity.cpp */; };
 		31AB53081C6ABC9C007DDF02 /* Entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31AB53051C6ABC9C007DDF02 /* Entity.cpp */; };
 		31F792531C8633B300592DDB /* MainMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31F792511C8633B300592DDB /* MainMenu.cpp */; };
@@ -91,6 +93,8 @@
 		3167BFB21C6FB4A400FEA765 /* StructureManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = StructureManager.hpp; sourceTree = "<group>"; };
 		31695D731C6E365F0045DEDA /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
 		31695D741C6E365F0045DEDA /* Player.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Player.hpp; sourceTree = "<group>"; };
+		31A25D8E1C9B2FD80005D9D0 /* ScoreManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScoreManager.cpp; sourceTree = "<group>"; };
+		31A25D8F1C9B2FD80005D9D0 /* ScoreManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ScoreManager.hpp; sourceTree = "<group>"; };
 		31AB53051C6ABC9C007DDF02 /* Entity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Entity.cpp; sourceTree = "<group>"; };
 		31AB53061C6ABC9C007DDF02 /* Entity.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Entity.hpp; sourceTree = "<group>"; };
 		31F792511C8633B300592DDB /* MainMenu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainMenu.cpp; sourceTree = "<group>"; };
@@ -271,6 +275,15 @@
 			name = structures;
 			sourceTree = "<group>";
 		};
+		31A25D8D1C9B2FB90005D9D0 /* score */ = {
+			isa = PBXGroup;
+			children = (
+				31A25D8E1C9B2FD80005D9D0 /* ScoreManager.cpp */,
+				31A25D8F1C9B2FD80005D9D0 /* ScoreManager.hpp */,
+			);
+			name = score;
+			sourceTree = "<group>";
+		};
 		31AB53041C6ABC66007DDF02 /* entities */ = {
 			isa = PBXGroup;
 			children = (
@@ -324,6 +337,7 @@
 		46880B8319C43A87006E1F66 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				31A25D8D1C9B2FB90005D9D0 /* score */,
 				31F7925A1C88A52000592DDB /* paths */,
 				31F792551C872CF400592DDB /* generator */,
 				31F792501C86338600592DDB /* menus */,
@@ -520,6 +534,7 @@
 				31F7925D1C88A53C00592DDB /* PathFinding.cpp in Sources */,
 				3167BFAF1C6FB20A00FEA765 /* BrokenStructure.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
+				31A25D901C9B2FD80005D9D0 /* ScoreManager.cpp in Sources */,
 				31F792531C8633B300592DDB /* MainMenu.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -533,6 +548,7 @@
 				31AB53081C6ABC9C007DDF02 /* Entity.cpp in Sources */,
 				46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				3160C7A71C998DAD00605F8C /* CreditScreen.cpp in Sources */,
+				31A25D911C9B2FD80005D9D0 /* ScoreManager.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				46880B8B19C43A87006E1F66 /* GameWorld.cpp in Sources */,
 				31F792541C8633B300592DDB /* MainMenu.cpp in Sources */,

@@ -10,8 +10,6 @@ USING_NS_CC;
 using namespace cocostudio::timeline;
 using namespace std;
 
-int GameWorld::score = 0;
-
 Scene* GameWorld::createScene()
 {
     // 'scene' is an autorelease object
@@ -38,10 +36,9 @@ bool GameWorld::init()
     }
     
 
-    
+    scoreManager = new ScoreManager();
     structureManager = new StructureManager();
     touchLocation = ccp(-1, -1);
-    score = 0;
     
     auto rootNode = CSLoader::createNode("MainScene.csb");
 
@@ -86,7 +83,7 @@ bool GameWorld::init()
     scoreTextLabel->setPosition(100, 100);
     this->addChild(scoreTextLabel);
     
-    scoreLabel = Label::createWithTTF(std::to_string(score), "kenney-rocket.ttf", 32);
+    scoreLabel = Label::createWithTTF(std::to_string(scoreManager->getScore()), "kenney-rocket.ttf", 32);
     scoreLabel->enableOutline(Color4B(0,0,0,255),4);
     scoreLabel->setPosition(110, 130);
     this->addChild(scoreLabel, 0);
@@ -114,7 +111,7 @@ void GameWorld::update(float delta) {
     pos = ccp(110,130);
     postohud = CCDirector::sharedDirector()->convertToGL(pos);
     postohud = this->convertToNodeSpace(postohud);
-    scoreLabel->setString(std::to_string(score));
+    scoreLabel->setString(std::to_string(scoreManager->getScore()));
     scoreLabel->setPosition(postohud);
     
 	//return if the player is already in a moving animation.
@@ -197,6 +194,7 @@ void GameWorld::update(float delta) {
                     cocos2d::Rect brokenEquivalent = *new cocos2d::Rect(x, y, width, height); //Creates the new rectangle where the broken equivelant of the same building is.
                     tile->setTextureRect(brokenEquivalent);//Sets the new rectangle to the tile map sheet.
                     structureManager->addStructure(new BrokenStructure(buildingSpriteGID, tile, nextPlace)); //Adds the building attacked to the structure manaager, so we remember which buildings we've already destroyed.
+                    scoreManager->addToScore(50); //add to score example...
                 }
             }
             collisionbool = true;

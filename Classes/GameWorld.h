@@ -4,6 +4,7 @@
 #include "cocos2d.h"
 #include "Player.hpp"
 #include "StructureManager.hpp"
+#include "ScoreManager.hpp"
 
 class GameWorld : public cocos2d::Layer
 {
@@ -27,8 +28,6 @@ public:
     // implement the "static create()" method manually
     CREATE_FUNC(GameWorld);
     
-    static int score;
-    
     cocos2d::CCPoint centerPoint;
     cocos2d::CCPoint touchLocation;
     cocos2d::TMXTiledMap* _tileMap;
@@ -39,6 +38,8 @@ public:
     StructureManager* structureManager;
     
 private:
+    
+    ScoreManager* scoreManager;
     Player* player;
     void setViewPointCenter(cocos2d::CCPoint position);
     bool checkCollision(int tilegid);
