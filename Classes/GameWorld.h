@@ -4,6 +4,7 @@
 #include "cocos2d.h"
 #include "Player.hpp"
 #include "StructureManager.hpp"
+#include "ScoreManager.hpp"
 
 class GameWorld : public cocos2d::Layer
 {
@@ -37,9 +38,15 @@ public:
     StructureManager* structureManager;
     
 private:
+    
+    ScoreManager* scoreManager;
     Player* player;
     void setViewPointCenter(cocos2d::CCPoint position);
     bool checkCollision(int tilegid);
+    
+    
+    cocos2d::Label* scoreTextLabel;
+    cocos2d::Label* scoreLabel;
     
 };
 

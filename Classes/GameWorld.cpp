@@ -36,7 +36,7 @@ bool GameWorld::init()
     }
     
 
-    
+    scoreManager = new ScoreManager();
     structureManager = new StructureManager();
     touchLocation = ccp(-1, -1);
     
@@ -76,6 +76,19 @@ bool GameWorld::init()
     
     this->addChild(player->entityImage);
     this->setViewPointCenter(player->entityImage->getPosition());
+    
+    
+    scoreTextLabel = Label::createWithTTF("Score:", "kenney-rocket.ttf", 24);
+    scoreTextLabel->enableOutline(Color4B(0,0,0,255),3);
+    scoreTextLabel->setPosition(100, 100);
+    this->addChild(scoreTextLabel);
+    
+    scoreLabel = Label::createWithTTF(std::to_string(scoreManager->getScore()), "kenney-rocket.ttf", 32);
+    scoreLabel->enableOutline(Color4B(0,0,0,255),4);
+    scoreLabel->setPosition(110, 130);
+    this->addChild(scoreLabel, 0);
+    
+    
     keyboardListener();
     this->scheduleUpdate();
     this->schedule(schedule_selector(GameWorld::cameraUpdater), 1.0f);
@@ -87,8 +100,20 @@ void GameWorld::cameraUpdater(float delta)
     this->setViewPointCenter(player->entityImage->getPosition());
 }
 
-void GameWorld::update(float delta)
-{
+void GameWorld::update(float delta) {
+
+    
+    CCPoint pos = ccp(100,100);
+    Vec2 postohud = CCDirector::sharedDirector()->convertToGL(pos);
+    postohud = this->convertToNodeSpace(postohud);
+    scoreTextLabel->setPosition(postohud);
+    
+    pos = ccp(110,130);
+    postohud = CCDirector::sharedDirector()->convertToGL(pos);
+    postohud = this->convertToNodeSpace(postohud);
+    scoreLabel->setString(std::to_string(scoreManager->getScore()));
+    scoreLabel->setPosition(postohud);
+    
 	//return if the player is already in a moving animation.
 	if (player->entityImage->getNumberOfRunningActions() > 0)
 		return;
@@ -169,6 +194,7 @@ void GameWorld::update(float delta)
                     cocos2d::Rect brokenEquivalent = *new cocos2d::Rect(x, y, width, height); //Creates the new rectangle where the broken equivelant of the same building is.
                     tile->setTextureRect(brokenEquivalent);//Sets the new rectangle to the tile map sheet.
                     structureManager->addStructure(new BrokenStructure(buildingSpriteGID, tile, nextPlace)); //Adds the building attacked to the structure manaager, so we remember which buildings we've already destroyed.
+                    scoreManager->addToScore(50); //add to score example...
                 }
             }
             collisionbool = true;
