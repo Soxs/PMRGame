@@ -36,6 +36,7 @@ bool GameWorld::init()
     }
     
 
+    
     scoreManager = new ScoreManager();
     structureManager = new StructureManager();
     touchLocation = ccp(-1, -1);
@@ -45,6 +46,8 @@ bool GameWorld::init()
     addChild(rootNode);
     
     _tileMap = TMXTiledMap::create("greenmap.tmx");
+    
+    pathFinding = new PathFinding(45, 45);
 
     _background = _tileMap->layerNamed("Background");
 
@@ -67,7 +70,7 @@ bool GameWorld::init()
     _meta->setVisible(false);
     
     
-    CCPoint cp1 = tileCoordForPosition(ccp(64, 64));
+    CCPoint cp1 = tileCoordForPosition(ccp(798, 444));
     CCPoint cp2 = tileCoordToPosition(cp1);
     CCLOG("x: %f, y: %f", cp2.x, cp2.y);
     
@@ -123,14 +126,25 @@ void GameWorld::update(float delta) {
         touchLocation.y == -1)
         return;
     
+    if (chosenPath.size() == 0)
+        return;
+    
     //return if the distance to the location is less than a tile.
     if (tileCoordForPosition(touchLocation).distance(tileCoordForPosition(player->actualPosition)) == 0)
         return;
     
+    ASWaypoint* nextSpot = chosenPath[0];
+    Vec2 realSpot = tileCoordToPosition(nextSpot->coord);
+    
 	//Player position.
     CCPoint playerPos = player->actualPosition;
+    CCLOG("Player Coord [x: %f, y: %f]", tileCoordForPosition(player->actualPosition).x,tileCoordForPosition(player->actualPosition).y);
+    CCLOG("Player Position [x: %f, y: %f]", player->actualPosition.x, player->actualPosition.y);
+    
+    CCLOG("Next Coord [x: %f, y: %f]", nextSpot->coord.x, nextSpot->coord.y);
+    CCLOG("Next Position [x: %f, y: %f]", realSpot.x, realSpot.y);
 	//Difference between the touch location and the players location.
-    CCPoint diff = ccpSub(touchLocation, playerPos);
+    CCPoint diff = ccpSub(realSpot, playerPos);
     
 	//Calculate if we're going left, right, down, or up, and get the new position we'll be moving to.
     if ( abs(diff.x) > abs(diff.y) ) {
@@ -156,7 +170,7 @@ void GameWorld::update(float delta) {
         playerPos.x >= 0 )
     {
 		//the tile where the player touches.
-        CCPoint tileCoord = this->tileCoordForPosition(touchLocation); 
+        CCPoint tileCoord = nextSpot->coord;
 
 		//the tile immediately next to the player.
         CCPoint nextTileCoord = this->tileCoordForPosition(playerPos); 
@@ -195,10 +209,16 @@ void GameWorld::update(float delta) {
                     tile->setTextureRect(brokenEquivalent);//Sets the new rectangle to the tile map sheet.
                     structureManager->addStructure(new BrokenStructure(buildingSpriteGID, tile, nextPlace)); //Adds the building attacked to the structure manaager, so we remember which buildings we've already destroyed.
                     scoreManager->addToScore(50); //add to score example...
+                    vector<ASWaypoint*> newPath;
+                    for (int i = 1; i < chosenPath.size(); i++) {
+                        newPath.push_back(chosenPath[i]);
+                    }
+                    chosenPath.clear();
+                    chosenPath = newPath;
                 }
+                //collisionbool = true; // walks over buildings
             }
-            collisionbool = true;
-            
+            collisionbool = true; // cant walk over buildings
         }
         
         if (!collisionbool) {
@@ -240,8 +260,10 @@ bool GameWorld::onTouchBegan(Touch* touch, Event* event)
 {
     CCPoint touchl = touch->getLocationInView();
     touchl = CCDirector::sharedDirector()->convertToGL(touchl);
+    
     touchLocation = this->convertToNodeSpace(touchl);
-
+    vector<ASWaypoint*> path = pathFinding->searchPath(tileCoordForPosition(player->actualPosition), tileCoordForPosition(touchLocation));
+    chosenPath = path;
     return true;
 }
 

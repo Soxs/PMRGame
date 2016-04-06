@@ -5,6 +5,7 @@
 #include "Player.hpp"
 #include "StructureManager.hpp"
 #include "ScoreManager.hpp"
+#include "PathFinding.hpp"
 
 class GameWorld : public cocos2d::Layer
 {
@@ -40,10 +41,12 @@ public:
 private:
     
     ScoreManager* scoreManager;
+    PathFinding* pathFinding;
     Player* player;
     void setViewPointCenter(cocos2d::CCPoint position);
     bool checkCollision(int tilegid);
     
+    vector<ASWaypoint*> chosenPath;
     
     cocos2d::Label* scoreTextLabel;
     cocos2d::Label* scoreLabel;
