@@ -104,7 +104,8 @@ vector<ASWaypoint*> PathFinding::searchPath(Vec2 start, Vec2 end) {
                     isClosed = true;
                 //TODO: add if check for building collision
                 //check collision on tile next to character
-                if (GameWorld::instance->checkCollision(GameWorld::instance->_meta->getTileGIDAt(neighbor->coord))) {
+                if (GameWorld::instance->checkCollision(GameWorld::instance->_meta->getTileGIDAt(neighbor->coord)) &&
+                    neighbor->coord != end) {
                     isClosed = true;
                 }
                 
@@ -143,7 +144,6 @@ vector<ASWaypoint*> PathFinding::searchPath(Vec2 start, Vec2 end) {
                 neighbor->hasParent = true;
                 neighbor->g = gScore;
                 neighbor->f = neighbor->g + neighbor->h;
-                emptyPath.push_back(neighbor);
             }
             
             if (!isOpen){
@@ -198,6 +198,7 @@ vector<ASWaypoint*> PathFinding::getConnectedASWaypoints(ASWaypoint* aswp) {
     if (y+1 >= 0 && y+1 < 45)
         aswps.push_back( getASWaypointWithCoord( Vec2(x, y+1)) );
     
+    
     // Southwest
     if ((x-1 >= 0 && x-1 < 45) &&
         (y-1 >= 0 && y-1 < 45))
@@ -217,6 +218,7 @@ vector<ASWaypoint*> PathFinding::getConnectedASWaypoints(ASWaypoint* aswp) {
     if ((x+1 >= 0 && x+1 < 45) &&
         (y+1 >= 0 && y+1 < 45))
         aswps.push_back( getASWaypointWithCoord( Vec2(x+1, y+1)) );
+    
     
     return aswps;
 }

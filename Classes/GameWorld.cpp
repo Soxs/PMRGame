@@ -128,45 +128,60 @@ void GameWorld::update(float delta) {
         touchLocation.y == -1)
         return;
     
-    if (chosenPath.size() == 0)
+    if (chosenPath.size() == 0 &&
+        tileCoordForPosition(player->actualPosition).distance(tileCoordForPosition(touchLocation)) == 0)
         return;
     
     //return if the distance to the location is less than a tile.
     if (tileCoordForPosition(touchLocation).distance(tileCoordForPosition(player->actualPosition)) == 0)
         return;
     
-    ASWaypoint* nextSpot = chosenPath[0];
-    Vec2 difference = tileCoordForPosition(player->actualPosition) - nextSpot->coord;
+    Vec2 difference = tileCoordForPosition(player->actualPosition) - tileCoordForPosition(touchLocation);
+    
+    ASWaypoint* nextSpot;
+    if (chosenPath.size() > 0) {
+        nextSpot = chosenPath[0];
+        difference = tileCoordForPosition(player->actualPosition) - nextSpot->coord;
+    }
     
     Vec2 realSpot = Vec2(player->actualPosition.x - (difference.x * _tileMap->getTileSize().width),
                          player->actualPosition.y + (difference.y * _tileMap->getTileSize().height));
     
 	//Player position.
     CCPoint playerPos = player->actualPosition;
-    CCLOG("Player Coord [x: %f, y: %f]", tileCoordForPosition(player->actualPosition).x,tileCoordForPosition(player->actualPosition).y);
-    CCLOG("Next Coord [x: %f, y: %f]", nextSpot->coord.x, nextSpot->coord.y);
-    
-    CCLOG("Player Position [x: %f, y: %f]", player->actualPosition.x, player->actualPosition.y);
-    CCLOG("Next Position [x: %f, y: %f]", realSpot.x, realSpot.y);
 	//Difference between the touch location and the players location.
     CCPoint diff = ccpSub(realSpot, playerPos);
     
 	//Calculate if we're going left, right, down, or up, and get the new position we'll be moving to.
     playerPos = realSpot;
-    /*if ( abs(diff.x) > abs(diff.y) ) {
+    Vec2 nextPos = player->actualPosition;
+    if ( abs(diff.x) > abs(diff.y) ) {
+        
+        /*
+         TODO: add diagonal check for the collision.
+         */
+        
+        
         if (diff.x > 0) {
-            playerPos.x += _tileMap->getTileSize().width;
+            
+            if (diff.y > 0) {
+                
+            } else {
+                nextPos.x += _tileMap->getTileSize().width;
+            }
         } else {
-            playerPos.x -= _tileMap->getTileSize().width;
+            //west
+            nextPos.x -= _tileMap->getTileSize().width;
         }
     } else {
         if (diff.y > 0) {
-            playerPos.y += _tileMap->getTileSize().height;
+            //south
+            nextPos.y += _tileMap->getTileSize().height;
         } else {
-            playerPos.y -= _tileMap->getTileSize().height;
-            
+            //north
+            nextPos.y -= _tileMap->getTileSize().height;
         }
-    }*/
+    }
     
     
     // safety check on the bounds of the map
@@ -176,10 +191,14 @@ void GameWorld::update(float delta) {
         playerPos.x >= 0 )
     {
 		//the tile where the player touches.
-        CCPoint tileCoord = nextSpot->coord;
+        CCPoint tileCoord;
+        if (chosenPath.size() > 0)
+             tileCoord = nextSpot->coord;
+        else
+            tileCoord = tileCoordForPosition(touchLocation);
 
 		//the tile immediately next to the player.
-        CCPoint nextTileCoord = this->tileCoordForPosition(playerPos); 
+        CCPoint nextTileCoord = this->tileCoordForPosition(realSpot);
         
         Vec2 place = Vec2(tileCoord.x, tileCoord.y);
         Vec2 nextPlace = Vec2(nextTileCoord.x, nextTileCoord.y);
