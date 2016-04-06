@@ -10,6 +10,7 @@
 #define PathFinding_hpp
 
 #include <stdio.h>
+
 using namespace std;
 using namespace cocos2d;
 
@@ -42,7 +43,7 @@ struct ASWaypoint {
 
 class PathFinding {
 public:
-    PathFinding(int wi, int he);
+    PathFinding();
     vector<ASWaypoint*> searchPath(Vec2 a, Vec2 b);
     
 private:

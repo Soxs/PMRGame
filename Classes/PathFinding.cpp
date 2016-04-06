@@ -7,10 +7,11 @@
 //
 
 #include "PathFinding.hpp"
+#include "GameWorld.h"
 
-PathFinding::PathFinding(int wi, int he) {
-    w=wi;
-    h=he;
+PathFinding::PathFinding() {
+    w=GameWorld::instance->_tileMap->getMapSize().width;
+    h=GameWorld::instance->_tileMap->getMapSize().height;
 }
 
 void PathFinding::init() {
@@ -70,9 +71,6 @@ vector<ASWaypoint*> PathFinding::searchPath(Vec2 start, Vec2 end) {
             reverse(ret.begin(), ret.end());
             emptyPath = ret;
             CCLOG("===== A* =====");
-            
-            CCLOG("== S %f, %f ==", start.x, start.y);
-            CCLOG("== E %f, %f ==", end.x, end.y);
             for (int reti = 0; reti < ret.size(); reti++) {
                 ASWaypoint* aw = ret[reti];
                 CCLOG("x: %f, y: %f", aw->coord.x, aw->coord.y);
@@ -104,6 +102,12 @@ vector<ASWaypoint*> PathFinding::searchPath(Vec2 start, Vec2 end) {
                 
                 if (neighbor->coord == closed_list[index]->coord)
                     isClosed = true;
+                //TODO: add if check for building collision
+                //check collision on tile next to character
+                if (GameWorld::instance->checkCollision(GameWorld::instance->_meta->getTileGIDAt(neighbor->coord))) {
+                    isClosed = true;
+                }
+                
             }
             if (isClosed){
                 continue;
@@ -195,16 +199,24 @@ vector<ASWaypoint*> PathFinding::getConnectedASWaypoints(ASWaypoint* aswp) {
         aswps.push_back( getASWaypointWithCoord( Vec2(x, y+1)) );
     
     // Southwest
-    //aswps.push_back( getASWaypointWithCoord( Vec2(x-1, y-1)) );
+    if ((x-1 >= 0 && x-1 < 45) &&
+        (y-1 >= 0 && y-1 < 45))
+        aswps.push_back( getASWaypointWithCoord( Vec2(x-1, y-1)) );
         
     // Southeast
-    //aswps.push_back( getASWaypointWithCoord( Vec2(x+1, y-1)) );
+    if ((x+1 >= 0 && x+1 < 45) &&
+        (y-1 >= 0 && y-1 < 45))
+        aswps.push_back( getASWaypointWithCoord( Vec2(x+1, y-1)) );
         
     // Northwest
-    //aswps.push_back( getASWaypointWithCoord( Vec2(x-1, y+1)) );
+    if ((x-1 >= 0 && x-1 < 45) &&
+        (y+1 >= 0 && y+1 < 45))
+        aswps.push_back( getASWaypointWithCoord( Vec2(x-1, y+1)) );
         
     // Northeast
-    //aswps.push_back( getASWaypointWithCoord( Vec2(x+1, y+1)) );
+    if ((x+1 >= 0 && x+1 < 45) &&
+        (y+1 >= 0 && y+1 < 45))
+        aswps.push_back( getASWaypointWithCoord( Vec2(x+1, y+1)) );
     
     return aswps;
 }
