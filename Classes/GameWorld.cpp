@@ -10,6 +10,7 @@ USING_NS_CC;
 using namespace cocostudio::timeline;
 using namespace std;
 
+GameWorld* GameWorld::instance = nullptr;
 Scene* GameWorld::createScene()
 {
     // 'scene' is an autorelease object
@@ -35,7 +36,9 @@ bool GameWorld::init()
         return false;
     }
     
-
+    instance = this;
+    
+    
     scoreManager = new ScoreManager();
     structureManager = new StructureManager();
     touchLocation = ccp(-1, -1);
@@ -45,6 +48,8 @@ bool GameWorld::init()
     addChild(rootNode);
     
     _tileMap = TMXTiledMap::create("greenmap.tmx");
+    
+    pathFinding = new PathFinding();
 
     _background = _tileMap->layerNamed("Background");
 
@@ -67,7 +72,7 @@ bool GameWorld::init()
     _meta->setVisible(false);
     
     
-    CCPoint cp1 = tileCoordForPosition(ccp(64, 64));
+    CCPoint cp1 = tileCoordForPosition(ccp(798, 444));
     CCPoint cp2 = tileCoordToPosition(cp1);
     CCLOG("x: %f, y: %f", cp2.x, cp2.y);
     
@@ -123,28 +128,58 @@ void GameWorld::update(float delta) {
         touchLocation.y == -1)
         return;
     
+    if (chosenPath.size() == 0 &&
+        tileCoordForPosition(player->actualPosition).distance(tileCoordForPosition(touchLocation)) == 0)
+        return;
+    
     //return if the distance to the location is less than a tile.
     if (tileCoordForPosition(touchLocation).distance(tileCoordForPosition(player->actualPosition)) == 0)
         return;
     
+    Vec2 difference = tileCoordForPosition(player->actualPosition) - tileCoordForPosition(touchLocation);
+    
+    ASWaypoint* nextSpot;
+    if (chosenPath.size() > 0) {
+        nextSpot = chosenPath[0];
+        difference = tileCoordForPosition(player->actualPosition) - nextSpot->coord;
+    }
+    
+    Vec2 realSpot = Vec2(player->actualPosition.x - (difference.x * _tileMap->getTileSize().width),
+                         player->actualPosition.y + (difference.y * _tileMap->getTileSize().height));
+    
 	//Player position.
     CCPoint playerPos = player->actualPosition;
 	//Difference between the touch location and the players location.
-    CCPoint diff = ccpSub(touchLocation, playerPos);
+    CCPoint diff = ccpSub(realSpot, playerPos);
     
 	//Calculate if we're going left, right, down, or up, and get the new position we'll be moving to.
+    playerPos = realSpot;
+    Vec2 nextPos = player->actualPosition;
     if ( abs(diff.x) > abs(diff.y) ) {
+        
+        /*
+         TODO: add diagonal check for the collision.
+         */
+        
+        
         if (diff.x > 0) {
-            playerPos.x += _tileMap->getTileSize().width;
+            
+            if (diff.y > 0) {
+                
+            } else {
+                nextPos.x += _tileMap->getTileSize().width;
+            }
         } else {
-            playerPos.x -= _tileMap->getTileSize().width;
+            //west
+            nextPos.x -= _tileMap->getTileSize().width;
         }
     } else {
         if (diff.y > 0) {
-            playerPos.y += _tileMap->getTileSize().height;
+            //south
+            nextPos.y += _tileMap->getTileSize().height;
         } else {
-            playerPos.y -= _tileMap->getTileSize().height;
-            
+            //north
+            nextPos.y -= _tileMap->getTileSize().height;
         }
     }
     
@@ -156,10 +191,14 @@ void GameWorld::update(float delta) {
         playerPos.x >= 0 )
     {
 		//the tile where the player touches.
-        CCPoint tileCoord = this->tileCoordForPosition(touchLocation); 
+        CCPoint tileCoord;
+        if (chosenPath.size() > 0)
+             tileCoord = nextSpot->coord;
+        else
+            tileCoord = tileCoordForPosition(touchLocation);
 
 		//the tile immediately next to the player.
-        CCPoint nextTileCoord = this->tileCoordForPosition(playerPos); 
+        CCPoint nextTileCoord = this->tileCoordForPosition(realSpot);
         
         Vec2 place = Vec2(tileCoord.x, tileCoord.y);
         Vec2 nextPlace = Vec2(nextTileCoord.x, nextTileCoord.y);
@@ -194,11 +233,22 @@ void GameWorld::update(float delta) {
                     cocos2d::Rect brokenEquivalent = *new cocos2d::Rect(x, y, width, height); //Creates the new rectangle where the broken equivelant of the same building is.
                     tile->setTextureRect(brokenEquivalent);//Sets the new rectangle to the tile map sheet.
                     structureManager->addStructure(new BrokenStructure(buildingSpriteGID, tile, nextPlace)); //Adds the building attacked to the structure manaager, so we remember which buildings we've already destroyed.
+                    
                     scoreManager->addToScore(50); //add to score example...
+                    
                 }
+                //collisionbool = true; // walks over buildings
             }
-            collisionbool = true;
-            
+            collisionbool = true; // cant walk over buildings
+        }
+        if (chosenPath.size() == 1) {
+            chosenPath.clear();
+        } else {
+            vector<ASWaypoint*> newPath;
+            for (int i = 1; i < chosenPath.size(); i++) {
+                newPath.push_back(chosenPath[i]);
+            }
+            chosenPath = newPath;
         }
         
         if (!collisionbool) {
@@ -240,8 +290,10 @@ bool GameWorld::onTouchBegan(Touch* touch, Event* event)
 {
     CCPoint touchl = touch->getLocationInView();
     touchl = CCDirector::sharedDirector()->convertToGL(touchl);
+    
     touchLocation = this->convertToNodeSpace(touchl);
-
+    vector<ASWaypoint*> path = pathFinding->searchPath(tileCoordForPosition(player->actualPosition), tileCoordForPosition(touchLocation));
+    chosenPath = path;
     return true;
 }
 
@@ -277,14 +329,18 @@ void GameWorld::keyboardListener()
 CCPoint GameWorld::tileCoordForPosition(CCPoint position)
 {
     int x = position.x / _tileMap->getTileSize().width;
-    int y = ((_tileMap->getMapSize().height * _tileMap->getTileSize().height) - position.y) / _tileMap->getTileSize().height;
+    int canvasheight = _tileMap->getMapSize().height * _tileMap->getTileSize().height;
+    int y = (canvasheight - position.y) / _tileMap->getTileSize().height;
     return ccp(x, y);
 }
 
 CCPoint GameWorld::tileCoordToPosition(CCPoint tileCoord)
 {
     int x = tileCoord.x * _tileMap->getTileSize().width;
-    int y = ((tileCoord.y * _tileMap->getTileSize().height)-(_tileMap->getMapSize().height * _tileMap->getTileSize().height)) *-1;
+    int canvasheight = _tileMap->getMapSize().height * _tileMap->getTileSize().height;
+    int difference = tileCoord.y * _tileMap->getTileSize().height;
+    int y = canvasheight - difference;
+    //int y = ((tileCoord.y * _tileMap->getTileSize().height)-(_tileMap->getMapSize().height * _tileMap->getTileSize().height)) *-1;
     
-    return ccp(x, y);
+    return this->convertToNodeSpace(CCDirector::sharedDirector()->convertToGL(ccp(x, y))) ;
 }

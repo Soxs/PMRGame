@@ -5,12 +5,14 @@
 #include "Player.hpp"
 #include "StructureManager.hpp"
 #include "ScoreManager.hpp"
+#include "PathFinding.hpp"
 
 class GameWorld : public cocos2d::Layer
 {
 public:
     // there's no 'id' in cpp, so we recommend returning the class instance pointer
     static cocos2d::Scene* createScene();
+    static GameWorld* instance;
     
 
     // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
@@ -35,15 +37,18 @@ public:
     cocos2d::TMXLayer *_meta;
     void resetWorld();
     void cameraUpdater(float delta);
+    bool checkCollision(int tilegid);
     StructureManager* structureManager;
     
 private:
     
     ScoreManager* scoreManager;
+    PathFinding* pathFinding;
     Player* player;
     void setViewPointCenter(cocos2d::CCPoint position);
-    bool checkCollision(int tilegid);
     
+    
+    vector<ASWaypoint*> chosenPath;
     
     cocos2d::Label* scoreTextLabel;
     cocos2d::Label* scoreLabel;
