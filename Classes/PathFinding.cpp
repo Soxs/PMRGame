@@ -20,7 +20,7 @@ void PathFinding::init() {
     //for (int y = 0; y < h; y++) {
         for (int x = 0; x < w; x++) {
             ASWaypoint* asway = new ASWaypoint();
-            asway->coord = Vec2(x, y);
+            asway->coord = cocos2d::Vec2(x, y);
             asway->f = 0;
             asway->g = 0;
             asway->h = 0;
@@ -29,7 +29,7 @@ void PathFinding::init() {
     }
 }
 
-vector<ASWaypoint*> PathFinding::searchPath(Vec2 start, Vec2 end) {
+vector<ASWaypoint*> PathFinding::searchPath(cocos2d::Vec2 start, cocos2d::Vec2 end) {
     init();
     
     //initiate lists.
@@ -160,7 +160,7 @@ vector<ASWaypoint*> PathFinding::searchPath(Vec2 start, Vec2 end) {
 
 
 
-int PathFinding::getHeuristic(Vec2 a, Vec2 b) {
+int PathFinding::getHeuristic(cocos2d::Vec2 a, cocos2d::Vec2 b) {
     
     
     int xd, yd;
@@ -184,46 +184,46 @@ vector<ASWaypoint*> PathFinding::getConnectedASWaypoints(ASWaypoint* aswp) {
     
     // West
     if (x-1 > 0 && x-1 < 45)
-        aswps.push_back( getASWaypointWithCoord( Vec2(x-1, y)) );
+        aswps.push_back( getASWaypointWithCoord( cocos2d::Vec2(x-1, y)) );
     
     // East
     if (x+1 > 0 && x+1 < 45)
-        aswps.push_back( getASWaypointWithCoord( Vec2(x+1, y)) );
+        aswps.push_back( getASWaypointWithCoord( cocos2d::Vec2(x+1, y)) );
     
     // North
     if (y-1 >= 0 && y-1 < 45)
-        aswps.push_back( getASWaypointWithCoord( Vec2(x, y-1)) );
+        aswps.push_back( getASWaypointWithCoord( cocos2d::Vec2(x, y-1)) );
     
     // South
     if (y+1 >= 0 && y+1 < 45)
-        aswps.push_back( getASWaypointWithCoord( Vec2(x, y+1)) );
+        aswps.push_back( getASWaypointWithCoord( cocos2d::Vec2(x, y+1)) );
     
     
     // Southwest
     if ((x-1 >= 0 && x-1 < 45) &&
         (y-1 >= 0 && y-1 < 45))
-        aswps.push_back( getASWaypointWithCoord( Vec2(x-1, y-1)) );
+        aswps.push_back( getASWaypointWithCoord( cocos2d::Vec2(x-1, y-1)) );
         
     // Southeast
     if ((x+1 >= 0 && x+1 < 45) &&
         (y-1 >= 0 && y-1 < 45))
-        aswps.push_back( getASWaypointWithCoord( Vec2(x+1, y-1)) );
+        aswps.push_back( getASWaypointWithCoord( cocos2d::Vec2(x+1, y-1)) );
         
     // Northwest
     if ((x-1 >= 0 && x-1 < 45) &&
         (y+1 >= 0 && y+1 < 45))
-        aswps.push_back( getASWaypointWithCoord( Vec2(x-1, y+1)) );
+        aswps.push_back( getASWaypointWithCoord( cocos2d::Vec2(x-1, y+1)) );
         
     // Northeast
     if ((x+1 >= 0 && x+1 < 45) &&
         (y+1 >= 0 && y+1 < 45))
-        aswps.push_back( getASWaypointWithCoord( Vec2(x+1, y+1)) );
+        aswps.push_back( getASWaypointWithCoord( cocos2d::Vec2(x+1, y+1)) );
     
     
     return aswps;
 }
 
-ASWaypoint* PathFinding::getASWaypointWithCoord(Vec2 coord) {
+ASWaypoint* PathFinding::getASWaypointWithCoord(cocos2d::Vec2 coord) {
     for (int index = 0; index < ASWaypoints.size(); index++) {
         ASWaypoint* asway = ASWaypoints[index];
         if (asway->coord == coord) {
