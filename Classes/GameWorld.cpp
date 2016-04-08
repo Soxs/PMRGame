@@ -163,23 +163,23 @@ void GameWorld::update(float delta) {
         
         
         if (diff.x > 0) {
-            
-            if (diff.y > 0) {
-                
-            } else {
-                nextPos.x += _tileMap->getTileSize().width;
-            }
+			//east
+            nextPos.x += _tileMap->getTileSize().width;
+			player->entityImage->initWithFile("BigDDirection/BigDR1.png");
         } else {
             //west
             nextPos.x -= _tileMap->getTileSize().width;
+			player->entityImage->initWithFile("BigDDirection/BigDL1.png");
         }
     } else {
         if (diff.y > 0) {
-            //south
-            nextPos.y += _tileMap->getTileSize().height;
-        } else {
             //north
+            nextPos.y += _tileMap->getTileSize().height;
+			player->entityImage->initWithFile("BigDDirection/BigDB1.png");
+        } else {
+            //south
             nextPos.y -= _tileMap->getTileSize().height;
+			player->entityImage->initWithFile("BigDDirection/BigDF1.png");
         }
     }
     
@@ -213,6 +213,8 @@ void GameWorld::update(float delta) {
 
 			//Check if we've already destroyed this building to avoid adding more to the x value in the sprite rectangle.
             if (!structureManager->containsStructure(buildingSpriteGID, nextPlace)) {
+				//collision, not destroyed yet
+
                 ValueMap tileValues = _tileMap->getPropertiesForGID(buildingSpriteGID).asValueMap();
                 CCString* testme = new CCString();
                 *testme = tileValues.at("type").asString();
@@ -235,6 +237,10 @@ void GameWorld::update(float delta) {
                     structureManager->addStructure(new BrokenStructure(buildingSpriteGID, tile, nextPlace)); //Adds the building attacked to the structure manaager, so we remember which buildings we've already destroyed.
                     
                     scoreManager->addToScore(50); //add to score example...
+
+					//TODO: add animations for destoying buildings
+
+
                     
                 }
                 //collisionbool = true; // walks over buildings
