@@ -3,6 +3,7 @@
 
 #include "cocos2d.h"
 #include "Player.hpp"
+#include "NpcManager.hpp"
 #include "StructureManager.hpp"
 #include "ScoreManager.hpp"
 #include "PathFinding.hpp"
@@ -38,18 +39,22 @@ public:
     void resetWorld();
     void cameraUpdater(float delta);
     bool checkCollision(int tilegid);
+    
+    NpcManager* npcManager;
     StructureManager* structureManager;
+    ScoreManager* scoreManager;
+    vector<ASWaypoint*> chosenPath;
     
 private:
     
-    ScoreManager* scoreManager;
+    
     PathFinding* pathFinding;
     Player* player;
     void setViewPointCenter(cocos2d::CCPoint position);
     
     
-    vector<ASWaypoint*> chosenPath;
     
+    cocos2d::Sprite* heartsprite;
     cocos2d::Label* scoreTextLabel;
     cocos2d::Label* scoreLabel;
     

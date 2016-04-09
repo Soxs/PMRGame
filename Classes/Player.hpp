@@ -13,14 +13,24 @@
 #include "Entity.hpp"
 #include "cocos2d.h"
 
+using namespace cocos2d;
+
 class Player : public Entity {
 public:
     Player(cocos2d::Vec2 spawnLocation);
     void touchEvent(cocos2d::Touch* touch, cocos2d::Event* event);
+    void update(float deltaTime);
 
 	cocos2d::Vec2 actualPosition;
+    int currentHealth;
+    
+    bool isDead();
+    
 	void updatePosition(cocos2d::Vec2 newPos, bool tele);
 	void walkTo(cocos2d::Vec2 newPos);
+    
+private:
+    MotionStreak* ms;
 };
 
 #endif /* Player_hpp */

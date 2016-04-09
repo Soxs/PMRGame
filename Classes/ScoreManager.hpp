@@ -12,6 +12,8 @@
 #include <stdio.h>
 #include "cocos2d.h"
 
+using namespace cocos2d;
+
 class ScoreManager {
 public:
     ScoreManager();
