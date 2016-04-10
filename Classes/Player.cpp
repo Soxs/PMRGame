@@ -34,7 +34,6 @@ void Player::updatePosition(cocos2d::Vec2 newPos, bool tele) {
 
 	//Get the anchor point for the monster sprite on the y so he stands on the tile.
 	int halfheight = entityImage->getTextureRect().size.height / 2;
-    int halfwidth = entityImage->getTextureRect().size.height / 3;
 
 	Vec2 anchoredPosition = Vec2(newPos.x,
 		newPos.y + halfheight);
@@ -182,7 +181,63 @@ void Player::update(float deltaTime) {
                     GameWorld::instance->structureManager->addStructure(new BrokenStructure(buildingSpriteGID, tile, nextPlace)); //Adds the building attacked to the structure manaager, so we remember which buildings we've already destroyed.
                     
                     GameWorld::instance->scoreManager->addToScore(50, tile->getPosition()); //add to score example...
-                    GameWorld::instance->npcManager->addNpc(/*static_cast<Entity*>( */new Crowd(ccp(tile->getPosition().x-32, tile->getPosition().y-32) /*)*/ ));
+                    
+                    Vec2 attackedTileLocation = tile->getPosition();
+                    Vec2 crowdSpawnLocation = attackedTileLocation;
+                    
+                    //get a good spawn for the crowd.
+                    if (testme->compare("top-left") == 0) {
+                        //top-left of struct.
+                        //either want crowd to spawn on left or above.
+                        Vec2 positionabove = ccp(attackedTileLocation.x + 16, attackedTileLocation.y + 48);
+                        Vec2 positionleft = ccp(attackedTileLocation.x - 16, attackedTileLocation.y + 16);
+                        
+                        if (actualPosition.distance(positionabove) <
+                            actualPosition.distance(positionleft))
+                            crowdSpawnLocation = positionleft;
+                        else
+                            crowdSpawnLocation = positionabove;
+                            
+                    } else if (testme->compare("top-right") == 0) {
+                        //top-right of struct.
+                        
+                        //either want crowd to spawn on right or above.
+                        Vec2 positionabove = ccp(attackedTileLocation.x + 16, attackedTileLocation.y + 48);
+                        Vec2 positionright = ccp(attackedTileLocation.x + 48, attackedTileLocation.y + 16);
+                        
+                        if (actualPosition.distance(positionabove) <
+                            actualPosition.distance(positionright))
+                            crowdSpawnLocation = positionright;
+                        else
+                            crowdSpawnLocation = positionabove;
+                        
+                    } else if (testme->compare("bottom-left") == 0) {
+                        //bottom-left of struct.
+                        //either want crowd to spawn on left or bottom.
+                        Vec2 positionbelow = ccp(attackedTileLocation.x + 16, attackedTileLocation.y - 16);
+                        Vec2 positionleft = ccp(attackedTileLocation.x - 16, attackedTileLocation.y + 16);
+                        
+                        if (actualPosition.distance(positionbelow) <
+                            actualPosition.distance(positionleft))
+                            crowdSpawnLocation = positionleft;
+                        else
+                            crowdSpawnLocation = positionbelow;
+                        
+                    } else if (testme->compare("bottom-right") == 0) {
+                        //bottom-right of struct.
+                        //either want crowd to spawn on left or bottom.
+                        Vec2 positionbelow = ccp(attackedTileLocation.x + 16, attackedTileLocation.y - 16);
+                        Vec2 positionright = ccp(attackedTileLocation.x + 48, attackedTileLocation.y + 16);
+                        
+                        if (actualPosition.distance(positionbelow) <
+                            actualPosition.distance(positionright))
+                            crowdSpawnLocation = positionright;
+                        else
+                            crowdSpawnLocation = positionbelow;
+                    }
+                    
+                    GameWorld::instance->npcManager->addNpc(new Crowd(crowdSpawnLocation));
+                    
                     //TODO: add animations for destoying buildings
                     
                     

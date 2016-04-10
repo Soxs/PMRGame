@@ -14,5 +14,11 @@ Crowd::Crowd(cocos2d::Vec2 spawnLocation) : Entity(spawnLocation) {
     sprite->initWithFile("crowd.png");
     sprite->setPosition(spawnLocation);
     setSprite(sprite);
-    GameWorld::instance->addChild(sprite, 1);
+    GameWorld::instance->addChild(sprite, 0);
 }
+
+/*void Entity::update(float delta) {
+    /*
+     Update crowd movement.
+     
+}*/

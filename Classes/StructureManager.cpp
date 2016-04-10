@@ -31,3 +31,7 @@ bool StructureManager::containsStructure(int gid, Vec2 location) {
     }
     return false;
 }
+
+Vector<BrokenStructure*>* StructureManager::getStructures() {
+    return structarray;
+}

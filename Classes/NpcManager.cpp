@@ -15,6 +15,10 @@ NpcManager::NpcManager() {
     //Vector<BrokenStructure*> structarray (15);
 }
 
+Vector<Entity*>* NpcManager::getNpcs() {
+    return structarray;
+}
+
 void NpcManager::addNpc(Entity* toadd) {
     structarray->pushBack(toadd);
 }

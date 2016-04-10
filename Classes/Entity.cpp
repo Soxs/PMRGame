@@ -21,3 +21,7 @@ void Entity::setSprite(cocos2d::Sprite* newImage) {
 void Entity::setPosition(cocos2d::Vec2 newpos) {
     this->location = newpos;
 }
+
+void Entity::update(float delta) {
+    
+}

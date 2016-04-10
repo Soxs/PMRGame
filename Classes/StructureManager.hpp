@@ -19,6 +19,7 @@ public:
     void addStructure(BrokenStructure* structToAdd);
     void resetManager();
     bool containsStructure(int gid, cocos2d::Vec2 location);
+    cocos2d::Vector<BrokenStructure*>* getStructures();
 private:
     cocos2d::Vector<BrokenStructure*>* structarray;
 };

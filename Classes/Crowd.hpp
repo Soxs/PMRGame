@@ -19,6 +19,8 @@ class Crowd : public Entity {
 public:
     Crowd(cocos2d::Vec2 spawnLocation);
     
+    cocos2d::Vec2 targetLocation;
+    
 private:
     
 };

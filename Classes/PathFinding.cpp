@@ -70,12 +70,12 @@ vector<ASWaypoint*> PathFinding::searchPath(cocos2d::Vec2 start, cocos2d::Vec2 e
             }
             reverse(ret.begin(), ret.end());
             emptyPath = ret;
-            CCLOG("===== A* =====");
+            /*CCLOG("===== A* =====");
             for (int reti = 0; reti < ret.size(); reti++) {
                 ASWaypoint* aw = ret[reti];
                 CCLOG("x: %f, y: %f", aw->coord.x, aw->coord.y);
             }
-            CCLOG("==============");
+            CCLOG("==============");*/
             return ret;
         }
         

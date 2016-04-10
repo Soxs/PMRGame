@@ -119,8 +119,19 @@ void GameWorld::update(float delta) {
     scoreLabel->setString(std::to_string(scoreManager->getScore()));
     scoreLabel->setPosition(this->convertToNodeSpace(CCDirector::sharedDirector()->convertToGL(ccp(110, 130))));
     
-	    
+	
+    //Update the player.
     player->update(delta);
+    
+    //Update all the npcs.
+    for (Entity* e : *npcManager->getNpcs()) {
+        e->update(delta);
+    }
+    //Update all the broken buildings.
+    for (BrokenStructure* b : *structureManager->getStructures()) {
+        b->update(delta);
+    }
+    
 }
 
 
