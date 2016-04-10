@@ -75,7 +75,7 @@ bool GameWorld::init()
     
     CCPoint cp1 = tileCoordForPosition(ccp(798, 444));
     CCPoint cp2 = tileCoordToPosition(cp1);
-    CCLOG("x: %f, y: %f", cp2.x, cp2.y);
+    //CCLOG("x: %f, y: %f", cp2.x, cp2.y);
     
     
     
@@ -85,9 +85,15 @@ bool GameWorld::init()
     
     heartsprite = new cocos2d::Sprite();
     heartsprite->initWithFile("heart.png");
-    heartsprite->setPosition(this->convertToNodeSpace(CCDirector::sharedDirector()->convertToGL(ccp(20, 60))));
+    heartsprite->setScale(1.5f, 1.5f);
+    heartsprite->setPosition(this->convertToNodeSpace(CCDirector::sharedDirector()->convertToGL(ccp(30, 60))));
     this->addChild(heartsprite, 3);
     
+    healthLabel = Label::createWithTTF(std::to_string(player->currentHealth), "kenney-rocket.ttf", 32);
+    healthLabel->setColor(cocos2d::Color3B::RED);
+    healthLabel->enableOutline(Color4B(0,0,0,255),3);
+    healthLabel->setPosition(this->convertToNodeSpace(CCDirector::sharedDirector()->convertToGL(ccp(114, 60))));
+    this->addChild(healthLabel, 3);
     
     scoreTextLabel = Label::createWithTTF("Score:", "kenney-rocket.ttf", 24);
     scoreTextLabel->enableOutline(Color4B(0,0,0,255),3);
@@ -113,19 +119,30 @@ void GameWorld::cameraUpdater(float delta)
 
 void GameWorld::update(float delta) {
 
-    heartsprite->setPosition(this->convertToNodeSpace(CCDirector::sharedDirector()->convertToGL(ccp(100, 60))));
+    
     scoreTextLabel->setPosition(this->convertToNodeSpace(CCDirector::sharedDirector()->convertToGL(ccp(100, 100))));
     
     scoreLabel->setString(std::to_string(scoreManager->getScore()));
     scoreLabel->setPosition(this->convertToNodeSpace(CCDirector::sharedDirector()->convertToGL(ccp(110, 130))));
     
-	
+    heartsprite->setPosition(this->convertToNodeSpace(CCDirector::sharedDirector()->convertToGL(ccp(30, 60))));
+    
+    healthLabel->setString(std::to_string(player->currentHealth));
+	healthLabel->setPosition(this->convertToNodeSpace(CCDirector::sharedDirector()->convertToGL(ccp(114, 60))));
+    
     //Update the player.
     player->update(delta);
     
     //Update all the npcs.
     for (Entity* e : *npcManager->getNpcs()) {
-        e->update(delta);
+        if (IsType<Crowd>(e)) {
+            Crowd* c = static_cast<Crowd*>(e);
+            c->update(delta);
+        } else if (IsType<Helicopter>(e)) {
+            Helicopter* h = static_cast<Helicopter*>(e);
+            h->update(delta);
+        } else
+            e->update(delta);
     }
     //Update all the broken buildings.
     for (BrokenStructure* b : *structureManager->getStructures()) {
@@ -166,6 +183,7 @@ bool GameWorld::onTouchBegan(Touch* touch, Event* event)
     touchLocation = this->convertToNodeSpace(touchl);
     vector<ASWaypoint*> path = pathFinding->searchPath(tileCoordForPosition(player->actualPosition), tileCoordForPosition(touchLocation));
     chosenPath = path;
+    time(0);
     return true;
 }
 

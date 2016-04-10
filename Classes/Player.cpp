@@ -16,6 +16,9 @@
 USING_NS_CC;
 
 Player::Player(cocos2d::Vec2 spawnLocation) : Entity(spawnLocation) {
+    currentHealth = 100;
+    
+    
     cocos2d::Sprite* sprite = new cocos2d::Sprite();
     sprite->initWithFile("DinoLeft.png");
 	setSprite(sprite);
@@ -24,8 +27,7 @@ Player::Player(cocos2d::Vec2 spawnLocation) : Entity(spawnLocation) {
     ms->setFastMode(true);
     updatePosition(spawnLocation, true);
     GameWorld::instance->addChild(ms);
-    currentHealth = 100;
-    
+
 }
 
 void Player::updatePosition(cocos2d::Vec2 newPos, bool tele) {

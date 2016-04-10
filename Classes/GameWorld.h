@@ -4,6 +4,8 @@
 #include "cocos2d.h"
 #include "Player.hpp"
 #include "NpcManager.hpp"
+#include "Crowd.hpp"
+#include "Helicopter.hpp"
 #include "StructureManager.hpp"
 #include "ScoreManager.hpp"
 #include "PathFinding.hpp"
@@ -45,6 +47,12 @@ public:
     ScoreManager* scoreManager;
     vector<ASWaypoint*> chosenPath;
     
+    template <class DstType, class SrcType>
+    bool IsType(const SrcType* src)
+    {
+        return dynamic_cast<const DstType*>(src) != 0;
+    }
+    
 private:
     
     
@@ -55,6 +63,8 @@ private:
     
     
     cocos2d::Sprite* heartsprite;
+    cocos2d::Label* healthLabel;
+    
     cocos2d::Label* scoreTextLabel;
     cocos2d::Label* scoreLabel;
     
