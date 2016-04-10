@@ -23,6 +23,10 @@ public:
     void update(float);
     
     bool onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event);
+    void onDragEvent(cocos2d::Touch* touch, cocos2d::Event* event);
+    
+    void touchEvent(cocos2d::Touch* touch, cocos2d::Event* event);
+    
     void keyboardListener();
     bool isKeyPressed(cocos2d::EventKeyboard::KeyCode);
     double keyPressedDuration(cocos2d::EventKeyboard::KeyCode);

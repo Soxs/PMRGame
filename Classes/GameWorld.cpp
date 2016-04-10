@@ -119,7 +119,6 @@ void GameWorld::cameraUpdater(float delta)
 
 void GameWorld::update(float delta) {
 
-    
     scoreTextLabel->setPosition(this->convertToNodeSpace(CCDirector::sharedDirector()->convertToGL(ccp(100, 100))));
     
     scoreLabel->setString(std::to_string(scoreManager->getScore()));
@@ -144,6 +143,7 @@ void GameWorld::update(float delta) {
         } else
             e->update(delta);
     }
+    
     //Update all the broken buildings.
     for (BrokenStructure* b : *structureManager->getStructures()) {
         b->update(delta);
@@ -177,15 +177,25 @@ void GameWorld::setViewPointCenter(CCPoint position) {
 
 bool GameWorld::onTouchBegan(Touch* touch, Event* event)
 {
+    touchEvent(touch, event);
+    return true;
+}
+
+void GameWorld::onDragEvent(Touch* touch, Event* event)
+{
+    touchEvent(touch, event);
+}
+
+void GameWorld::touchEvent(Touch* touch, Event* event)
+{
     CCPoint touchl = touch->getLocationInView();
     touchl = CCDirector::sharedDirector()->convertToGL(touchl);
     
     touchLocation = this->convertToNodeSpace(touchl);
     vector<ASWaypoint*> path = pathFinding->searchPath(tileCoordForPosition(player->actualPosition), tileCoordForPosition(touchLocation));
     chosenPath = path;
-    time(0);
-    return true;
 }
+
 
 bool GameWorld::checkCollision(int tileGID) {
     if (tileGID > 0) {
@@ -212,7 +222,7 @@ void GameWorld::keyboardListener()
     
     //Set callbacks for our touch functions.
     touchListener->onTouchBegan = CC_CALLBACK_2(GameWorld::onTouchBegan, this);
-    touchListener->onTouchMoved = CC_CALLBACK_2(GameWorld::onTouchBegan, this);
+    touchListener->onTouchMoved = CC_CALLBACK_2(GameWorld::onDragEvent, this);
     
     this->_eventDispatcher->addEventListenerWithSceneGraphPriority(touchListener, this);
 }

@@ -20,10 +20,7 @@ private:
 	//int map[];
 	int width, height;
 
-	int plaint = 0;
-	int vroad = 1;
-	int hroad = 2;
-	int struc = 3;
+	
 
 };
 
