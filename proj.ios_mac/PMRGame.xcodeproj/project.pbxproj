@@ -20,6 +20,10 @@
 		31A25D911C9B2FD80005D9D0 /* ScoreManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31A25D8E1C9B2FD80005D9D0 /* ScoreManager.cpp */; };
 		31AB53071C6ABC9C007DDF02 /* Entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31AB53051C6ABC9C007DDF02 /* Entity.cpp */; };
 		31AB53081C6ABC9C007DDF02 /* Entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31AB53051C6ABC9C007DDF02 /* Entity.cpp */; };
+		31B8072E1CB96CBF00469131 /* Crowd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31B8072C1CB96CBF00469131 /* Crowd.cpp */; };
+		31B8072F1CB96CC000469131 /* Crowd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31B8072C1CB96CBF00469131 /* Crowd.cpp */; };
+		31B807321CB96E9F00469131 /* NpcManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31B807301CB96E9F00469131 /* NpcManager.cpp */; };
+		31B807331CB96E9F00469131 /* NpcManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31B807301CB96E9F00469131 /* NpcManager.cpp */; };
 		31F792531C8633B300592DDB /* MainMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31F792511C8633B300592DDB /* MainMenu.cpp */; };
 		31F792541C8633B300592DDB /* MainMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31F792511C8633B300592DDB /* MainMenu.cpp */; };
 		31F792581C872D0800592DDB /* MapGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31F792561C872D0800592DDB /* MapGenerator.cpp */; };
@@ -97,6 +101,10 @@
 		31A25D8F1C9B2FD80005D9D0 /* ScoreManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ScoreManager.hpp; sourceTree = "<group>"; };
 		31AB53051C6ABC9C007DDF02 /* Entity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Entity.cpp; sourceTree = "<group>"; };
 		31AB53061C6ABC9C007DDF02 /* Entity.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Entity.hpp; sourceTree = "<group>"; };
+		31B8072C1CB96CBF00469131 /* Crowd.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Crowd.cpp; sourceTree = "<group>"; };
+		31B8072D1CB96CBF00469131 /* Crowd.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Crowd.hpp; sourceTree = "<group>"; };
+		31B807301CB96E9F00469131 /* NpcManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NpcManager.cpp; sourceTree = "<group>"; };
+		31B807311CB96E9F00469131 /* NpcManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NpcManager.hpp; sourceTree = "<group>"; };
 		31F792511C8633B300592DDB /* MainMenu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainMenu.cpp; sourceTree = "<group>"; };
 		31F792521C8633B300592DDB /* MainMenu.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MainMenu.hpp; sourceTree = "<group>"; };
 		31F792561C872D0800592DDB /* MapGenerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MapGenerator.cpp; sourceTree = "<group>"; };
@@ -287,6 +295,7 @@
 		31AB53041C6ABC66007DDF02 /* entities */ = {
 			isa = PBXGroup;
 			children = (
+				31B8072B1CB96C9A00469131 /* npc */,
 				3167BFB01C6FB34100FEA765 /* structures */,
 				31AB53051C6ABC9C007DDF02 /* Entity.cpp */,
 				31AB53061C6ABC9C007DDF02 /* Entity.hpp */,
@@ -294,6 +303,17 @@
 				31695D741C6E365F0045DEDA /* Player.hpp */,
 			);
 			name = entities;
+			sourceTree = "<group>";
+		};
+		31B8072B1CB96C9A00469131 /* npc */ = {
+			isa = PBXGroup;
+			children = (
+				31B8072C1CB96CBF00469131 /* Crowd.cpp */,
+				31B8072D1CB96CBF00469131 /* Crowd.hpp */,
+				31B807301CB96E9F00469131 /* NpcManager.cpp */,
+				31B807311CB96E9F00469131 /* NpcManager.hpp */,
+			);
+			name = npc;
 			sourceTree = "<group>";
 		};
 		31F792501C86338600592DDB /* menus */ = {
@@ -532,6 +552,8 @@
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				31AB53071C6ABC9C007DDF02 /* Entity.cpp in Sources */,
 				31F7925D1C88A53C00592DDB /* PathFinding.cpp in Sources */,
+				31B8072E1CB96CBF00469131 /* Crowd.cpp in Sources */,
+				31B807321CB96E9F00469131 /* NpcManager.cpp in Sources */,
 				3167BFAF1C6FB20A00FEA765 /* BrokenStructure.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				31A25D901C9B2FD80005D9D0 /* ScoreManager.cpp in Sources */,
@@ -548,9 +570,11 @@
 				31AB53081C6ABC9C007DDF02 /* Entity.cpp in Sources */,
 				46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				3160C7A71C998DAD00605F8C /* CreditScreen.cpp in Sources */,
+				31B8072F1CB96CC000469131 /* Crowd.cpp in Sources */,
 				31A25D911C9B2FD80005D9D0 /* ScoreManager.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				46880B8B19C43A87006E1F66 /* GameWorld.cpp in Sources */,
+				31B807331CB96E9F00469131 /* NpcManager.cpp in Sources */,
 				31F792541C8633B300592DDB /* MainMenu.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

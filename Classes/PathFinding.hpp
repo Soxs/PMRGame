@@ -10,9 +10,10 @@
 #define PathFinding_hpp
 
 #include <stdio.h>
+#include "cocos2d.h"
 
 using namespace std;
-using namespace cocos2d;
+//using namespace cocos2d;
 
 const int width = 45, height = 45;
 const int dir = 8; // number of possible directions to go at any position
@@ -32,7 +33,7 @@ struct ASWaypoint {
     //f is the total distance/cost from beginning to end. (g + h)
     int f;
     
-    Vec2 coord;
+    cocos2d::Vec2 coord;
     ASWaypoint* parent;
     
     int GetID() {
@@ -44,7 +45,7 @@ struct ASWaypoint {
 class PathFinding {
 public:
     PathFinding();
-    vector<ASWaypoint*> searchPath(Vec2 a, Vec2 b);
+    vector<ASWaypoint*> searchPath(cocos2d::Vec2 a, cocos2d::Vec2 b);
     
 private:
     int w;
@@ -52,11 +53,11 @@ private:
     
     void init();
     
-    int getHeuristic(Vec2 a, Vec2 b);
+    int getHeuristic(cocos2d::Vec2 a, cocos2d::Vec2 b);
     vector<ASWaypoint*> ASWaypoints;
     vector<ASWaypoint*> getConnectedASWaypoints(ASWaypoint* aswp);
-    ASWaypoint* getASWaypointWithCoord(Vec2 coord);
-    int coordToID(Vec2 coord);
+    ASWaypoint* getASWaypointWithCoord(cocos2d::Vec2 coord);
+    int coordToID(cocos2d::Vec2 coord);
     
 };
 

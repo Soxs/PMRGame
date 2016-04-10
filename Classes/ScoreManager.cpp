@@ -7,6 +7,7 @@
 //
 
 #include "ScoreManager.hpp"
+#include "GameWorld.h"
 
 ScoreManager::ScoreManager() {
     score = 0;
@@ -21,6 +22,15 @@ void ScoreManager::addToScore(int toadd) {
 }
 
 void ScoreManager::addToScore(int toadd, cocos2d::Vec2 loc) {
+    
+    GameWorld* gameInstance = GameWorld::instance;
+    Label* tempScoreLabel = Label::createWithTTF("+" + std::to_string(toadd), "kenney-rocket.ttf", 12);
+    tempScoreLabel->setColor(cocos2d::Color3B::RED);
+    tempScoreLabel->enableOutline(Color4B(0,0,0,255),1);
+    tempScoreLabel->setPosition(loc);
+    gameInstance->addChild(tempScoreLabel, 1);
+    Sequence* anim = cocos2d::Sequence::create(cocos2d::MoveTo::create(1.0f, ccp(loc.x, loc.y + 50)), cocos2d::DelayTime::create(1.0f), cocos2d::RemoveSelf::create(), NULL);
+    tempScoreLabel->runAction(anim);
     score += toadd;
 }
 

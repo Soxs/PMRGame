@@ -40,6 +40,7 @@ bool GameWorld::init()
     
     
     scoreManager = new ScoreManager();
+    npcManager = new NpcManager();
     structureManager = new StructureManager();
     touchLocation = ccp(-1, -1);
     
@@ -79,19 +80,24 @@ bool GameWorld::init()
     
     
     
-    this->addChild(player->entityImage);
+    this->addChild(player->entityImage, 2);
     this->setViewPointCenter(player->entityImage->getPosition());
+    
+    heartsprite = new cocos2d::Sprite();
+    heartsprite->initWithFile("heart.png");
+    heartsprite->setPosition(this->convertToNodeSpace(CCDirector::sharedDirector()->convertToGL(ccp(20, 60))));
+    this->addChild(heartsprite, 3);
     
     
     scoreTextLabel = Label::createWithTTF("Score:", "kenney-rocket.ttf", 24);
     scoreTextLabel->enableOutline(Color4B(0,0,0,255),3);
-    scoreTextLabel->setPosition(100, 100);
-    this->addChild(scoreTextLabel);
+    scoreTextLabel->setPosition(this->convertToNodeSpace(CCDirector::sharedDirector()->convertToGL(ccp(100, 100))));
+    this->addChild(scoreTextLabel, 3);
     
     scoreLabel = Label::createWithTTF(std::to_string(scoreManager->getScore()), "kenney-rocket.ttf", 32);
     scoreLabel->enableOutline(Color4B(0,0,0,255),4);
-    scoreLabel->setPosition(110, 130);
-    this->addChild(scoreLabel, 0);
+    scoreLabel->setPosition(this->convertToNodeSpace(CCDirector::sharedDirector()->convertToGL(ccp(110, 130))));
+    this->addChild(scoreLabel, 3);
     
     
     keyboardListener();
@@ -107,158 +113,24 @@ void GameWorld::cameraUpdater(float delta)
 
 void GameWorld::update(float delta) {
 
+    heartsprite->setPosition(this->convertToNodeSpace(CCDirector::sharedDirector()->convertToGL(ccp(100, 60))));
+    scoreTextLabel->setPosition(this->convertToNodeSpace(CCDirector::sharedDirector()->convertToGL(ccp(100, 100))));
     
-    CCPoint pos = ccp(100,100);
-    Vec2 postohud = CCDirector::sharedDirector()->convertToGL(pos);
-    postohud = this->convertToNodeSpace(postohud);
-    scoreTextLabel->setPosition(postohud);
-    
-    pos = ccp(110,130);
-    postohud = CCDirector::sharedDirector()->convertToGL(pos);
-    postohud = this->convertToNodeSpace(postohud);
     scoreLabel->setString(std::to_string(scoreManager->getScore()));
-    scoreLabel->setPosition(postohud);
+    scoreLabel->setPosition(this->convertToNodeSpace(CCDirector::sharedDirector()->convertToGL(ccp(110, 130))));
     
-	//return if the player is already in a moving animation.
-	if (player->entityImage->getNumberOfRunningActions() > 0)
-		return;
-
-    //return if no touch location is registered.
-    if (touchLocation.x == -1 &&
-        touchLocation.y == -1)
-        return;
+	
+    //Update the player.
+    player->update(delta);
     
-    if (chosenPath.size() == 0 &&
-        tileCoordForPosition(player->actualPosition).distance(tileCoordForPosition(touchLocation)) == 0)
-        return;
-    
-    //return if the distance to the location is less than a tile.
-    if (tileCoordForPosition(touchLocation).distance(tileCoordForPosition(player->actualPosition)) == 0)
-        return;
-    
-    Vec2 difference = tileCoordForPosition(player->actualPosition) - tileCoordForPosition(touchLocation);
-    
-    ASWaypoint* nextSpot;
-    if (chosenPath.size() > 0) {
-        nextSpot = chosenPath[0];
-        difference = tileCoordForPosition(player->actualPosition) - nextSpot->coord;
+    //Update all the npcs.
+    for (Entity* e : *npcManager->getNpcs()) {
+        e->update(delta);
     }
-    
-    Vec2 realSpot = Vec2(player->actualPosition.x - (difference.x * _tileMap->getTileSize().width),
-                         player->actualPosition.y + (difference.y * _tileMap->getTileSize().height));
-    
-	//Player position.
-    CCPoint playerPos = player->actualPosition;
-	//Difference between the touch location and the players location.
-    CCPoint diff = ccpSub(realSpot, playerPos);
-    
-	//Calculate if we're going left, right, down, or up, and get the new position we'll be moving to.
-    playerPos = realSpot;
-    Vec2 nextPos = player->actualPosition;
-    if ( abs(diff.x) > abs(diff.y) ) {
-        
-        /*
-         TODO: add diagonal check for the collision.
-         */
-        
-        
-        if (diff.x > 0) {
-            
-            if (diff.y > 0) {
-                
-            } else {
-                nextPos.x += _tileMap->getTileSize().width;
-            }
-        } else {
-            //west
-            nextPos.x -= _tileMap->getTileSize().width;
-        }
-    } else {
-        if (diff.y > 0) {
-            //south
-            nextPos.y += _tileMap->getTileSize().height;
-        } else {
-            //north
-            nextPos.y -= _tileMap->getTileSize().height;
-        }
+    //Update all the broken buildings.
+    for (BrokenStructure* b : *structureManager->getStructures()) {
+        b->update(delta);
     }
-    
-    
-    // safety check on the bounds of the map
-    if (playerPos.x <= (_tileMap->getMapSize().width * _tileMap->getTileSize().width) &&
-        playerPos.y <= (_tileMap->getMapSize().height * _tileMap->getTileSize().height) &&
-        playerPos.y >= 0 &&
-        playerPos.x >= 0 )
-    {
-		//the tile where the player touches.
-        CCPoint tileCoord;
-        if (chosenPath.size() > 0)
-             tileCoord = nextSpot->coord;
-        else
-            tileCoord = tileCoordForPosition(touchLocation);
-
-		//the tile immediately next to the player.
-        CCPoint nextTileCoord = this->tileCoordForPosition(realSpot);
-        
-        Vec2 place = Vec2(tileCoord.x, tileCoord.y);
-        Vec2 nextPlace = Vec2(nextTileCoord.x, nextTileCoord.y);
-        
-        bool collisionbool = false;
-        
-        //check collision on tile next to character
-        if (checkCollision(_meta->getTileGIDAt(nextPlace))) {
-
-            //id of the tile type at the location.
-            int buildingSpriteGID = _background->getTileGIDAt(nextPlace);
-
-			//Check if we've already destroyed this building to avoid adding more to the x value in the sprite rectangle.
-            if (!structureManager->containsStructure(buildingSpriteGID, nextPlace)) {
-                ValueMap tileValues = _tileMap->getPropertiesForGID(buildingSpriteGID).asValueMap();
-                CCString* testme = new CCString();
-                *testme = tileValues.at("type").asString();
-                if (testme->length() > 0) {
-                    Sprite *tile = _background->getTileAt(nextPlace);
-                    
-                    cocos2d::Rect originalTileSprite = tile->getTextureRect();
-                    /*
-                     On the tile map sheet, the broken versions of the buildings are positioned 64 pixels to the right.
-                     So in order to set the texture of the sprite to the broken version we need to create the rectangle we're setting it to.
-                     */
-                    
-                    float x = originalTileSprite.origin.x + 64; //bottom left point x (we add 64 because the broken equivalent starts 64 pixels to the right)
-                    float y = originalTileSprite.origin.y; //doesnt need to change, the y is the same.
-                    float width = originalTileSprite.size.width; //probs a good idea to keep it the same size :)
-                    float height = originalTileSprite.size.height; //ditto the line above.
-                    
-                    cocos2d::Rect brokenEquivalent = *new cocos2d::Rect(x, y, width, height); //Creates the new rectangle where the broken equivelant of the same building is.
-                    tile->setTextureRect(brokenEquivalent);//Sets the new rectangle to the tile map sheet.
-                    structureManager->addStructure(new BrokenStructure(buildingSpriteGID, tile, nextPlace)); //Adds the building attacked to the structure manaager, so we remember which buildings we've already destroyed.
-                    
-                    scoreManager->addToScore(50); //add to score example...
-                    
-                }
-                //collisionbool = true; // walks over buildings
-            }
-            collisionbool = true; // cant walk over buildings
-        }
-        if (chosenPath.size() == 1) {
-            chosenPath.clear();
-        } else {
-            vector<ASWaypoint*> newPath;
-            for (int i = 1; i < chosenPath.size(); i++) {
-                newPath.push_back(chosenPath[i]);
-            }
-            chosenPath = newPath;
-        }
-        
-        if (!collisionbool) {
-			player->walkTo(playerPos);
-            //player->entityImage->setPosition(playerPos);
-        }
-		//this->setViewPointCenter(player->entityImage->getPosition());
-
-    }
-    
     
 }
 
@@ -322,6 +194,7 @@ void GameWorld::keyboardListener()
     
     //Set callbacks for our touch functions.
     touchListener->onTouchBegan = CC_CALLBACK_2(GameWorld::onTouchBegan, this);
+    touchListener->onTouchMoved = CC_CALLBACK_2(GameWorld::onTouchBegan, this);
     
     this->_eventDispatcher->addEventListenerWithSceneGraphPriority(touchListener, this);
 }
