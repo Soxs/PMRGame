@@ -25,6 +25,7 @@ public:
     void setPosition(cocos2d::Vec2 newLocation);
     
     void update(float delta);
+    
 };
 
 

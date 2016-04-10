@@ -1,15 +1,15 @@
 //
-//  Crowd.cpp
+//  Helicopter.cpp
 //  PMRGame
 //
-//  Created by Zakary Pacha on 09/04/2016.
+//  Created by Zakary Pacha on 10/04/2016.
 //
 //
 
-#include "Crowd.hpp"
+#include "Helicopter.hpp"
 #include "GameWorld.h"
 
-Crowd::Crowd(cocos2d::Vec2 spawnLocation) : Entity(spawnLocation) {
+Helicopter::Helicopter(cocos2d::Vec2 spawnLocation) : Entity(spawnLocation) {
     cocos2d::Sprite* sprite = new cocos2d::Sprite();
     sprite->initWithFile("crowd.png");
     sprite->setPosition(spawnLocation);
@@ -17,7 +17,6 @@ Crowd::Crowd(cocos2d::Vec2 spawnLocation) : Entity(spawnLocation) {
     GameWorld::instance->addChild(sprite, 0);
 }
 
-void Crowd::update(float delta) {
+void Helicopter::update(float delta) {
     
-     
 }

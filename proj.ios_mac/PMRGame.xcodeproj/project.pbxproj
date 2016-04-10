@@ -24,6 +24,8 @@
 		31B8072F1CB96CC000469131 /* Crowd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31B8072C1CB96CBF00469131 /* Crowd.cpp */; };
 		31B807321CB96E9F00469131 /* NpcManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31B807301CB96E9F00469131 /* NpcManager.cpp */; };
 		31B807331CB96E9F00469131 /* NpcManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31B807301CB96E9F00469131 /* NpcManager.cpp */; };
+		31B807361CBACA1600469131 /* Helicopter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31B807341CBACA1600469131 /* Helicopter.cpp */; };
+		31B807371CBACA1600469131 /* Helicopter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31B807341CBACA1600469131 /* Helicopter.cpp */; };
 		31F792531C8633B300592DDB /* MainMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31F792511C8633B300592DDB /* MainMenu.cpp */; };
 		31F792541C8633B300592DDB /* MainMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31F792511C8633B300592DDB /* MainMenu.cpp */; };
 		31F792581C872D0800592DDB /* MapGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31F792561C872D0800592DDB /* MapGenerator.cpp */; };
@@ -105,6 +107,8 @@
 		31B8072D1CB96CBF00469131 /* Crowd.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Crowd.hpp; sourceTree = "<group>"; };
 		31B807301CB96E9F00469131 /* NpcManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NpcManager.cpp; sourceTree = "<group>"; };
 		31B807311CB96E9F00469131 /* NpcManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NpcManager.hpp; sourceTree = "<group>"; };
+		31B807341CBACA1600469131 /* Helicopter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Helicopter.cpp; sourceTree = "<group>"; };
+		31B807351CBACA1600469131 /* Helicopter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Helicopter.hpp; sourceTree = "<group>"; };
 		31F792511C8633B300592DDB /* MainMenu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainMenu.cpp; sourceTree = "<group>"; };
 		31F792521C8633B300592DDB /* MainMenu.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MainMenu.hpp; sourceTree = "<group>"; };
 		31F792561C872D0800592DDB /* MapGenerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MapGenerator.cpp; sourceTree = "<group>"; };
@@ -312,6 +316,8 @@
 				31B8072D1CB96CBF00469131 /* Crowd.hpp */,
 				31B807301CB96E9F00469131 /* NpcManager.cpp */,
 				31B807311CB96E9F00469131 /* NpcManager.hpp */,
+				31B807341CBACA1600469131 /* Helicopter.cpp */,
+				31B807351CBACA1600469131 /* Helicopter.hpp */,
 			);
 			name = npc;
 			sourceTree = "<group>";
@@ -558,6 +564,7 @@
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				31A25D901C9B2FD80005D9D0 /* ScoreManager.cpp in Sources */,
 				31F792531C8633B300592DDB /* MainMenu.cpp in Sources */,
+				31B807361CBACA1600469131 /* Helicopter.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -575,6 +582,7 @@
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				46880B8B19C43A87006E1F66 /* GameWorld.cpp in Sources */,
 				31B807331CB96E9F00469131 /* NpcManager.cpp in Sources */,
+				31B807371CBACA1600469131 /* Helicopter.cpp in Sources */,
 				31F792541C8633B300592DDB /* MainMenu.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
