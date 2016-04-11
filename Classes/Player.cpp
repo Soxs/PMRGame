@@ -15,14 +15,16 @@
 
 USING_NS_CC;
 
+
 Player::Player(cocos2d::Vec2 spawnLocation) : Entity(spawnLocation) {
+
     currentHealth = 100;
     
     
     cocos2d::Sprite* sprite = new cocos2d::Sprite();
     sprite->initWithFile("DinoLeft.png");
 	setSprite(sprite);
-
+	isChasingEnemy = false;
     ms = cocos2d::MotionStreak::create(0.5f, 0, 15, cocos2d::Color3B::BLACK, "trail.png");
     ms->setFastMode(true);
     updatePosition(spawnLocation, true);
@@ -68,7 +70,7 @@ void Player::update(float deltaTime) {
     //return if the player is already in a moving animation.
     if (entityImage->getNumberOfRunningActions() > 0)
         return;
-    
+	
     //return if no touch location is registered.
     if (GameWorld::instance->touchLocation.x == -1 &&
         GameWorld::instance->touchLocation.y == -1)

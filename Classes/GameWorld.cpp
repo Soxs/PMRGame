@@ -181,9 +181,24 @@ bool GameWorld::onTouchBegan(Touch* touch, Event* event)
     touchl = CCDirector::sharedDirector()->convertToGL(touchl);
     
     touchLocation = this->convertToNodeSpace(touchl);
+	
+
+	for (Entity* e : *npcManager->getNpcs()) {
+		if (IsType<Crowd>(e)) {
+			Crowd* c = static_cast<Crowd*>(e);
+			if (GameWorld::instance->tileCoordForPosition(touchLocation) == GameWorld::instance->tileCoordForPosition(c->location)){
+				if ((GameWorld::instance->tileCoordForPosition(player->actualPosition).distance(GameWorld::instance->tileCoordForPosition(c->location)) == 0))
+					c->isAlive = false;
+				player->isChasingEnemy = true;
+				player->targetEnemy = e;
+			}
+
+
+		}
+	}
     vector<ASWaypoint*> path = pathFinding->searchPath(tileCoordForPosition(player->actualPosition), tileCoordForPosition(touchLocation));
     chosenPath = path;
-    time(0);
+   // time(0);
     return true;
 }
 
@@ -212,7 +227,7 @@ void GameWorld::keyboardListener()
     
     //Set callbacks for our touch functions.
     touchListener->onTouchBegan = CC_CALLBACK_2(GameWorld::onTouchBegan, this);
-    touchListener->onTouchMoved = CC_CALLBACK_2(GameWorld::onTouchBegan, this);
+   // touchListener->onTouchMoved = CC_CALLBACK_2(GameWorld::onTouchBegan, this); // cannot use same method 
     
     this->_eventDispatcher->addEventListenerWithSceneGraphPriority(touchListener, this);
 }

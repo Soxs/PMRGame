@@ -17,6 +17,7 @@ class NpcManager {
 public:
     NpcManager();
     void addNpc(Entity* structToAdd);
+	void removeNpc(Entity* toRemove);
     void resetManager();
     cocos2d::Vector<Entity*>* getNpcs();
 private:

@@ -46,7 +46,8 @@ public:
     StructureManager* structureManager;
     ScoreManager* scoreManager;
     vector<ASWaypoint*> chosenPath;
-    
+	PathFinding* pathFinding; // made this public 
+	Player* player; // this too
     template <class DstType, class SrcType>
     bool IsType(const SrcType* src)
     {
@@ -56,8 +57,8 @@ public:
 private:
     
     
-    PathFinding* pathFinding;
-    Player* player;
+    
+    
     void setViewPointCenter(cocos2d::CCPoint position);
     
     

@@ -23,9 +23,9 @@ public:
 
 	cocos2d::Vec2 actualPosition;
     int currentHealth;
-    
+	Entity* targetEnemy;
     bool isDead();
-    
+	bool isChasingEnemy;
 	void updatePosition(cocos2d::Vec2 newPos, bool tele);
 	void walkTo(cocos2d::Vec2 newPos);
     

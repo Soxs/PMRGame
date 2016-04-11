@@ -1,21 +1,85 @@
-﻿Build started 08/04/2016 19:52:11.
-     1>Project "C:\StudentTemporaryFolder\PMRGame\proj.win32\PMRGame.vcxproj" on node 2 (Build target(s)).
-     1>PreLinkEvent:
-         if not exist "C:\StudentTemporaryFolder\PMRGame\proj.win32\Debug.win32\" mkdir "C:\StudentTemporaryFolder\PMRGame\proj.win32\Debug.win32\"
-         xcopy /Y /Q "\cocos2d-x-3.8\prebuilt\win32\*.*" "C:\StudentTemporaryFolder\PMRGame\proj.win32\Debug.win32\"
+﻿Build started 11/04/2016 12:43:26.
+     1>Project "C:\Users\Brad\Documents\GitHub\PMRGame\proj.win32\PMRGame.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Cocos\frameworks\cocos2d-x-3.8\cocos\audio\include" /I"C:\Cocos\frameworks\cocos2d-x-3.8\external" /I"C:\Cocos\frameworks\cocos2d-x-3.8\external\chipmunk\include\chipmunk" /I"C:\Cocos\frameworks\cocos2d-x-3.8\extensions" /I..\Classes /I.. /I"C:\Cocos\frameworks\cocos2d-x-3.8\cocos\2d\..\..\cocos\editor-support" /I"C:\Cocos\frameworks\cocos2d-x-3.8\cocos\2d\..\..\cocos" /I"C:\Cocos\frameworks\cocos2d-x-3.8\cocos\2d\..\..\cocos\platform" /I"C:\Cocos\frameworks\cocos2d-x-3.8\cocos\2d\..\..\cocos\platform\desktop" /I"C:\Cocos\frameworks\cocos2d-x-3.8\cocos\2d\..\..\external\glfw3\include\win32" /I"C:\Cocos\frameworks\cocos2d-x-3.8\cocos\2d\..\..\external\win32-specific\gles\include\OGLES" /I"C:\Cocos\frameworks\cocos2d-x-3.8\cocos\2d\..\..\external\freetype2\include\win32\freetype2" /I"C:\Cocos\frameworks\cocos2d-x-3.8\cocos\2d\..\..\external\freetype2\include\win32\\" /I"C:\Cocos\frameworks\cocos2d-x-3.8\cocos\2d\..\..\external" /ZI /nologo /W3 /WX- /MP /Od /Oy- /D WIN32 /D _WINDOWS /D _USE_MATH_DEFINES /D GL_GLEXT_PROTOTYPES /D CC_ENABLE_CHIPMUNK_INTEGRATION=1 /D COCOS2D_DEBUG=1 /D _CRT_SECURE_NO_WARNINGS /D _SCL_SECURE_NO_WARNINGS /D _VARIADIC_MAX=10 /D _USING_V110_SDK71_ /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug.win32\\" /Fd"Debug.win32\vc120.pdb" /Gd /TP /wd4267 /wd4251 /wd4244 /analyze- /errorReport:prompt ..\Classes\Crowd.cpp
+         Crowd.cpp
+     1>c:\users\brad\documents\github\pmrgame\classes\gameworld.h(34): warning C4996: 'cocos2d::CCPoint': was declared deprecated
+                 c:\cocos\frameworks\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(775) : see declaration of 'cocos2d::CCPoint'
+     1>c:\users\brad\documents\github\pmrgame\classes\gameworld.h(72): warning C4996: 'cocos2d::CCPoint': was declared deprecated
+                 c:\cocos\frameworks\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(775) : see declaration of 'cocos2d::CCPoint'
+                 This diagnostic occurred in the compiler generated function 'GameWorld::~GameWorld(void)'
+     1>c:\users\brad\documents\github\pmrgame\classes\crowd.cpp(13): warning C4996: 'cocos2d::CCPoint': was declared deprecated
+                 c:\cocos\frameworks\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(775) : see declaration of 'cocos2d::CCPoint'
+     1>c:\users\brad\documents\github\pmrgame\classes\crowd.cpp(37): warning C4996: 'cocos2d::CCPoint': was declared deprecated
+                 c:\cocos\frameworks\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(775) : see declaration of 'cocos2d::CCPoint'
+     1>c:\users\brad\documents\github\pmrgame\classes\crowd.cpp(40): warning C4996: 'cocos2d::CCPoint': was declared deprecated
+                 c:\cocos\frameworks\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(775) : see declaration of 'cocos2d::CCPoint'
+     1>c:\users\brad\documents\github\pmrgame\classes\crowd.cpp(60): warning C4996: 'cocos2d::CCPoint': was declared deprecated
+                 c:\cocos\frameworks\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(775) : see declaration of 'cocos2d::CCPoint'
+     1>c:\users\brad\documents\github\pmrgame\classes\crowd.cpp(70): warning C4996: 'cocos2d::CCPoint': was declared deprecated
+                 c:\cocos\frameworks\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(775) : see declaration of 'cocos2d::CCPoint'
+     1>c:\users\brad\documents\github\pmrgame\classes\crowd.cpp(75): warning C4996: 'cocos2d::CCPoint': was declared deprecated
+                 c:\cocos\frameworks\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(775) : see declaration of 'cocos2d::CCPoint'
+     1>c:\users\brad\documents\github\pmrgame\classes\crowd.cpp(78): warning C4996: 'cocos2d::CCPoint': was declared deprecated
+                 c:\cocos\frameworks\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(775) : see declaration of 'cocos2d::CCPoint'
+     1>c:\users\brad\documents\github\pmrgame\classes\crowd.cpp(83): warning C4996: 'cocos2d::CCPoint': was declared deprecated
+                 c:\cocos\frameworks\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(775) : see declaration of 'cocos2d::CCPoint'
+     1>c:\users\brad\documents\github\pmrgame\classes\crowd.cpp(90): warning C4996: 'cocos2d::CCPoint': was declared deprecated
+                 c:\cocos\frameworks\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(775) : see declaration of 'cocos2d::CCPoint'
+     1>c:\users\brad\documents\github\pmrgame\classes\crowd.cpp(92): warning C4996: 'cocos2d::CCPoint': was declared deprecated
+                 c:\cocos\frameworks\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(775) : see declaration of 'cocos2d::CCPoint'
+     1>c:\users\brad\documents\github\pmrgame\classes\crowd.cpp(92): warning C4996: 'cocos2d::ccpSub': was declared deprecated
+                 c:\cocos\frameworks\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(82) : see declaration of 'cocos2d::ccpSub'
+     1>c:\users\brad\documents\github\pmrgame\classes\crowd.cpp(95): warning C4996: 'cocos2d::CCPoint': was declared deprecated
+                 c:\cocos\frameworks\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(775) : see declaration of 'cocos2d::CCPoint'
+     1>c:\users\brad\documents\github\pmrgame\classes\crowd.cpp(136): warning C4996: 'cocos2d::CCPoint': was declared deprecated
+                 c:\cocos\frameworks\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(775) : see declaration of 'cocos2d::CCPoint'
+     1>c:\users\brad\documents\github\pmrgame\classes\crowd.cpp(138): warning C4996: 'cocos2d::CCPoint': was declared deprecated
+                 c:\cocos\frameworks\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(775) : see declaration of 'cocos2d::CCPoint'
+     1>c:\users\brad\documents\github\pmrgame\classes\crowd.cpp(140): warning C4996: 'cocos2d::CCPoint': was declared deprecated
+                 c:\cocos\frameworks\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(775) : see declaration of 'cocos2d::CCPoint'
+     1>c:\users\brad\documents\github\pmrgame\classes\crowd.cpp(143): warning C4996: 'cocos2d::CCPoint': was declared deprecated
+                 c:\cocos\frameworks\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(775) : see declaration of 'cocos2d::CCPoint'
+                 c:\cocos\frameworks\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(775) : see declaration of 'cocos2d::CCPoint'
+     1>c:\users\brad\documents\github\pmrgame\classes\crowd.cpp(170): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\brad\documents\github\pmrgame\classes\crowd.cpp(187): warning C4996: 'cocos2d::CCPoint': was declared deprecated
+                 c:\cocos\frameworks\cocos2d-x-3.8\cocos\deprecated\ccdeprecated.h(775) : see declaration of 'cocos2d::CCPoint'
+       ResourceCompile:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\bin\rc.exe /D _USING_V110_SDK71_ /D _UNICODE /D UNICODE /l"0x0409" /nologo /fo"Debug.win32\game.res" game.rc 
+       PreLinkEvent:
+         if not exist "C:\Users\Brad\Documents\GitHub\PMRGame\proj.win32\Debug.win32\" mkdir "C:\Users\Brad\Documents\GitHub\PMRGame\proj.win32\Debug.win32\"
+         xcopy /Y /Q "C:\Cocos\frameworks\cocos2d-x-3.8\prebuilt\win32\*.*" "C:\Users\Brad\Documents\GitHub\PMRGame\proj.win32\Debug.win32\"
          
          :VCEnd
          60 File(s) copied
        Link:
-         PMRGame.vcxproj -> C:\StudentTemporaryFolder\PMRGame\proj.win32\Debug.win32\PMRGame.exe
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Brad\Documents\GitHub\PMRGame\proj.win32\Debug.win32\PMRGame.exe" /INCREMENTAL /NOLOGO /LIBPATH:C:\Users\Brad\Documents\GitHub\PMRGame\proj.win32\Debug.win32\ /LIBPATH:C:\Users\Brad\Documents\GitHub\PMRGame\proj.win32\Debug.win32\ opengl32.lib glew32.lib libzlib.lib libwebp.lib libiconv.lib freetype.lib winmm.lib ws2_32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Brad\Documents\GitHub\PMRGame\proj.win32\Debug.win32\PMRGame.pdb" /SUBSYSTEM:WINDOWS,"5.01" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Brad\Documents\GitHub\PMRGame\proj.win32\Debug.win32\PMRGame.lib" /MACHINE:X86 /SAFESEH Debug.win32\game.res
+         Debug.win32\AppDelegate.obj
+         Debug.win32\BrokenStructure.obj
+         Debug.win32\Crowd.obj
+         Debug.win32\Entity.obj
+         Debug.win32\GameWorld.obj
+         Debug.win32\Helicopter.obj
+         Debug.win32\MainMenu.obj
+         Debug.win32\MapGenerator.obj
+         Debug.win32\NpcManager.obj
+         Debug.win32\PathFinding.obj
+         Debug.win32\Player.obj
+         Debug.win32\ScoreManager.obj
+         Debug.win32\StructureManager.obj
+         Debug.win32\CreditScreen.obj
+         Debug.win32\main.obj
+     1>AppDelegate.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
+            Creating library C:\Users\Brad\Documents\GitHub\PMRGame\proj.win32\Debug.win32\PMRGame.lib and object C:\Users\Brad\Documents\GitHub\PMRGame\proj.win32\Debug.win32\PMRGame.exp
+         PMRGame.vcxproj -> C:\Users\Brad\Documents\GitHub\PMRGame\proj.win32\Debug.win32\PMRGame.exe
        CustomBuildStep:
-         if not exist "C:\StudentTemporaryFolder\PMRGame\proj.win32\Debug.win32\" mkdir "C:\StudentTemporaryFolder\PMRGame\proj.win32\Debug.win32\"
-         xcopy "C:\StudentTemporaryFolder\PMRGame\proj.win32\..\Resources" "C:\StudentTemporaryFolder\PMRGame\proj.win32\Debug.win32\" /D /E /I /F /Y
+         if not exist "C:\Users\Brad\Documents\GitHub\PMRGame\proj.win32\Debug.win32\" mkdir "C:\Users\Brad\Documents\GitHub\PMRGame\proj.win32\Debug.win32\"
+         xcopy "C:\Users\Brad\Documents\GitHub\PMRGame\proj.win32\..\Resources" "C:\Users\Brad\Documents\GitHub\PMRGame\proj.win32\Debug.win32\" /D /E /I /F /Y
                
          :VCEnd
          0 File(s) copied
-     1>Done Building Project "C:\StudentTemporaryFolder\PMRGame\proj.win32\PMRGame.vcxproj" (Build target(s)).
+     1>Done Building Project "C:\Users\Brad\Documents\GitHub\PMRGame\proj.win32\PMRGame.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.51
+Time Elapsed 00:00:07.69
