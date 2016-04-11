@@ -102,7 +102,8 @@ bool GameWorld::init()
     
     scoreLabel = Label::createWithTTF(std::to_string(scoreManager->getScore()), "kenney-rocket.ttf", 32);
     scoreLabel->enableOutline(Color4B(0,0,0,255),4);
-    scoreLabel->setPosition(this->convertToNodeSpace(CCDirector::sharedDirector()->convertToGL(ccp(110, 130))));
+    pointlocation = this->convertToNodeSpace(CCDirector::sharedDirector()->convertToGL(ccp(110, 130)));
+    scoreLabel->setPosition(pointlocation);
     this->addChild(scoreLabel, 3);
     
     
@@ -122,7 +123,8 @@ void GameWorld::update(float delta) {
     scoreTextLabel->setPosition(this->convertToNodeSpace(CCDirector::sharedDirector()->convertToGL(ccp(100, 100))));
     
     scoreLabel->setString(std::to_string(scoreManager->getScore()));
-    scoreLabel->setPosition(this->convertToNodeSpace(CCDirector::sharedDirector()->convertToGL(ccp(110, 130))));
+    pointlocation = this->convertToNodeSpace(CCDirector::sharedDirector()->convertToGL(ccp(110, 130)));
+    scoreLabel->setPosition(pointlocation);
     
     heartsprite->setPosition(this->convertToNodeSpace(CCDirector::sharedDirector()->convertToGL(ccp(30, 60))));
     

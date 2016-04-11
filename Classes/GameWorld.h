@@ -37,6 +37,9 @@ public:
     // implement the "static create()" method manually
     CREATE_FUNC(GameWorld);
     
+    
+    cocos2d::Vec2 pointlocation;
+    
     cocos2d::CCPoint centerPoint;
     cocos2d::CCPoint touchLocation;
     cocos2d::TMXTiledMap* _tileMap;

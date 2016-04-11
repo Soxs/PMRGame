@@ -45,7 +45,7 @@ void Crowd::update(float delta) {
     if (!isAlive){
         //todo: add health to monster
         GameWorld::instance->npcManager->removeNpc(this);
-        GameWorld::instance->scoreManager->addToScore(20, this->location + Vec2(0,10));
+        GameWorld::instance->scoreManager->addToScore(100, this->location + Vec2(0,10));
     }
     
     
