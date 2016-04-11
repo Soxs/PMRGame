@@ -1,3 +1,4 @@
+
 //
 //  NpcManager.cpp
 //  PMRGame
@@ -23,6 +24,11 @@ void NpcManager::addNpc(Entity* toadd) {
     structarray->pushBack(toadd);
 }
 
+void NpcManager::removeNpc(Entity* toRemove){
+    
+    structarray->eraseObject(toRemove);
+    //toRemove->entityImage->removeFromParent();
+}
 void NpcManager::resetManager() {
     structarray->clear();
 }

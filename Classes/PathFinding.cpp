@@ -108,6 +108,8 @@ vector<ASWaypoint*> PathFinding::searchPath(cocos2d::Vec2 start, cocos2d::Vec2 e
                     neighbor->coord != end) {
                     isClosed = true;
                 }
+                if (GameWorld::instance->tileCoordForPosition(GameWorld::instance->player->actualPosition) == neighbor->coord)
+                    isClosed = true;
                 
             }
             if (isClosed){
