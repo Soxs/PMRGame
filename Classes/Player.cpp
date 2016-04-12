@@ -195,7 +195,8 @@ void Player::update(float deltaTime) {
                         Vec2 positionleft = ccp(attackedTileLocation.x - 16, attackedTileLocation.y + 16);
                         
                         if (actualPosition.distance(positionabove) <
-                            actualPosition.distance(positionleft))
+                            actualPosition.distance(positionleft) &&
+                            positionabove.y <= 0)
                             crowdSpawnLocation = positionleft;
                         else
                             crowdSpawnLocation = positionabove;
@@ -208,7 +209,8 @@ void Player::update(float deltaTime) {
                         Vec2 positionright = ccp(attackedTileLocation.x + 48, attackedTileLocation.y + 16);
                         
                         if (actualPosition.distance(positionabove) <
-                            actualPosition.distance(positionright))
+                            actualPosition.distance(positionright) &&
+                            positionabove.x > 0)
                             crowdSpawnLocation = positionright;
                         else
                             crowdSpawnLocation = positionabove;

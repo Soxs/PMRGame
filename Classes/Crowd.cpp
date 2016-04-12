@@ -20,9 +20,8 @@ Crowd::Crowd(cocos2d::Vec2 spawnLocation) : Entity(spawnLocation) {
     int w = GameWorld::instance->_tileMap->getMapSize().width;
     int h = GameWorld::instance->_tileMap->getMapSize().height;
     //	targetPos = Vec2(32 * (rand() % w + 1), 32 * (rand() % h + 1));
-    targetPos = Vec2(200, 200);
-    //this->Path = p->searchPath(tileCoordForPosition(spawnLocation), tileCoordForPosition(targetPos));
-    //this->walkTo(Vec2(32 * 2, 32 * 10));
+    targetPos = location + Vec2(32 * (rand() % (5 + 1)), 32 * (rand() % (5 + 1)));
+	this->Path = GameWorld::instance->pathFinding->searchPath(tileCoordForPosition(location), tileCoordForPosition(targetPos));
     GameWorld::instance->addChild(sprite, 0);
 }
 
@@ -58,17 +57,15 @@ void Crowd::update(float delta) {
         GameWorld::instance->tileCoordForPosition(location).distance(GameWorld::instance->tileCoordForPosition(targetPos)) == 0)
         return;
     
-    if (this->Path.size() == 0)
+    /*if (this->Path.size() == 0)
     {
-        {
-            int w = GameWorld::instance->_tileMap->getMapSize().width;
+        
+			int w = GameWorld::instance->_tileMap->getMapSize().width;
             int h = GameWorld::instance->_tileMap->getMapSize().height;
-            targetPos = Vec2(32 * (rand() % w + 1), 32 * (rand() % h + 1));
-            PathFinding* p = new PathFinding();
-            this->Path = p->searchPath(tileCoordForPosition(location), tileCoordForPosition(targetPos));
             
-        }
-    }
+            
+        
+    }*/
     //return if the distance to the location is less than a tile.
     if (GameWorld::instance->tileCoordForPosition(targetPos).distance(GameWorld::instance->tileCoordForPosition(location)) == 0)
         return;
