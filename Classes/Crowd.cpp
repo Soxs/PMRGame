@@ -20,7 +20,19 @@ Crowd::Crowd(cocos2d::Vec2 spawnLocation) : Entity(spawnLocation) {
     int w = GameWorld::instance->_tileMap->getMapSize().width;
     int h = GameWorld::instance->_tileMap->getMapSize().height;
     //	targetPos = Vec2(32 * (rand() % w + 1), 32 * (rand() % h + 1));
-    targetPos = location + Vec2(32 * (rand() % (5 + 1)), 32 * (rand() % (5 + 1)));
+    targetPos =
+        location
+            + Vec2(32 *
+                   ((rand() % (5 + 1)) + ((rand() % (5 + 1))*-1)),
+                   
+                   32 *
+                   ((rand() % (5 + 1)) + ((rand() % (5 + 1))*-1))
+                   );
+    Vec2 tilecoord = GameWorld::instance->tileCoordForPosition(targetLocation);
+    if (tilecoord.y < 0)
+        tilecoord.y = 0;
+    if (tilecoord.x < 0)
+        tilecoord.x = 0;
 	this->Path = GameWorld::instance->pathFinding->searchPath(tileCoordForPosition(location), tileCoordForPosition(targetPos));
     GameWorld::instance->addChild(sprite, 0);
 }
